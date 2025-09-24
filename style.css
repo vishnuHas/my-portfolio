@@ -1,0 +1,421 @@
+:root {
+    /* Dark mode colors */
+    --dark-bg1: #18181b;
+    --dark-bg2: #232329;
+    --dark-bg3: #6366f1;
+    --dark-card: #18191c;
+    --dark-accent: #6366f1;
+    --dark-text: #fff;
+    --dark-muted: #a1a1aa;
+    --dark-border: #232329;
+    --dark-radius: 14px;
+    --dark-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+
+    /* Light mode colors */
+    --light-bg1: #f9fafb;
+    --light-bg2: #e5e7eb;
+    --light-bg3: #6366f1; /* accent stays same */
+    --light-card: #ffffff;
+    --light-accent: #6366f1;
+    --light-text: #111827;
+    --light-muted: #6b7280;
+    --light-border: #d1d5db;
+    --light-radius: 14px;
+    --light-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    --bg1: var(--dark-bg1);
+    --bg2: var(--dark-bg2);
+    --bg3: var(--dark-bg3);
+    --card: var(--dark-card);
+    --accent: var(--dark-accent);
+    --text: var(--dark-text);
+    --muted: var(--dark-muted);
+    --border: var(--dark-border);
+    --radius: var(--dark-radius);
+    --shadow: var(--dark-shadow);
+
+    font-family: 'Inter', Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3));
+    background-size: 200% 200%;
+    transition: background 0.4s, color 0.4s;
+    overflow-x: hidden;
+}
+
+/* Light mode overrides */
+body.light-mode {
+    --bg1: var(--light-bg1);
+    --bg2: var(--light-bg2);
+    --bg3: var(--light-bg3);
+    --card: var(--light-card);
+    --accent: var(--light-accent);
+    --text: var(--light-text);
+    --muted: var(--light-muted);
+    --border: var(--light-border);
+    --radius: var(--light-radius);
+    --shadow: var(--light-shadow);
+
+    background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3));
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#bg-gradient {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background: inherit;
+    transition: background 0.4s;
+}
+
+/* Dark/Light mode toggle button fixed top-left */
+#mode-toggle {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    background: var(--card);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    color: var(--accent);
+    font-size: 1.4rem;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    z-index: 1000;
+}
+
+#mode-toggle:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+header {
+    padding: 32px 0 12px 0;
+    background: transparent;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    font-size: 1.08rem;
+    margin-bottom: 28px;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--accent);
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 1.16rem;
+    margin-bottom: 24px;
+}
+
+.btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.8em 2.2em;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    background: #4f46e5;
+    transform: translateY(-2px) scale(1.03);
+}
+
+main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 32px 16px 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px 36px;
+}
+
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+}
+
+/* Left column */
+.left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.section {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px 28px 22px 28px;
+    margin-bottom: 0;
+    opacity: 0; /* For fade-in animation */
+    transform: translateY(40px);
+}
+
+.section h2 {
+    font-size: 1.32rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+.about-text {
+    color: var(--muted);
+    font-size: 1.08rem;
+}
+
+.about-text::selection {
+    background-color: #3737ff;
+    color: black;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+@media (max-width: 700px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-box {
+    background: linear-gradient(135deg, #232329 60%, #22223b 100%);
+    border-radius: var(--radius);
+    padding: 18px 16px 14px 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.13);
+    transition: transform 0.18s, box-shadow 0.18s;
+    border: 1.5px solid #232329;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    opacity: 0; /* For fade-in animation */
+    transform: translateY(40px);
+}
+
+.project-box:hover {
+    transform: translateY(-4px) scale(1.025);
+    box-shadow: 0 6px 24px rgba(99, 102, 241, 0.13);
+    border-color: var(--accent);
+}
+
+.project-box h3 {
+    font-size: 1.11rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 2px;
+}
+
+.project-box p {
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.project-box span {
+    font-size: 0.92rem;
+    color: #c7d2fe;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+/* Right column */
+.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-tag {
+    background: #232329;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.38em 1.1em;
+    font-size: 0.98rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: background 0.2s;
+}
+
+.skill-tag:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.edu-details,
+.cert-list {
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.cert-list {
+    list-style: disc inside;
+    margin-top: 6px;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: #18191c;
+    border: 1.5px solid #232329;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    color: #fff;
+    font-size: 1rem;
+    transition: border 0.2s;
+    resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.contact-form button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contact-form button:hover {
+    background: #4f46e5;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 1rem;
+    margin: 40px 0 20px 0;
+    letter-spacing: 0.01em;
+}
+
+.socials {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.socials a {
+    color: #fff;
+    font-size: 1.3rem;
+    transition: color 0.2s;
+}
+
+.socials a:hover {
+    color: var(--accent);
+}
+
+/* Adjustments for light mode */
+
+body.light-mode .project-box {
+    background: linear-gradient(135deg, #f3f4f6 60%, #e0e7ff 100%);
+    border-color: var(--border);
+    box-shadow: var(--shadow);
+}
+
+body.light-mode .skill-tag {
+    background: #e5e7eb;
+    color: var(--text);
+}
+
+body.light-mode .skill-tag:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea {
+    background: #fff;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.light-mode .contact-form input:focus,
+body.light-mode .contact-form textarea:focus {
+    border-color: var(--accent);
+}
+
+body.light-mode footer,
+body.light-mode nav a {
+    color: var(--muted);
+}
+
+body.light-mode nav a:hover,
+body.light-mode nav a.active {
+    color: var(--accent);
+}

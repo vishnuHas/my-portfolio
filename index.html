@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #18181b;
+      --bg2: #232329;
+      --bg3: #6366f1;
+      --card: #18191c;
+      --accent: #6366f1;
+      --text: #fff;
+      --muted: #a1a1aa;
+      --border: #232329;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      /* Animated background gradient */
+      background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3));
+      background-size: 200% 200%;
+      transition: background 0.4s;
+      overflow-x: hidden;
+    }
+    #bg-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background: inherit;
+      transition: background 0.4s;
+    }
+    header {
+      padding: 32px 0 12px 0;
+      background: transparent;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.16rem;
+      margin-bottom: 24px;
+    }
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.8em 2.2em;
+      font-size: 1.08rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn:hover { background: #4f46e5; transform: translateY(-2px) scale(1.03); }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px 36px;
+    }
+    @media (max-width: 900px) {
+      main { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* Left column */
+    .left-col { display: flex; flex-direction: column; gap: 34px; }
+    .section {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px 28px 22px 28px;
+      margin-bottom: 0;
+      opacity: 0; /* For fade-in animation */
+      transform: translateY(40px);
+    }
+    .section h2 {
+      font-size: 1.32rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .about-text { color: var(--muted); font-size: 1.08rem; }
+
+    .about-text::selection { background-color: #3737ff; color: black; }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 700px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    .project-box {
+      background: linear-gradient(135deg, #232329 60%, #22223b 100%);
+      border-radius: var(--radius);
+      padding: 18px 16px 14px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+      transition: transform 0.18s, box-shadow 0.18s;
+      border: 1.5px solid #232329;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      opacity: 0; /* For fade-in animation */
+      transform: translateY(40px);
+    }
+    .project-box:hover {
+      transform: translateY(-4px) scale(1.025);
+      box-shadow: 0 6px 24px rgba(99,102,241,0.13);
+      border-color: var(--accent);
+    }
+    .project-box h3 {
+      font-size: 1.11rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+    .project-box p { color: var(--muted); font-size: 0.98rem; }
+    .project-box span {
+      font-size: 0.92rem;
+      color: #c7d2fe;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* Animated project link */
+    .project-box h3 a.project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    }
+    a.project-link:visited { color: #fff; }
+    .project-box h3 a.project-link:hover {
+      transform: translateY(-2px) scale(1.02);
+      color: #e0e7ff;
+      border-color: #a5b4fc;
+    }
+    .project-box h3 a.project-link:focus-visible {
+      outline: 2px solid rgba(99,102,241,0.8);
+      outline-offset: 2px;
+    }
+    .project-box h3 a.project-link::after { display: none; }
+    .project-link .arrow {
+      transition: transform 0.2s ease;
+      font-weight: 900;
+    }
+    .project-box h3 a.project-link:hover .arrow {
+      transform: translateX(4px);
+    }
+    /* Button-like animated variant */
+    .project-box h3 a.project-link.button,
+    p a.project-link.button {
+      border-width: 2px;
+      padding: 9px 16px;
+      box-shadow: 0 0 0 rgba(99,102,241,0.0);
+      animation: pulseGlow 2.4s ease-in-out infinite;
+      will-change: transform, box-shadow;
+    }
+    .project-box h3 a.project-link.button:hover,
+    p a.project-link.button:hover {
+      box-shadow: 0 8px 26px rgba(99,102,241,0.35);
+    }
+    .project-box h3 a.project-link.button:active,
+    p a.project-link.button:active { transform: translateY(0) scale(0.99); }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 rgba(99,102,241,0.00); }
+      50% { box-shadow: 0 0 18px rgba(99,102,241,0.35); }
+      100% { box-shadow: 0 0 0 rgba(99,102,241,0.00); }
+    }
+
+    /* Right column */
+    .right-col { display: flex; flex-direction: column; gap: 34px; }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .skill-tag {
+      background: #232329;
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.38em 1.1em;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: background 0.2s;
+    }
+    .skill-tag:hover { background: var(--accent); color: #fff; }
+
+    .edu-details, .cert-list {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .cert-list { list-style: disc inside; margin-top: 6px; }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      background: #18191c;
+      border: 1.5px solid #232329;
+      border-radius: 8px;
+      padding: 0.7em 1em;
+      color: #fff;
+      font-size: 1rem;
+      transition: border 0.2s;
+      resize: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+    .contact-form button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7em 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover { background: #4f46e5; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 40px 0 20px 0;
+      letter-spacing: 0.01em;
+    }
+    .socials {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+    .socials a {
+      color: #fff;
+      font-size: 1.3rem;
+      transition: color 0.2s;
+    }
+    .socials a:hover { color: var(--accent); }
+    /* Popup toast */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 40px);
+      background: rgba(24, 25, 28, 0.9);
+      color: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+      pointer-events: auto;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+  </style>
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/4e7b6a9f59.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="bg-gradient"></div>
+  <header>
+    <!-- Top navigation removed per request -->
+    <div class="hero">
+      <h1>Software Developer</h1>
+      <p>I build modern web apps.</p>
+      <button id="download-resume" class="btn">Download Resume</button>
+    </div>
+  </header>
+  <main>
+    <!-- Left Column -->
+    <section class="left-col">
+      <div class="section about-section">
+        <h2>About Me</h2>
+        <div class="about-text">
+          I am currently pursuing a Bachelor's degree in Computer Science and have a passion for full-stack development and cloud computing.<br>
+          I'm constantly learning new technologies and improving my skills.
+        </div>
+      </div>
+      <div class="section projects-section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-box">
+            <h3>Ai auto mentor (on going)</h3>
+          </div>
+          <div class="project-box">
+            <h3>Ai flight prediction</h3>
+          </div>
+          <div class="project-box">
+            <h3><a class="project-link button" href="https://web-production-c6548.up.railway.app/" target="_blank" rel="noopener noreferrer">Ai sudo ku solver <span class="arrow">→</span></a></h3>
+          </div>
+          <div class="project-box">
+            <h3>Ai age detection</h3>
+            <p style="margin-top:6px; color: var(--muted); font-size: 0.96rem;">
+              ai age detection is not available to load — you can see the labs website developed for students:
+              <a class="project-link button" href="https://vishnuhas.github.io/labs/" target="_blank" rel="noopener noreferrer" style="margin-left:8px;">
+                Open Labs <span class="arrow">→</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Certificates section removed per request -->
+    </section>
+    <!-- Right Column -->
+    <section class="right-col">
+      <div class="section skills-section">
+        <h2>Skills</h2>
+        <div class="skills-list">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">AWS</span>
+        </div>
+      </div>
+      <div class="section edu-section">
+        <h2>Education</h2>
+        <div class="edu-details">
+          <strong>Bachelor of Science in Computer Science (pursuing 4th year)</strong><br>
+          2022 – 2026
+        </div>
+      </div>
+      <div class="section contact-section">
+        <h2>Contact</h2>
+        <form class="contact-form" id="contact-form">
+          <input id="contact-name" type="text" placeholder="Name" required>
+          <input id="contact-email" type="email" placeholder="Email" required>
+          <textarea id="contact-message" rows="3" placeholder="Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer>
+    © 2025 Your Vishnu N
+    <div class="socials">
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Animate background gradient
+    const bg = document.body;
+    let gradPos = 0;
+    function animateBg() {
+      gradPos += 0.005;
+      const angle = 120 + Math.sin(gradPos) * 40;
+      // Animate color stops
+      const color1 = `hsl(${230 + Math.sin(gradPos) * 10}, 15%, 11%)`;
+      const color2 = `hsl(${250 + Math.cos(gradPos) * 10}, 15%, 16%)`;
+      const color3 = `hsl(${245 + Math.sin(gradPos/2) * 30}, 85%, 65%)`;
+      bg.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2}, ${color3})`;
+      requestAnimationFrame(animateBg);
+    }
+    animateBg();
+
+    // Animate sections and project boxes on load
+    window.addEventListener('DOMContentLoaded', () => {
+      gsap.to('.section', {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        stagger: 0.15,
+        ease: "power2.out"
+      });
+      gsap.to('.project-box', {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        delay: 0.6,
+        stagger: 0.12,
+        ease: "power2.out"
+      });
+      gsap.from('.hero h1', {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power2.out"
+      });
+      gsap.from('.hero p', {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        delay: 0.25,
+        ease: "power2.out"
+      });
+      gsap.from('.btn', {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        delay: 0.5,
+        ease: "power2.out"
+      });
+    });
+
+    // Toast helper
+    const toastEl = document.getElementById('toast');
+    let toastTimeout;
+    function showToast(message, duration = 2200) {
+      toastEl.textContent = message;
+      toastEl.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => toastEl.classList.remove('show'), duration);
+    }
+
+    // Contact form handler with animated popup
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim() || 'there';
+      showToast(`Thanks ${name}, I'll get back to you soon!`);
+      gsap.fromTo('#toast', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' });
+      contactForm.reset();
+    });
+
+    // Resume download with popup then open PDF
+    const resumeBtn = document.getElementById('download-resume');
+    resumeBtn.addEventListener('click', () => {
+      showToast('Preparing resume download...');
+      gsap.fromTo('#toast', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' });
+      setTimeout(() => {
+        const resumePath = 'VishnuNResume.pdf';
+        window.open(resumePath, '_blank');
+      }, 800);
+    });
+
+    // Theme toggle removed per request
+  </script>
+</body>
+</html>
+
+
