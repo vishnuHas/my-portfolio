@@ -136,14 +136,14 @@
     .project-box {
       background: linear-gradient(135deg, #232329 60%, #22223b 100%);
       border-radius: var(--radius);
-      padding: 18px 16px 14px 16px;
+      padding: 22px 18px 18px 18px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.13);
       transition: transform 0.18s, box-shadow 0.18s;
       border: 1.5px solid #232329;
-      min-height: 120px;
+      min-height: 130px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
       opacity: 0; /* For fade-in animation */
       transform: translateY(40px);
     }
@@ -153,10 +153,10 @@
       border-color: var(--accent);
     }
     .project-box h3 {
-      font-size: 1.11rem;
+      font-size: 1.08rem;
       font-weight: 700;
       color: var(--accent);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .project-box p { color: var(--muted); font-size: 0.98rem; }
     .project-box span {
@@ -218,6 +218,63 @@
       0% { box-shadow: 0 0 0 rgba(99,102,241,0.00); }
       50% { box-shadow: 0 0 18px rgba(99,102,241,0.35); }
       100% { box-shadow: 0 0 0 rgba(99,102,241,0.00); }
+    }
+
+    /* Unified button look across site */
+    .btn,
+    .contact-form button,
+    .project-box h3 a.project-link.button,
+    p a.project-link.button {
+      background: transparent;
+      color: #fff;
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 0 rgba(99,102,241,0.0);
+      animation: pulseGlow 2.4s ease-in-out infinite;
+      will-change: transform, box-shadow;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.18s ease;
+    }
+    .btn:hover,
+    .contact-form button:hover,
+    .project-box h3 a.project-link.button:hover,
+    p a.project-link.button:hover {
+      transform: translateY(-2px) scale(1.02);
+      color: #e0e7ff;
+      border-color: #a5b4fc;
+      box-shadow: 0 8px 26px rgba(99,102,241,0.35);
+      background: transparent;
+    }
+    .btn:active,
+    .contact-form button:active,
+    .project-box h3 a.project-link.button:active,
+    p a.project-link.button:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    /* Disabled/ongoing state + small status badge */
+    a.project-link[aria-disabled="true"],
+    .btn[aria-disabled="true"],
+    .contact-form button[aria-disabled="true"],
+    .contact-form button:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+      filter: grayscale(0.2);
+    }
+    .status-badge {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 3px 8px;
+      font-size: 0.78rem;
+      line-height: 1;
+      color: #e0e7ff;
+      background: rgba(99,102,241,0.18);
+      border: 1px solid rgba(99,102,241,0.4);
+      border-radius: 999px;
+      vertical-align: middle;
     }
 
     /* Right column */
@@ -350,20 +407,47 @@
         <h2>Projects</h2>
         <div class="projects-grid">
           <div class="project-box">
-            <h3>Ai auto mentor (on going)</h3>
+            <h3>
+              MentoLab
+            </h3>
+            <p style="color: var(--muted); font-size: 0.96rem;">Student-friendly learning hub with curated labs and resources.</p>
+            <p>
+              <a class="project-link button" href="https://vishnuhas.github.io/labs/" target="_blank" rel="noopener noreferrer">
+                Open MentoLab <span class="arrow">→</span>
+              </a>
+            </p>
           </div>
           <div class="project-box">
-            <h3>Ai flight prediction</h3>
+            <h3>
+              Ai sudo ku solver
+            </h3>
+            <p style="color: var(--muted); font-size: 0.96rem;">Instantly solves Sudoku using backtracking + heuristics.</p>
+            <p>
+              <a class="project-link button" href="https://web-production-c6548.up.railway.app/" target="_blank" rel="noopener noreferrer">
+                Try Solver <span class="arrow">→</span>
+              </a>
+            </p>
           </div>
           <div class="project-box">
-            <h3><a class="project-link button" href="https://web-production-c6548.up.railway.app/" target="_blank" rel="noopener noreferrer">Ai sudo ku solver <span class="arrow">→</span></a></h3>
+            <h3>
+              Ai flight prediction
+            </h3>
+            <p style="color: var(--muted); font-size: 0.96rem;">Predicts flight delays with ML features like weather and route.</p>
+            <p>
+              <a class="project-link button" href="#" aria-disabled="true" title="Link coming soon">
+                Demo coming soon <span class="arrow">→</span>
+              </a>
+              <span class="status-badge">WIP</span>
+            </p>
           </div>
           <div class="project-box">
-            <h3>Ai age detection</h3>
-            <p style="margin-top:6px; color: var(--muted); font-size: 0.96rem;">
-              ai age detection is not available to load — you can see the labs website developed for students:
-              <a class="project-link button" href="https://vishnuhas.github.io/labs/" target="_blank" rel="noopener noreferrer" style="margin-left:8px;">
-                Open Labs <span class="arrow">→</span>
+            <h3>
+              Ai auto mentor <span class="status-badge">On going</span>
+            </h3>
+            <p style="color: var(--muted); font-size: 0.96rem;">Personalized coding mentorship powered by AI and curated tracks.</p>
+            <p>
+              <a class="project-link button" href="#" aria-disabled="true" title="In development">
+                In development <span class="arrow">→</span>
               </a>
             </p>
           </div>
