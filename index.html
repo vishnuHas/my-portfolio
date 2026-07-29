@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishnu N — Software Engineer & AI Developer</title>
+    <meta name="description" content="Cinematic portfolio of Vishnu N - Software Engineer, AI Specialist & Cloud Developer based in Bengaluru.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Vishnu N — Software Engineer & AI Developer">
+    <meta property="og:description" content="Cinematic personal portfolio of Vishnu N featuring AI applications, cloud infrastructure, and full-stack web engineering.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- GSAP & ScrollTrigger Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="is-loading">
+
+    <!-- Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-counter" id="preloader-counter">00%</div>
+            <div class="preloader-line-wrapper">
+                <div class="preloader-line" id="preloader-line"></div>
+            </div>
+            <span class="preloader-subtext">INITIALIZING SYSTEMS</span>
+        </div>
+        <div class="preloader-curtain" id="preloader-curtain"></div>
+    </div>
+
+    <!-- Custom Ring & Dot Cursor -->
+    <div id="cursor-dot" class="cursor-dot"></div>
+    <div id="cursor-ring" class="cursor-ring"></div>
+
+    <!-- Header Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo hover-magnetic">
+                <span class="logo-accent">V</span>ISHNU <span class="logo-accent">N</span>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link hover-magnetic"><span class="nav-num">01</span> About</a>
+                <a href="#skills" class="nav-link hover-magnetic"><span class="nav-num">02</span> Tech</a>
+                <a href="#projects" class="nav-link hover-magnetic"><span class="nav-num">03</span> Projects</a>
+                <a href="#experience" class="nav-link hover-magnetic"><span class="nav-num">04</span> Experience</a>
+                <a href="#education" class="nav-link hover-magnetic"><span class="nav-num">05</span> Education</a>
+                <a href="#contact" class="nav-link hover-magnetic"><span class="nav-num">06</span> Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn-magnetic hover-magnetic" id="nav-contact-btn">
+                    <span>GET IN TOUCH</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <!-- Parallax Geometric Accent Shape -->
+            <div class="hero-accent-shape" id="hero-accent-shape"></div>
+            
+            <div class="container hero-container">
+                <div class="hero-header-meta">
+                    <span class="status-pill"><span class="status-dot"></span> AVAILABLE FOR SOFTWARE ENGINEERING ROLES</span>
+                    <span class="location-pill"><i class="fa-solid fa-location-dot"></i> BENGALURU, INDIA</span>
+                </div>
+
+                <!-- Giant Editorial Display Typography -->
+                <div class="hero-title-wrapper">
+                    <h1 class="hero-display-title" id="hero-title">
+                        <span class="title-line title-line-1"><span class="title-char">V</span><span class="title-char">I</span><span class="title-char">S</span><span class="title-char">H</span><span class="title-char">N</span><span class="title-char">U</span></span>
+                        <span class="title-line title-line-2"><span class="accent-text">N.</span></span>
+                    </h1>
+                </div>
+
+                <div class="hero-grid">
+                    <div class="hero-left-col">
+                        <h2 class="hero-subtitle">
+                            SOFTWARE ENGINEER & <br><span class="accent-underline">AI FULL-STACK DEVELOPER</span>
+                        </h2>
+                        <p class="hero-bio-lead">
+                            Engineering scalable cloud infrastructure on AWS, high-performance web systems with React/Next.js, native Android applications, and autonomous AI pipelines.
+                        </p>
+                    </div>
+
+                    <!-- Clean Typographic Code Feature Card (Floating chips removed for ultra-clean look) -->
+                    <div class="hero-right-col" id="hero-parallax-card">
+                        <div class="hero-code-card">
+                            <div class="code-card-header">
+                                <span class="code-dot red"></span>
+                                <span class="code-dot yellow"></span>
+                                <span class="code-dot green"></span>
+                                <span class="code-title">vishnu_engineer.ts</span>
+                            </div>
+                            <div class="code-card-body">
+                                <pre><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+  <span class="code-prop">name</span>: <span class="code-str">"Vishnu N"</span>,
+  <span class="code-prop">role</span>: <span class="code-str">"Full-Stack & AI Engineer"</span>,
+  <span class="code-prop">journey</span>: [<span class="code-str">"Rapsol"</span>, <span class="code-str">"MindMatrixEd"</span>, <span class="code-str">"ShadowFox"</span>],
+  <span class="code-prop">stack</span>: [<span class="code-str">"Kotlin"</span>, <span class="code-str">"Python"</span>, <span class="code-str">"React"</span>, <span class="code-str">"AWS"</span>],
+  <span class="code-prop">uptime</span>: <span class="code-num">0.999</span>
+};</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Bottom Metrics Strip -->
+                <div class="hero-metrics-strip">
+                    <div class="metric-item">
+                        <span class="metric-num">3</span>
+                        <span class="metric-desc">Tech Internships</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num">500+</span>
+                        <span class="metric-desc">Students Served</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num">99.9%</span>
+                        <span class="metric-desc">AWS Model Uptime</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num">4+</span>
+                        <span class="metric-desc">Production AI Apps</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#about" class="hero-scroll-down hover-magnetic" aria-label="Scroll to about section">
+                <span class="scroll-text">SCROLL</span>
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section (Editorial Split-Screen) -->
+        <section id="about" class="about-section section-spacing">
+            <div class="container">
+                <div class="editorial-grid">
+                    <div class="editorial-left">
+                        <span class="section-tag">[ 01 / ABOUT ]</span>
+                        <h2 class="editorial-heading">PASSIONATE ABOUT <span class="accent-text">CODE</span>, ELEGANCE & PERFORMANCE.</h2>
+                    </div>
+
+                    <div class="editorial-right">
+                        <div class="editorial-text-block">
+                            <p class="reveal-text">
+                                I am a Computer Science Engineering student at <strong>Sir M. Visvesvaraya Institute of Technology (Sir MVIT)</strong>, Bengaluru. I specialize in building software systems that seamlessly connect intuitive front-end interfaces with high-availability backends and AI models.
+                            </p>
+                            <p class="reveal-text">
+                                Across internships at <strong>Rapsol Technology</strong>, <strong>MindMatrixEd</strong>, and <strong>ShadowFox</strong>, I have engineered AWS cloud ML pipelines (99.9% uptime), native Android apps with GenAI (Kotlin & Jetpack Compose), and machine learning models.
+                            </p>
+                        </div>
+
+                        <div class="editorial-meta-row">
+                            <div class="meta-col">
+                                <span class="meta-label">LOCATION</span>
+                                <span class="meta-val">Bengaluru, KA, India</span>
+                            </div>
+                            <div class="meta-col">
+                                <span class="meta-label">DEGREE</span>
+                                <span class="meta-val">B.E. Computer Science</span>
+                            </div>
+                            <div class="meta-col">
+                                <span class="meta-label">LANGUAGES</span>
+                                <span class="meta-val">English, Kannada, Hindi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack & Skills Section -->
+        <section id="skills" class="skills-section section-spacing">
+            <div class="container">
+                <div class="section-header-editorial">
+                    <span class="section-tag">[ 02 / TECH STACK ]</span>
+                    <h2 class="section-title-large">CORE <span class="accent-text">CAPABILITIES</span></h2>
+                </div>
+            </div>
+
+            <!-- Ticker Marquee Strip -->
+            <div class="ticker-wrapper">
+                <div class="ticker-track">
+                    <span class="ticker-item">KOTLIN & JETPACK COMPOSE</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">GENAI INTEGRATION</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">PYTHON & ML</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">REACT & NEXT.JS</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">AWS CLOUD (EC2/S3/LAMBDA)</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">FIREBASE & REST APIS</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">SELENIUM AUTOMATION</span><span class="ticker-star">&bull;</span>
+                    <!-- Duplicate for seamless looping -->
+                    <span class="ticker-item">KOTLIN & JETPACK COMPOSE</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">GENAI INTEGRATION</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">PYTHON & ML</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">REACT & NEXT.JS</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">AWS CLOUD (EC2/S3/LAMBDA)</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">FIREBASE & REST APIS</span><span class="ticker-star">&bull;</span>
+                    <span class="ticker-item">SELENIUM AUTOMATION</span><span class="ticker-star">&bull;</span>
+                </div>
+            </div>
+
+            <!-- Interactive Accordion Expand List -->
+            <div class="container">
+                <div class="skills-accordion-list">
+                    <div class="accordion-item active">
+                        <div class="accordion-header">
+                            <span class="acc-num">01</span>
+                            <h3 class="acc-title">ANDROID & MOBILE DEVELOPMENT</h3>
+                            <i class="fa-solid fa-plus acc-icon"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p>Developing native Android applications using Kotlin and Jetpack Compose, managing end-to-end workflows, debugging, testing, and full-stack Firebase integration.</p>
+                            <div class="acc-tags">
+                                <span>Kotlin</span><span>Jetpack Compose</span><span>Android Studio</span><span>Firebase</span><span>GenAI</span><span>UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="acc-num">02</span>
+                            <h3 class="acc-title">FULL-STACK WEB DEVELOPMENT</h3>
+                            <i class="fa-solid fa-plus acc-icon"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p>Building high-performance React and Next.js applications, server-side rendering, code-splitting, WebSocket real-time connections, and responsive CSS architectures.</p>
+                            <div class="acc-tags">
+                                <span>React</span><span>Next.js</span><span>Node.js</span><span>JavaScript</span><span>Tailwind CSS</span><span>WebSockets</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="acc-num">03</span>
+                            <h3 class="acc-title">ARTIFICIAL INTELLIGENCE & GENAI</h3>
+                            <i class="fa-solid fa-plus acc-icon"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p>Leveraging Google AI Studio and Cloud Labs for GenAI mobile integration, constructing CNN facial recognition computer vision systems, and optimizing LLM pipelines.</p>
+                            <div class="acc-tags">
+                                <span>GenAI</span><span>Google AI Studio</span><span>LLM APIs</span><span>Python</span><span>CNNs</span><span>OpenCV</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="acc-num">04</span>
+                            <h3 class="acc-title">AWS CLOUD & DEVOPS</h3>
+                            <i class="fa-solid fa-plus acc-icon"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p>Deploying production applications on AWS infrastructure (EC2 compute, S3 storage, Lambda serverless), CI/CD pipelines, Git version control, and API testing with Postman.</p>
+                            <div class="acc-tags">
+                                <span>AWS EC2</span><span>AWS S3</span><span>AWS Lambda</span><span>Git</span><span>GitHub</span><span>Postman</span><span>REST APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Showcase -->
+        <section id="projects" class="projects-section section-spacing">
+            <div class="container">
+                <div class="section-header-editorial">
+                    <span class="section-tag">[ 03 / FEATURED WORK ]</span>
+                    <h2 class="section-title-large">SELECTED <span class="accent-text">PROJECTS</span></h2>
+                </div>
+            </div>
+
+            <div class="projects-horizontal-wrapper" id="projects-wrapper">
+                <div class="projects-track" id="projects-track">
+                    <!-- Project 1: Budakatu-Sante -->
+                    <article class="project-panel" data-project="budakatu">
+                        <div class="project-panel-inner">
+                            <div class="panel-media">
+                                <img src="assets/images/hero_avatar.png" alt="Budakatu-Sante Mobile Platform" class="panel-img">
+                                <span class="panel-year">2026</span>
+                            </div>
+                            <div class="panel-info">
+                                <span class="panel-num">01 / 05</span>
+                                <h3 class="panel-title">BUDAKATU-SANTE</h3>
+                                <p class="panel-desc">Capstone mobile platform engineered using Kotlin & Jetpack Compose to empower authentic tribal artistry with responsive mobile UI/UX and Firebase backend.</p>
+                                <div class="panel-metrics">
+                                    <span class="p-chip">📱 Android Native</span>
+                                    <span class="p-chip">✨ Jetpack Compose</span>
+                                </div>
+                                <div class="panel-actions">
+                                    <button class="btn-panel-action open-modal-btn" data-project="budakatu">VIEW SPECS</button>
+                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="btn-panel-icon"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: AI Magic Builder -->
+                    <article class="project-panel" data-project="ai-builder">
+                        <div class="project-panel-inner">
+                            <div class="panel-media">
+                                <img src="assets/images/project_ai_builder.png" alt="AI Magic Builder" class="panel-img">
+                                <span class="panel-year">2024</span>
+                            </div>
+                            <div class="panel-info">
+                                <span class="panel-num">02 / 05</span>
+                                <h3 class="panel-title">AI MAGIC BUILDER</h3>
+                                <p class="panel-desc">AI-powered application leveraging GPT APIs to generate production-ready websites across 5+ frameworks with real-time WebSocket code previews.</p>
+                                <div class="panel-metrics">
+                                    <span class="p-chip">⚡ 60% Faster Dev</span>
+                                    <span class="p-chip">📦 5+ Frameworks</span>
+                                </div>
+                                <div class="panel-actions">
+                                    <button class="btn-panel-action open-modal-btn" data-project="ai-builder">VIEW SPECS</button>
+                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="btn-panel-icon"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Mentor Lab Platform -->
+                    <article class="project-panel" data-project="mentor-lab">
+                        <div class="project-panel-inner">
+                            <div class="panel-media">
+                                <img src="assets/images/project_mentor_lab.png" alt="Mentor Lab Platform" class="panel-img">
+                                <span class="panel-year">2024</span>
+                            </div>
+                            <div class="panel-info">
+                                <span class="panel-num">03 / 05</span>
+                                <h3 class="panel-title">MENTOR LAB PLATFORM</h3>
+                                <p class="panel-desc">Responsive student portal engineered for 500+ engineering students to access experiment guides, code resources, and lab documentation effortlessly.</p>
+                                <div class="panel-metrics">
+                                    <span class="p-chip">👥 500+ Students Served</span>
+                                    <span class="p-chip">🚀 95+ Lighthouse Score</span>
+                                </div>
+                                <div class="panel-actions">
+                                    <button class="btn-panel-action open-modal-btn" data-project="mentor-lab">VIEW SPECS</button>
+                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="btn-panel-icon"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Sudoku Solver Automation -->
+                    <article class="project-panel" data-project="sudoku-solver">
+                        <div class="project-panel-inner">
+                            <div class="panel-media">
+                                <img src="assets/images/project_sudoku_solver.png" alt="Sudoku Solver Automation" class="panel-img">
+                                <span class="panel-year">2023</span>
+                            </div>
+                            <div class="panel-info">
+                                <span class="panel-num">04 / 05</span>
+                                <h3 class="panel-title">SUDOKU SOLVER AUTOMATION</h3>
+                                <p class="panel-desc">Automated Sudoku puzzle solver combining algorithmic backtracking with Selenium browser control and AJAX RESTful backend endpoints.</p>
+                                <div class="panel-metrics">
+                                    <span class="p-chip">🤖 Backtracking Solver</span>
+                                    <span class="p-chip">⚙️ Selenium Automation</span>
+                                </div>
+                                <div class="panel-actions">
+                                    <button class="btn-panel-action open-modal-btn" data-project="sudoku-solver">VIEW SPECS</button>
+                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="btn-panel-icon"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 5: AI Age Detection System -->
+                    <article class="project-panel" data-project="age-detection">
+                        <div class="project-panel-inner">
+                            <div class="panel-media">
+                                <img src="assets/images/project_age_detection.png" alt="AI Age Detection System" class="panel-img">
+                                <span class="panel-year">2023</span>
+                            </div>
+                            <div class="panel-info">
+                                <span class="panel-num">05 / 05</span>
+                                <h3 class="panel-title">AI AGE DETECTION SYSTEM</h3>
+                                <p class="panel-desc">CNN-based facial recognition system for age estimation trained on over 10,000+ labeled facial images with drag-and-drop web visualizer.</p>
+                                <div class="panel-metrics">
+                                    <span class="p-chip">📸 10,000+ Images Trained</span>
+                                    <span class="p-chip">🧠 Deep Learning CNN</span>
+                                </div>
+                                <div class="panel-actions">
+                                    <button class="btn-panel-action open-modal-btn" data-project="age-detection">VIEW SPECS</button>
+                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="btn-panel-icon"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEPARATE SECTION: WORK EXPERIENCE (ALL 3 HANGING ID CARDS UNIFORM SIZE & STRAP LENGTH) -->
+        <section id="experience" class="timeline-section section-spacing">
+            <div class="container">
+                <div class="section-header-editorial">
+                    <span class="section-tag">[ 04 / WORK EXPERIENCE ]</span>
+                    <h2 class="section-title-large">PROFESSIONAL <span class="accent-text">EXPERIENCE</span></h2>
+                </div>
+
+                <!-- Top Horizontal Suspender Rail Bar -->
+                <div class="lanyard-suspender-rail"></div>
+
+                <div class="lanyard-row-grid">
+                    <!-- ID Card 1: Rapsol Technology -->
+                    <div class="id-card-wrapper">
+                        <div class="lanyard-container">
+                            <div class="lanyard-strap long-strap">
+                                <span class="strap-text">RAPSOL TECHNOLOGY &bull; AWS CLOUD</span>
+                            </div>
+                            <div class="lanyard-clip">
+                                <div class="clip-ring"></div>
+                                <div class="clip-swivel"></div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-card id-badge-card">
+                            <div class="id-card-content-top">
+                                <div class="id-card-hole"></div>
+                                
+                                <div class="id-card-top-row">
+                                    <span class="milestone-date">02/2023 — 06/2023</span>
+                                    <span class="id-badge-tag"><i class="fa-solid fa-shield-halved"></i> VERIFIED INTERN</span>
+                                </div>
+
+                                <h3 class="milestone-role">CLOUD COMPUTING INTERN</h3>
+                                <h4 class="milestone-company">Rapsol Technology Private Limited</h4>
+                                <h5 class="milestone-location"><i class="fa-solid fa-location-dot"></i> Bangalore, KA</h5>
+
+                                <p class="id-card-desc">Deployed scalable ML models on AWS cloud services (EC2, S3, Lambda) maintaining 99.9% uptime and accelerating model inference latency by 40%.</p>
+
+                                <ul class="milestone-bullet-list">
+                                    <li>AWS EC2/S3/Lambda 99.9% uptime deployment pipelines.</li>
+                                    <li>Sudoku backtracking solver with Selenium automation.</li>
+                                    <li>Reduced API inference latency by 40%.</li>
+                                </ul>
+                            </div>
+
+                            <div class="acc-tags" style="margin-top:1.2rem;">
+                                <span>AWS Cloud</span><span>Python</span><span>Selenium</span><span>REST APIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ID Card 2: MindMatrixEd -->
+                    <div class="id-card-wrapper">
+                        <div class="lanyard-container">
+                            <div class="lanyard-strap long-strap">
+                                <span class="strap-text">MINDMATRIXED &bull; VTU-MOU PARTNER</span>
+                            </div>
+                            <div class="lanyard-clip">
+                                <div class="clip-ring"></div>
+                                <div class="clip-swivel"></div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-card id-badge-card">
+                            <div class="id-card-content-top">
+                                <div class="id-card-hole"></div>
+                                
+                                <div class="id-card-top-row">
+                                    <span class="milestone-date">02/2026 — 05/2026</span>
+                                    <span class="id-badge-tag"><i class="fa-solid fa-shield-halved"></i> VERIFIED INTERN</span>
+                                </div>
+
+                                <h3 class="milestone-role">ANDROID DEV INTERN</h3>
+                                <h4 class="milestone-company">MindMatrixEd (VTU-MoU Partner)</h4>
+                                <h5 class="milestone-location"><i class="fa-solid fa-globe"></i> Bengaluru (Remote)</h5>
+
+                                <p class="id-card-desc">Native Android development and Generative AI mobile environment integration with Kotlin & Jetpack Compose.</p>
+
+                                <ul class="milestone-bullet-list">
+                                    <li>Kotlin & Jetpack Compose native Android dev workflows.</li>
+                                    <li>GenAI integration via Google AI Studio & Cloud Labs.</li>
+                                    <li><strong>Budakatu-Sante:</strong> Tribal artistry mobile platform.</li>
+                                </ul>
+                            </div>
+
+                            <div class="acc-tags" style="margin-top:1.2rem;">
+                                <span>Kotlin</span><span>Jetpack Compose</span><span>GenAI</span><span>Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ID Card 3: ShadowFox -->
+                    <div class="id-card-wrapper">
+                        <div class="lanyard-container">
+                            <div class="lanyard-strap long-strap">
+                                <span class="strap-text">SHADOWFOX &bull; PID: SF-PID-2026-W4418</span>
+                            </div>
+                            <div class="lanyard-clip">
+                                <div class="clip-ring"></div>
+                                <div class="clip-swivel"></div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-card id-badge-card">
+                            <div class="id-card-content-top">
+                                <div class="id-card-hole"></div>
+                                
+                                <div class="id-card-top-row">
+                                    <span class="milestone-date">08/2026 — 08/2026</span>
+                                    <span class="id-badge-tag"><i class="fa-solid fa-shield-halved"></i> VERIFIED INTERN</span>
+                                </div>
+
+                                <h3 class="milestone-role">AI ENGINEER INTERN</h3>
+                                <h4 class="milestone-company">ShadowFox Virtual Program</h4>
+                                <h5 class="milestone-location"><i class="fa-solid fa-laptop-code"></i> Virtual Program</h5>
+
+                                <p class="id-card-desc">Artificial Intelligence model engineering, machine learning pipeline experiments, and technical verification.</p>
+
+                                <ul class="milestone-bullet-list">
+                                    <li>Hands-on AI model development and ML experiments.</li>
+                                    <li>AI solutions engineering and model optimization.</li>
+                                    <li>Technical performance benchmarking.</li>
+                                </ul>
+                            </div>
+
+                            <div class="acc-tags" style="margin-top:1.2rem;">
+                                <span>AI Engineering</span><span>Python</span><span>ML Pipelines</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEPARATE SECTION: ACADEMIC EDUCATION -->
+        <section id="education" class="education-section section-spacing" style="background-color:#ffffff; border-top:1px solid var(--border-color);">
+            <div class="container">
+                <div class="section-header-editorial">
+                    <span class="section-tag">[ 05 / ACADEMIC EDUCATION ]</span>
+                    <h2 class="section-title-large">EDUCATION & <span class="accent-text">BACKGROUND</span></h2>
+                </div>
+
+                <div class="education-grid">
+                    <!-- Education 1 -->
+                    <div class="education-card">
+                        <div class="edu-badge"><i class="fa-solid fa-graduation-cap"></i> 2023 — 2026</div>
+                        <h3 class="edu-degree">BACHELOR OF ENGINEERING IN COMPUTER SCIENCE</h3>
+                        <h4 class="edu-institution">Sir M. Visvesvaraya Institute of Technology (Sir MVIT) &bull; Bengaluru</h4>
+                        <p class="edu-desc">Comprehensive computer science engineering curriculum covering Data Structures & Algorithms, Machine Learning Systems, Operating Systems, Database Management Systems, Cloud Computing, and Software Architecture.</p>
+                        <div class="acc-tags" style="margin-top:1rem;">
+                            <span>Data Structures</span><span>Algorithms</span><span>Machine Learning</span><span>DBMS</span><span>Cloud Systems</span>
+                        </div>
+                    </div>
+
+                    <!-- Education 2 -->
+                    <div class="education-card">
+                        <div class="edu-badge"><i class="fa-solid fa-certificate"></i> 2021 — 2023</div>
+                        <h3 class="edu-degree">DIPLOMA IN COMPUTER SCIENCE</h3>
+                        <h4 class="edu-institution">BES Institute of Technology &bull; Bengaluru</h4>
+                        <p class="edu-desc">Core diploma studies in Object-Oriented Programming (Java & C++), Web Development Fundamentals (HTML, CSS, JavaScript), Computer Systems Hardware & Assembly Architecture.</p>
+                        <div class="acc-tags" style="margin-top:1rem;">
+                            <span>OOP (Java/C++)</span><span>Web Fundamentals</span><span>Hardware Architecture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-spacing">
+            <div class="container">
+                <div class="contact-editorial">
+                    <span class="section-tag">[ 06 / CONTACT ]</span>
+                    
+                    <h2 class="contact-giant-title">
+                        LET'S BUILD SOMETHING <br><span class="accent-text">EXTRAORDINARY.</span>
+                    </h2>
+
+                    <p class="contact-subtext">
+                        Open for Full-Time Software Engineering roles, AI Developer positions, and high-impact technology projects.
+                    </p>
+
+                    <!-- Animated Cycling CTA Button with Down Arrow -->
+                    <div class="magnetic-wrapper">
+                        <button id="contact-cta-btn" class="magnetic-cta-btn hover-magnetic">
+                            <span class="btn-text" id="cta-cycling-text">EMAIL</span>
+                            <i class="fa-solid fa-arrow-down cta-arrow"></i>
+                        </button>
+                    </div>
+
+                    <!-- Direct Contact Details & Links (Revealed on click) -->
+                    <div class="contact-links-grid" id="contact-details-box">
+                        <a href="mailto:vishnu.n9880@gmail.com" class="contact-link-item hover-underline" id="link-email">
+                            <span class="link-label"><i class="fa-solid fa-envelope text-accent"></i> EMAIL</span>
+                            <span class="link-val">vishnu.n9880@gmail.com</span>
+                        </a>
+
+                        <a href="tel:+916362963637" class="contact-link-item hover-underline" id="link-phone">
+                            <span class="link-label"><i class="fa-solid fa-phone text-accent"></i> PHONE</span>
+                            <span class="link-val">+91 6362963637</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/vishnu-n-20489a2b1/" target="_blank" rel="noopener" class="contact-link-item hover-underline" id="link-linkedin">
+                            <span class="link-label"><i class="fa-brands fa-linkedin-in text-accent"></i> LINKEDIN</span>
+                            <span class="link-val">vishnu-n-20489a2b1</span>
+                        </a>
+
+                        <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="contact-link-item hover-underline" id="link-github">
+                            <span class="link-label"><i class="fa-brands fa-github text-accent"></i> GITHUB</span>
+                            <span class="link-val">vishnuHas</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Deep-Dive Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-dialog">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-content-area" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <span class="footer-logo">VISHNU N &bull; 2026</span>
+            </div>
+            <div class="footer-right">
+                <a href="#hero" class="back-to-top hover-magnetic">BACK TO TOP <i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Application JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
