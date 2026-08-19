@@ -575,6 +575,46 @@ function initProjectModals() {
     <li><strong>Static Hosting:</strong> Ultra-fast zero-latency response hosted on GitHub Pages.</li>
 </ul>`
         },
+        'studentos': {
+            title: 'StudentOS • AI Academic Suite',
+            year: '2026',
+            tags: ['React', 'Next.js', 'LLM AI', 'Firebase', 'Tailwind CSS', 'RAG Summarizer'],
+            img: '',
+            summary: 'Comprehensive all-in-one AI operating system for students featuring automated lecture note summarization, interactive AI study assistant, ATS resume builder, and personalized career roadmaps.',
+            metrics: ['🤖 AI Note Summarizer', '📄 ATS Resume Builder', '🗺️ Career Roadmaps', '🌐 Live Web App'],
+            architecture: `
+<h4 style="font-size:1.1rem; margin-bottom:0.6rem; color:var(--text-primary);">StudentOS AI Architecture & Modules</h4>
+<p style="color:var(--text-secondary); line-height:1.65; margin-bottom:1rem;">Built as an integrated student ecosystem leveraging LLM APIs, vector embedding search for notes, and dynamic schema generators for resume formatting.</p>
+
+<!-- Live Browser Window Frame inside Modal -->
+<div class="mini-browser-window modal-browser-window" style="margin: 1.5rem 0;">
+    <div class="browser-window-header">
+        <div class="browser-dots">
+            <span class="b-dot red"></span>
+            <span class="b-dot yellow"></span>
+            <span class="b-dot green"></span>
+        </div>
+        <div class="browser-url-bar">
+            <i class="fa-solid fa-lock"></i>
+            <span>https://vishnu-studentos.web.app/</span>
+        </div>
+        <a href="https://vishnu-studentos.web.app/" target="_blank" rel="noopener" class="browser-external-link" title="Open in new window">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Site
+        </a>
+    </div>
+    <div class="browser-window-body modal-browser-body">
+        <div class="browser-iframe-scaler">
+            <iframe src="https://vishnu-studentos.web.app/" class="browser-iframe" title="StudentOS Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        </div>
+    </div>
+</div>
+
+<ul style="padding-left:1.2rem; color:var(--text-secondary); line-height:1.65;">
+    <li><strong>AI Lecture Summarizer:</strong> Ingests complex textbook PDFs & lecture notes, extracting key concepts and flashcards.</li>
+    <li><strong>ATS Resume Builder:</strong> Generates industry-standard, ATS-optimized resumes with real-time typography preview and PDF export.</li>
+    <li><strong>Career Roadmap Engine:</strong> Dynamic skill tree visualizations providing step-by-step guidance for software engineering roles.</li>
+</ul>`
+        },
         'budakatu': {
             title: 'Budakatu-Sante Mobile Platform',
             year: '2026',
