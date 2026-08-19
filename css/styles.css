@@ -38,6 +38,13 @@
     padding: 0;
 }
 
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -50,7 +57,6 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
     cursor: default;
     -webkit-font-smoothing: antialiased;
 }
@@ -1723,10 +1729,28 @@ a {
     .contact-links-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
 
-/* Small Tablets & Mobile Devices (< 767px) - Ultra Smooth 60fps Optimization */
+/* Small Tablets & Mobile Devices (< 767px) - Ultra Smooth 60fps & Zero Horizontal Overflow */
 @media (max-width: 767px) {
-    .container { padding: 0 1.2rem; }
-    .navbar { padding: 1.2rem 0; }
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        position: relative;
+    }
+
+    .container {
+        padding: 0 1.2rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .navbar {
+        padding: 1.2rem 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
     .nav-menu { display: none; }
     
     /* Disable heavy GPU-taxing blur filters on mobile */
@@ -1753,31 +1777,85 @@ a {
         contain-intrinsic-size: 600px;
     }
 
-    .hero-section { padding-top: 7rem; min-height: auto; }
-    .hero-display-title { font-size: clamp(2.6rem, 11vw, 4.2rem); }
-    .hero-subtitle { font-size: 1.35rem; }
-    .hero-bio-lead { font-size: 1rem; }
+    .hero-section {
+        padding-top: 7rem;
+        min-height: auto;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero-display-title { font-size: clamp(2.4rem, 10vw, 3.8rem); word-break: break-word; }
+    .hero-subtitle { font-size: 1.25rem; }
+    .hero-bio-lead { font-size: 0.95rem; }
     
+    /* Code card container mobile constraint */
+    .hero-code-card-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .interactive-code-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
     /* Metrics Strip Mobile 2x2 Grid Fix */
     .hero-metrics-strip {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem 1rem;
         padding-top: 1.5rem;
+        width: 100%;
     }
     .metric-num { font-size: 2rem; }
 
-    .editorial-meta-row { grid-template-columns: 1fr; gap: 1rem; }
+    .editorial-meta-row { grid-template-columns: 1fr; gap: 1rem; width: 100%; }
     .section-title-large { font-size: 2.2rem; margin-bottom: 2rem; }
     
+    /* Project Card Fan on Mobile: Zero horizontal overflow */
+    .card-fan-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
     .card-fan-deck {
+        width: 100%;
+        max-width: 100%;
         height: auto;
-        min-height: 360px;
+        min-height: 380px;
+        position: relative;
     }
 
     .fan-card {
-        width: 90vw;
-        max-width: 440px;
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        transform-origin: center center !important;
+    }
+
+    /* Inactive cards sit cleanly centered without horizontal translateX blowing out the viewport */
+    .fan-card.pos-0 {
+        transform: translateY(0) scale(1) !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+
+    .fan-card.pos-1,
+    .fan-card.pos-2,
+    .fan-card.pos-3 {
+        transform: translateY(10px) scale(0.96) !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
     }
 
     .accordion-body { padding-left: 0; }
@@ -1786,11 +1864,11 @@ a {
     .education-card { padding: 1.8rem; }
     .edu-degree { font-size: 1.2rem; }
 
-    .contact-editorial { text-align: center; }
+    .contact-editorial { text-align: center; width: 100%; }
     .magnetic-cta-btn { min-width: 100%; font-size: 0.9rem; padding: 1.2rem 1.5rem; }
     .contact-links-grid { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
     
-    .footer-container { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer-container { flex-direction: column; gap: 1rem; text-align: center; width: 100%; }
 }
 
 /* Extra Small Phones (< 480px) */
