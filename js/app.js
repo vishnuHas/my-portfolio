@@ -494,6 +494,44 @@ function initProjectModals() {
     if (!modal || !modalBody) return;
 
     const projectData = {
+        'vector-job': {
+            title: 'Vector Job Platform',
+            year: '2026',
+            tags: ['React', 'Next.js', 'Vector DB', 'Semantic Search', 'FastAPI', 'AI Engine'],
+            img: '',
+            summary: 'AI-driven job matching and recruitment platform optimizing candidate scoring with vector embeddings, semantic search, and real-time interactive applicant telemetry.',
+            metrics: ['⚡ Sub-10ms Vector Search', '🎯 AI Semantic Scoring', '🌐 Real-Time Live Web View'],
+            architecture: `
+<h4 style="font-size:1.1rem; margin-bottom:0.6rem; color:var(--text-primary);">Vector Job Real-Time Architecture</h4>
+<p style="color:var(--text-secondary); line-height:1.65; margin-bottom:1rem;">Constructed with high-dimensional vector embeddings and semantic NLP models to match candidate profiles with relevant open positions instantaneously.</p>
+
+<!-- Live Browser Window Frame inside Modal -->
+<div class="mini-browser-window modal-browser-window" style="margin: 1.5rem 0;">
+    <div class="browser-window-header">
+        <div class="browser-dots">
+            <span class="b-dot red"></span>
+            <span class="b-dot yellow"></span>
+            <span class="b-dot green"></span>
+        </div>
+        <div class="browser-url-bar">
+            <i class="fa-solid fa-lock"></i>
+            <span id="modal-vectorjob-url">https://vectorjob.com</span>
+        </div>
+        <a href="https://vectorjob.com" id="modal-vectorjob-link" target="_blank" rel="noopener" class="browser-external-link" title="Open in new window">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Site
+        </a>
+    </div>
+    <div class="browser-window-body" style="height: 380px;">
+        <iframe src="https://vectorjob.com" id="modal-vectorjob-iframe" class="browser-iframe" title="Vector Job Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+    </div>
+</div>
+
+<ul style="padding-left:1.2rem; color:var(--text-secondary); line-height:1.65;">
+    <li><strong>Vector Embeddings:</strong> Cosine similarity candidate matching powered by semantic vector indexing.</li>
+    <li><strong>Live Telemetry:</strong> Real-time applicant scoring updates and vacancy tracking.</li>
+    <li><strong>Full-Stack Engine:</strong> Next.js frontend with high-throughput API endpoints.</li>
+</ul>`
+        },
         'budakatu': {
             title: 'Budakatu-Sante Mobile Platform',
             year: '2026',
@@ -586,7 +624,7 @@ function initProjectModals() {
                     <h2 style="font-size:1.8rem; margin-top:0.2rem;">${data.title} (${data.year})</h2>
                 </div>
 
-                <img src="${data.img}" alt="${data.title}" style="width:100%; border-radius:12px; margin-bottom:1.2rem; border:1px solid var(--border-color);">
+                ${data.img ? `<img src="${data.img}" alt="${data.title}" style="width:100%; border-radius:12px; margin-bottom:1.2rem; border:1px solid var(--border-color);">` : ''}
 
                 <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.2rem;">
                     ${data.tags.map(t => `<span style="font-family:var(--font-mono); font-size:0.78rem; background:var(--bg-primary); border:1px solid var(--border-color); padding:0.25rem 0.7rem; border-radius:999px;">${t}</span>`).join('')}
@@ -641,3 +679,26 @@ function initNavbarScroll() {
         }
     });
 }
+
+/* --------------------------------------------------------------------------
+   8. DYNAMIC REAL-TIME VECTOR JOB URL HELPER
+   -------------------------------------------------------------------------- */
+window.setVectorJobUrl = function(newUrl) {
+    if (!newUrl) return;
+    
+    const urlDisplay = document.getElementById('vectorjob-url-display');
+    const tabLink = document.getElementById('vectorjob-tab-link');
+    const iframe = document.getElementById('vectorjob-iframe');
+    
+    if (urlDisplay) urlDisplay.textContent = newUrl;
+    if (tabLink) tabLink.href = newUrl;
+    if (iframe) iframe.src = newUrl;
+    
+    const modalUrl = document.getElementById('modal-vectorjob-url');
+    const modalLink = document.getElementById('modal-vectorjob-link');
+    const modalIframe = document.getElementById('modal-vectorjob-iframe');
+    
+    if (modalUrl) modalUrl.textContent = newUrl;
+    if (modalLink) modalLink.href = newUrl;
+    if (modalIframe) modalIframe.src = newUrl;
+};

@@ -852,6 +852,95 @@ a {
     color: var(--accent-primary);
 }
 
+/* Mini Browser Window Real-Time Frame */
+.mini-browser-window {
+    width: 100%;
+    background: #0a0a0a;
+    border-radius: 12px;
+    border: 1px solid #262626;
+    overflow: hidden;
+    margin: 1.2rem 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.browser-window-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 0.9rem;
+    background: #171717;
+    border-bottom: 1px solid #262626;
+}
+
+.browser-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.b-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.b-dot.red { background: #ef4444; }
+.b-dot.yellow { background: #f59e0b; }
+.b-dot.green { background: #10b981; }
+
+.browser-url-bar {
+    flex: 1;
+    background: #0a0a0a;
+    border: 1px solid #262626;
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #a3a3a3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.browser-url-bar i {
+    color: #10b981;
+    font-size: 0.65rem;
+}
+
+.browser-external-link {
+    color: #888888;
+    font-size: 0.75rem;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.browser-external-link:hover {
+    color: var(--accent-primary);
+}
+
+.browser-window-body {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.browser-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #ffffff;
+}
+
+.modal-browser-window .browser-window-body {
+    height: 380px;
+}
+
 /* --------------------------------------------------------------------------
    9. AUTHENTIC HANGING LANYARD ID CARDS (UNIFORM SIZING & RESPONSIVE GRID)
    -------------------------------------------------------------------------- */
