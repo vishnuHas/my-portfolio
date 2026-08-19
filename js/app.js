@@ -159,150 +159,140 @@ function initGSAPAnimations() {
     }
 
     // ----------------------------------------------------------------------
-    // 3. TEXT SCROLL ANIMATIONS (LIGHTWEIGHT ON MOBILE, SCRUB ON DESKTOP)
+    // 3. ABOUT SECTION ONLY: KINETIC WORD BLUR SCRUB (STARTS & ENDS IN #ABOUT)
     // ----------------------------------------------------------------------
-    if (isTouch) {
-        // Fast, butter-smooth block fades on mobile (zero CPU lag)
-        document.querySelectorAll('.reveal-text, .editorial-heading, .section-title-large, .contact-giant-title').forEach(el => {
-            gsap.fromTo(el,
-                { opacity: 0.2, y: 12 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.5,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 92%",
-                        toggleActions: "play none none reverse"
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+        if (!isTouch) {
+            // Helper function to split text nodes into individual word spans
+            function splitTextIntoWords(element) {
+                function processNode(node) {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const text = node.textContent;
+                        if (!text) return null;
+                        const words = text.split(/(\s+)/);
+                        const fragment = document.createDocumentFragment();
+                        words.forEach(word => {
+                            if (word.trim().length > 0) {
+                                const span = document.createElement('span');
+                                span.className = 'scrub-word';
+                                span.textContent = word;
+                                fragment.appendChild(span);
+                            } else if (word.length > 0) {
+                                fragment.appendChild(document.createTextNode(word));
+                            }
+                        });
+                        return fragment;
+                    } else if (node.nodeType === Node.ELEMENT_NODE) {
+                        const clone = node.cloneNode(false);
+                        Array.from(node.childNodes).forEach(child => {
+                            const processed = processNode(child);
+                            if (processed) clone.appendChild(processed);
+                        });
+                        return clone;
                     }
+                    return node.cloneNode(true);
                 }
-            );
-        });
 
-        document.querySelectorAll('.section-tag').forEach(tag => {
-            gsap.fromTo(tag,
-                { opacity: 0, x: -12 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.4,
-                    scrollTrigger: {
-                        trigger: tag,
-                        start: "top 95%",
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        });
-    } else {
-        // Helper function to split text nodes into individual word spans on Desktop
-        function splitTextIntoWords(element) {
-            function processNode(node) {
-                if (node.nodeType === Node.TEXT_NODE) {
-                    const text = node.textContent;
-                    if (!text) return null;
-                    const words = text.split(/(\s+)/);
-                    const fragment = document.createDocumentFragment();
-                    words.forEach(word => {
-                        if (word.trim().length > 0) {
-                            const span = document.createElement('span');
-                            span.className = 'scrub-word';
-                            span.textContent = word;
-                            fragment.appendChild(span);
-                        } else if (word.length > 0) {
-                            fragment.appendChild(document.createTextNode(word));
-                        }
-                    });
-                    return fragment;
-                } else if (node.nodeType === Node.ELEMENT_NODE) {
-                    const clone = node.cloneNode(false);
-                    Array.from(node.childNodes).forEach(child => {
-                        const processed = processNode(child);
-                        if (processed) clone.appendChild(processed);
-                    });
-                    return clone;
-                }
-                return node.cloneNode(true);
+                const fragment = document.createDocumentFragment();
+                Array.from(element.childNodes).forEach(child => {
+                    const processed = processNode(child);
+                    if (processed) fragment.appendChild(processed);
+                });
+
+                element.innerHTML = '';
+                element.appendChild(fragment);
             }
 
-            const fragment = document.createDocumentFragment();
-            Array.from(element.childNodes).forEach(child => {
-                const processed = processNode(child);
-                if (processed) fragment.appendChild(processed);
+            // A. About Paragraphs Kinetic Word Scrub (Start & End strictly within #about)
+            const aboutParagraphs = aboutSection.querySelectorAll('.reveal-text');
+            aboutParagraphs.forEach(p => {
+                splitTextIntoWords(p);
+                const words = p.querySelectorAll('.scrub-word');
+                if (words.length > 0) {
+                    gsap.fromTo(words, 
+                        { opacity: 0.18, y: 8, filter: 'blur(1.5px)' },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            filter: 'blur(0px)',
+                            stagger: 0.03,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: aboutSection,
+                                start: "top 78%",
+                                end: "bottom 65%",
+                                scrub: 0.8,
+                                invalidateOnRefresh: true
+                            }
+                        }
+                    );
+                }
             });
 
-            element.innerHTML = '';
-            element.appendChild(fragment);
-        }
-
-        // A. Paragraph Kinetic Word Scrub Reveal
-        document.querySelectorAll('.reveal-text').forEach(p => {
-            splitTextIntoWords(p);
-            const words = p.querySelectorAll('.scrub-word');
-            if (words.length > 0) {
-                gsap.fromTo(words, 
-                    { opacity: 0.18, y: 8 },
+            // B. About Editorial Heading Word Scrub (Start & End strictly within #about)
+            const aboutHeading = aboutSection.querySelector('.editorial-heading');
+            if (aboutHeading) {
+                splitTextIntoWords(aboutHeading);
+                const words = aboutHeading.querySelectorAll('.scrub-word');
+                if (words.length > 0) {
+                    gsap.fromTo(words,
+                        { opacity: 0.15, y: 20, filter: 'blur(1.5px)' },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            filter: 'blur(0px)',
+                            stagger: 0.04,
+                            ease: "power3.out",
+                            scrollTrigger: {
+                                trigger: aboutSection,
+                                start: "top 85%",
+                                end: "top 45%",
+                                scrub: 0.8,
+                                invalidateOnRefresh: true
+                            }
+                        }
+                    );
+                }
+            }
+        } else {
+            // Touch / Mobile: Fast, clean block fade inside #about
+            aboutSection.querySelectorAll('.reveal-text, .editorial-heading').forEach(el => {
+                gsap.fromTo(el,
+                    { opacity: 0.2, y: 12 },
                     {
                         opacity: 1,
                         y: 0,
-                        stagger: 0.03,
+                        duration: 0.5,
                         ease: "power2.out",
                         scrollTrigger: {
-                            trigger: p,
-                            start: "top 88%",
-                            end: "bottom 58%",
-                            scrub: 0.8,
-                            invalidateOnRefresh: true
+                            trigger: el,
+                            start: "top 92%",
+                            toggleActions: "play none none reverse"
                         }
                     }
                 );
-            }
-        });
-
-        // B. Editorial Headings Word Scrub
-        document.querySelectorAll('.editorial-heading').forEach(heading => {
-            splitTextIntoWords(heading);
-            const words = heading.querySelectorAll('.scrub-word');
-            if (words.length > 0) {
-                gsap.fromTo(words,
-                    { opacity: 0.15, y: 20 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        stagger: 0.04,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: heading,
-                            start: "top 88%",
-                            end: "top 48%",
-                            scrub: 0.8,
-                            invalidateOnRefresh: true
-                        }
-                    }
-                );
-            }
-        });
-
-        // C. Section Tags
-        document.querySelectorAll('.section-tag').forEach(tag => {
-            gsap.fromTo(tag,
-                { opacity: 0, x: -25 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: tag,
-                        start: "top 92%",
-                        end: "top 68%",
-                        scrub: 0.6,
-                        invalidateOnRefresh: true
-                    }
-                }
-            );
-        });
+            });
+        }
     }
+
+    // Section Tags Across Portfolio (Clean subtle entrance, no blur)
+    document.querySelectorAll('.section-tag').forEach(tag => {
+        gsap.fromTo(tag,
+            { opacity: 0, x: -18 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: tag,
+                    start: "top 92%",
+                    toggleActions: "play none none reverse"
+                }
+            }
+        );
+    });
 
     // D. Section Titles (Tech Stack, Featured Work, Experience, Education, Contact)
     document.querySelectorAll('.section-title-large, .contact-giant-title').forEach(title => {
