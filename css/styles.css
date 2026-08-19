@@ -749,7 +749,8 @@ a {
 
 .project-panel[data-project="vector-job"],
 .project-panel[data-project="vtu-labs"],
-.project-panel[data-project="studentos"] {
+.project-panel[data-project="studentos"],
+.project-panel[data-project="hackateer"] {
     width: clamp(440px, 42vw, 560px);
 }
 

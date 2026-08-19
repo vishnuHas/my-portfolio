@@ -615,6 +615,46 @@ function initProjectModals() {
     <li><strong>Career Roadmap Engine:</strong> Dynamic skill tree visualizations providing step-by-step guidance for software engineering roles.</li>
 </ul>`
         },
+        'hackateer': {
+            title: 'Hackateer • Hackathon Platform',
+            year: '2026',
+            tags: ['React', 'Next.js', 'Cloudflare Pages', 'Tailwind CSS', 'WebSockets', 'REST APIs'],
+            img: '',
+            summary: 'Comprehensive hackathon orchestration platform empowering student organizers and developers to host hackathons, manage team registrations, review submissions, and run live judging seamlessly.',
+            metrics: ['🏆 Hackathon Hosting', '👥 Team Registration', '⚖️ Live Judging', '🌐 Live Web App'],
+            architecture: `
+<h4 style="font-size:1.1rem; margin-bottom:0.6rem; color:var(--text-primary);">Hackateer System Architecture & Modules</h4>
+<p style="color:var(--text-secondary); line-height:1.65; margin-bottom:1rem;">Constructed to streamline end-to-end hackathon lifecycles from landing page generation and team formation to real-time submission evaluation.</p>
+
+<!-- Live Browser Window Frame inside Modal -->
+<div class="mini-browser-window modal-browser-window" style="margin: 1.5rem 0;">
+    <div class="browser-window-header">
+        <div class="browser-dots">
+            <span class="b-dot red"></span>
+            <span class="b-dot yellow"></span>
+            <span class="b-dot green"></span>
+        </div>
+        <div class="browser-url-bar">
+            <i class="fa-solid fa-lock"></i>
+            <span>https://hackateer.pages.dev/</span>
+        </div>
+        <a href="https://hackateer.pages.dev/" target="_blank" rel="noopener" class="browser-external-link" title="Open in new window">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Site
+        </a>
+    </div>
+    <div class="browser-window-body modal-browser-body">
+        <div class="browser-iframe-scaler">
+            <iframe src="https://hackateer.pages.dev/" class="browser-iframe" title="Hackateer Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        </div>
+    </div>
+</div>
+
+<ul style="padding-left:1.2rem; color:var(--text-secondary); line-height:1.65;">
+    <li><strong>Event Hosting Suite:</strong> Custom landing page generator, track management, sponsor booths, and countdown timelines.</li>
+    <li><strong>Team Matchmaking & Registration:</strong> Solo participant grouping, skill-based team discovery, and automated ticket generation.</li>
+    <li><strong>Live Judging Portal:</strong> Real-time rubric scoring, weighted judge aggregation, and automated leaderboard rankings.</li>
+</ul>`
+        },
         'budakatu': {
             title: 'Budakatu-Sante Mobile Platform',
             year: '2026',
