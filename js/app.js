@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectModals();
     initNavbarScroll();
     initCTAButtonAnimation();
+    initIframeScalers();
 });
 
 /* --------------------------------------------------------------------------
@@ -521,8 +522,10 @@ function initProjectModals() {
             <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Site
         </a>
     </div>
-    <div class="browser-window-body" style="height: 380px;">
-        <iframe src="https://vector-white-website.pages.dev" id="modal-vectorjob-iframe" class="browser-iframe" title="Vector Job Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+    <div class="browser-window-body modal-browser-body">
+        <div class="browser-iframe-scaler">
+            <iframe src="https://vector-white-website.pages.dev" id="modal-vectorjob-iframe" class="browser-iframe" title="Vector Job Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        </div>
     </div>
 </div>
 
@@ -652,6 +655,11 @@ function initProjectModals() {
             `;
 
             modal.classList.add('active');
+            
+            // Trigger iframe scaling inside modal
+            setTimeout(() => {
+                window.scaleAllBrowserFrames && window.scaleAllBrowserFrames();
+            }, 60);
         });
     });
 
@@ -702,3 +710,27 @@ window.setVectorJobUrl = function(newUrl) {
     if (modalLink) modalLink.href = newUrl;
     if (modalIframe) modalIframe.src = newUrl;
 };
+
+/* --------------------------------------------------------------------------
+   9. DESKTOP IFRAME VIEWPORT AUTO-SCALER (Fit like Chrome Desktop)
+   -------------------------------------------------------------------------- */
+function initIframeScalers() {
+    window.scaleAllBrowserFrames = function() {
+        document.querySelectorAll('.browser-window-body').forEach(body => {
+            const scaler = body.querySelector('.browser-iframe-scaler');
+            if (!scaler) return;
+            const containerWidth = body.clientWidth;
+            if (containerWidth <= 0) return;
+            const baseDesktopWidth = 1200;
+            const baseDesktopHeight = 750;
+            const scale = containerWidth / baseDesktopWidth;
+            scaler.style.transform = `scale(${scale})`;
+            body.style.height = `${Math.round(baseDesktopHeight * scale)}px`;
+        });
+    };
+
+    window.scaleAllBrowserFrames();
+    window.addEventListener('resize', window.scaleAllBrowserFrames);
+    setTimeout(window.scaleAllBrowserFrames, 300);
+    setTimeout(window.scaleAllBrowserFrames, 1000);
+}

@@ -733,18 +733,22 @@ a {
 }
 
 .project-panel {
-    width: clamp(340px, 32vw, 440px);
+    width: clamp(380px, 36vw, 480px);
     flex-shrink: 0;
     background: #ffffff;
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 2.6rem 2.2rem;
+    border-radius: 24px;
+    padding: 2.5rem 2.2rem;
     box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 380px;
+    min-height: 420px;
     transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color 0.3s;
+}
+
+.project-panel[data-project="vector-job"] {
+    width: clamp(440px, 42vw, 560px);
 }
 
 .project-panel:hover {
@@ -757,7 +761,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .panel-num {
@@ -780,7 +784,7 @@ a {
 
 .panel-title {
     font-size: clamp(1.4rem, 2.5vw, 1.75rem);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     line-height: 1.2;
     color: var(--text-primary);
 }
@@ -788,7 +792,7 @@ a {
 .panel-desc {
     font-size: 0.95rem;
     color: var(--text-secondary);
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.2rem;
     line-height: 1.65;
     flex-grow: 1;
 }
@@ -796,7 +800,7 @@ a {
 .panel-metrics {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
 }
 
@@ -813,21 +817,27 @@ a {
 .panel-actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
+    width: 100%;
     margin-top: auto;
 }
 
 .btn-panel-action {
+    flex: 1;
     background-color: var(--text-primary);
     color: #ffffff;
     border: none;
-    padding: 0.8rem 1.6rem;
+    padding: 0.85rem 1.4rem;
     border-radius: 999px;
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
     cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: var(--transition-fast);
 }
 
@@ -836,15 +846,17 @@ a {
 }
 
 .btn-panel-icon {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
     border-radius: 50%;
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--text-primary);
+    transition: var(--transition-fast);
 }
 
 .btn-panel-icon:hover {
@@ -852,35 +864,35 @@ a {
     color: var(--accent-primary);
 }
 
-/* Mini Browser Window Real-Time Frame */
+/* Mini Browser Window Real-Time Frame (Scaled Full Desktop Fit) */
 .mini-browser-window {
     width: 100%;
-    background: #0a0a0a;
-    border-radius: 12px;
-    border: 1px solid #262626;
+    background: #0f1015;
+    border-radius: 16px;
+    border: 1px solid #23252e;
     overflow: hidden;
     margin: 1.2rem 0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.12);
 }
 
 .browser-window-header {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding: 0.5rem 0.9rem;
-    background: #171717;
-    border-bottom: 1px solid #262626;
+    padding: 0.6rem 1rem;
+    background: #191a21;
+    border-bottom: 1px solid #282a36;
 }
 
 .browser-dots {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
 }
 
 .b-dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
 }
 .b-dot.red { background: #ef4444; }
@@ -889,16 +901,16 @@ a {
 
 .browser-url-bar {
     flex: 1;
-    background: #0a0a0a;
-    border: 1px solid #262626;
+    background: #0d0e13;
+    border: 1px solid #282a36;
     border-radius: 6px;
-    padding: 0.2rem 0.6rem;
+    padding: 0.25rem 0.7rem;
     display: flex;
     align-items: center;
     gap: 0.4rem;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: #a3a3a3;
+    font-size: 0.72rem;
+    color: #a1a1aa;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -911,7 +923,7 @@ a {
 
 .browser-external-link {
     color: #888888;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     transition: color 0.2s;
     display: flex;
     align-items: center;
@@ -925,9 +937,18 @@ a {
 .browser-window-body {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 250px;
     background: #ffffff;
     overflow: hidden;
+}
+
+.browser-iframe-scaler {
+    width: 1200px;
+    height: 750px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
 }
 
 .browser-iframe {
@@ -937,8 +958,8 @@ a {
     background: #ffffff;
 }
 
-.modal-browser-window .browser-window-body {
-    height: 380px;
+.modal-browser-body {
+    height: 440px !important;
 }
 
 /* --------------------------------------------------------------------------
