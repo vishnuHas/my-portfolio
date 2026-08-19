@@ -535,6 +535,46 @@ function initProjectModals() {
     <li><strong>Full-Stack Engine:</strong> Next.js frontend with high-throughput API endpoints.</li>
 </ul>`
         },
+        'vtu-labs': {
+            title: 'VTU Labs Academic Portal',
+            year: '2025',
+            tags: ['HTML5', 'CSS3', 'JavaScript', 'GitHub Pages', 'VTU Curriculum', 'Lab Repos'],
+            img: '',
+            summary: 'Centralized academic platform designed to empower VTU engineering students with complete access to lab program source codes, experiment manuals, semester notes, and viva questions.',
+            metrics: ['📚 Full VTU Lab Syllabus', '⚡ Instant Search & Copy', '🌐 Live GitHub Pages Portal'],
+            architecture: `
+<h4 style="font-size:1.1rem; margin-bottom:0.6rem; color:var(--text-primary);">VTU Labs Platform Architecture</h4>
+<p style="color:var(--text-secondary); line-height:1.65; margin-bottom:1rem;">Constructed for high-performance sub-second load times across mobile and desktop devices with structured lab repositories and searchable code blocks.</p>
+
+<!-- Live Browser Window Frame inside Modal -->
+<div class="mini-browser-window modal-browser-window" style="margin: 1.5rem 0;">
+    <div class="browser-window-header">
+        <div class="browser-dots">
+            <span class="b-dot red"></span>
+            <span class="b-dot yellow"></span>
+            <span class="b-dot green"></span>
+        </div>
+        <div class="browser-url-bar">
+            <i class="fa-solid fa-lock"></i>
+            <span>https://vishnuhas.github.io/labs/</span>
+        </div>
+        <a href="https://vishnuhas.github.io/labs/" target="_blank" rel="noopener" class="browser-external-link" title="Open in new window">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Site
+        </a>
+    </div>
+    <div class="browser-window-body modal-browser-body">
+        <div class="browser-iframe-scaler">
+            <iframe src="https://vishnuhas.github.io/labs/" class="browser-iframe" title="VTU Labs Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        </div>
+    </div>
+</div>
+
+<ul style="padding-left:1.2rem; color:var(--text-secondary); line-height:1.65;">
+    <li><strong>Curriculum Alignment:</strong> Structured laboratory guide catalog categorized by semesters, schemes, and branches.</li>
+    <li><strong>Code Snippets:</strong> Formatted, syntax-highlighted lab programs ready for test runs and viva preparation.</li>
+    <li><strong>Static Hosting:</strong> Ultra-fast zero-latency response hosted on GitHub Pages.</li>
+</ul>`
+        },
         'budakatu': {
             title: 'Budakatu-Sante Mobile Platform',
             year: '2026',
