@@ -949,46 +949,30 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   8b. PROJECTS GITHUB REPOSITORIES UNIQUE CALLOUT BANNER
+   8b. PROJECTS GITHUB REPOSITORIES UNIQUE EDITORIAL CALLOUT (TRANSPARENT)
    -------------------------------------------------------------------------- */
 .projects-github-callout {
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 3.5rem;
+    border-top: 1px dashed rgba(10, 10, 10, 0.12);
 }
 
-.callout-glass-card {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    padding: 2.8rem 3rem;
+.callout-editorial-layout {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 3rem;
-    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.05);
+    gap: 3.5rem;
     position: relative;
-    overflow: hidden;
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color 0.3s;
-}
-
-.callout-glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--accent-primary);
-}
-
-.callout-glass-card:hover {
-    border-color: rgba(46, 94, 255, 0.35);
-    box-shadow: 0 25px 60px -15px rgba(46, 94, 255, 0.12);
 }
 
 .callout-content-left {
     flex: 1;
-    max-width: 680px;
+    max-width: 720px;
 }
 
 .callout-tag {
@@ -999,12 +983,9 @@ a {
     font-size: 0.76rem;
     font-weight: 700;
     color: var(--accent-primary);
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 999px;
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
+    background: transparent;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.1em;
 }
 
 .callout-pulse-dot {
@@ -1012,63 +993,63 @@ a {
     height: 7px;
     border-radius: 50%;
     background: var(--accent-primary);
-    box-shadow: 0 0 8px var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
     animation: badgePulse 2s infinite ease-in-out;
 }
 
-.callout-title {
-    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
-    line-height: 1.25;
+.callout-syne-title {
+    font-family: 'Syne', var(--font-heading), sans-serif;
+    font-size: clamp(1.45rem, 2.8vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
     color: var(--text-primary);
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
 }
 
-.callout-desc {
-    font-size: 0.95rem;
+.callout-grotesk-desc {
+    font-family: 'Space Grotesk', var(--font-body), sans-serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.08rem);
     color: var(--text-secondary);
-    line-height: 1.65;
+    line-height: 1.75;
 }
 
 .callout-action-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.9rem;
+    gap: 1rem;
     flex-shrink: 0;
+    padding-top: 1.5rem;
 }
 
-.callout-github-btn {
+.callout-magnetic-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.85rem;
+    gap: 0.9rem;
     background-color: var(--text-primary);
     color: #ffffff;
-    font-family: var(--font-heading);
+    font-family: 'Syne', var(--font-heading), sans-serif;
     font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    padding: 1.1rem 2rem;
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    padding: 1.15rem 2.2rem;
     border-radius: 999px;
     text-decoration: none;
     transition: var(--transition-normal);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: hidden;
 }
 
-.callout-github-btn .btn-arrow {
-    transition: transform 0.25s ease;
-}
-
-.callout-github-btn:hover {
+.callout-magnetic-btn:hover {
     background-color: var(--accent-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(46, 94, 255, 0.35);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(46, 94, 255, 0.35);
 }
 
-.callout-github-btn:hover .btn-arrow {
-    transform: translateX(5px);
-}
-
-.callout-subtext {
+.callout-meta-tag {
     font-family: var(--font-mono);
     font-size: 0.78rem;
     color: var(--text-muted);
@@ -1076,19 +1057,19 @@ a {
 }
 
 @media (max-width: 900px) {
-    .callout-glass-card {
+    .callout-editorial-layout {
         flex-direction: column;
         align-items: flex-start;
-        gap: 2rem;
-        padding: 2.2rem 1.8rem;
+        gap: 2.2rem;
     }
     
     .callout-action-right {
         align-items: flex-start;
         width: 100%;
+        padding-top: 0;
     }
 
-    .callout-github-btn {
+    .callout-magnetic-btn {
         width: 100%;
         justify-content: center;
     }
