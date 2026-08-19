@@ -125,39 +125,7 @@ function initCustomCursor() {
    3. GSAP SCROLLTRIGGER ANIMATIONS (SCROLL DOWN & SCROLL UP BIDIRECTIONAL)
    -------------------------------------------------------------------------- */
 function initGSAPAnimations() {
-    // 1. GSAP ScrollTrigger Horizontal Pin ONLY for Desktop (>1024px)
-    const projectsTrack = document.getElementById('projects-track');
-    const projectsSection = document.getElementById('projects');
-
-    if (projectsTrack && projectsSection) {
-        ScrollTrigger.matchMedia({
-            // Desktop (> 1024px): Smooth GSAP Horizontal Pin
-            "(min-width: 1025px)": function() {
-                const getScrollAmount = () => {
-                    return -(projectsTrack.scrollWidth - window.innerWidth + 80);
-                };
-
-                gsap.to(projectsTrack, {
-                    x: getScrollAmount,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: projectsSection,
-                        start: "top top",
-                        end: () => `+=${projectsTrack.scrollWidth - window.innerWidth + 400}`,
-                        pin: true,
-                        scrub: 1,
-                        invalidateOnRefresh: true
-                    }
-                });
-            },
-            // Mobile/Tablet (<= 1024px): Native CSS Touch Scroll (No pinning to prevent scroll lock)
-            "(max-width: 1024px)": function() {
-                gsap.set(projectsTrack, { clearProps: "all" });
-            }
-        });
-    }
-
-    // 2. Parallax Hero Elements (Bidirectional on scroll)
+    // 1. Parallax Hero Elements (Bidirectional on scroll)
     gsap.to('#hero-accent-shape', {
         y: 120,
         scrollTrigger: {

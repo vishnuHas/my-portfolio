@@ -712,29 +712,21 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   8. FEATURED PROJECTS SHOWCASE
+   8. FEATURED PROJECTS SHOWCASE (CLEAN RESPONSIVE GRID - NO SCROLLJACKING)
    -------------------------------------------------------------------------- */
 .projects-section {
     position: relative;
-    overflow: hidden;
 }
 
-.projects-horizontal-wrapper {
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.2rem;
     width: 100%;
-    overflow: hidden;
-}
-
-.projects-track {
-    display: flex;
-    gap: 2.5rem;
-    padding: 0 2rem;
-    width: max-content;
-    will-change: transform;
 }
 
 .project-panel {
-    width: clamp(380px, 36vw, 480px);
-    flex-shrink: 0;
+    width: 100%;
     background: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: 24px;
@@ -744,18 +736,13 @@ a {
     flex-direction: column;
     justify-content: space-between;
     min-height: 420px;
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color 0.3s;
-}
-
-.project-panel[data-project="vector-job"],
-.project-panel[data-project="vtu-labs"],
-.project-panel[data-project="studentos"],
-.project-panel[data-project="hackateer"] {
-    width: clamp(440px, 42vw, 560px);
+    transition: box-shadow var(--transition-normal), border-color 0.3s;
 }
 
 .project-panel:hover {
     transform: none;
+    border-color: rgba(46, 94, 255, 0.35);
+    box-shadow: 0 20px 45px -10px rgba(46, 94, 255, 0.08);
 }
 
 .panel-header-row {
@@ -1450,29 +1437,11 @@ a {
     .id-badge-card { min-height: 520px; padding: 1.6rem 1.3rem; }
 }
 
-/* Touch & Mobile Projects Horizontal Slider Fix (< 1024px) */
-@media (max-width: 1024px) {
-    .projects-horizontal-wrapper {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 1rem 0 2.5rem 0;
-    }
-    
-    .projects-track {
-        display: flex;
-        gap: 1.5rem;
-        padding: 0 1.2rem;
-        width: max-content;
-        transform: none !important;
-    }
-
-    .project-panel {
-        scroll-snap-align: center;
-        width: 82vw;
-        max-width: 420px;
-        min-height: 360px;
-        padding: 2.2rem 1.8rem;
+/* Projects Grid Tablet Breakpoint */
+@media (max-width: 991px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
     }
 }
 
