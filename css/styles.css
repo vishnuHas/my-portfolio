@@ -712,7 +712,7 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   8. FEATURED PROJECTS SHOWCASE (CARD FAN ON HOVER - PURE PREVIEWS)
+   8. FEATURED PROJECTS SHOWCASE (AUTO-SWAPPING CARD FAN ON HOVER)
    -------------------------------------------------------------------------- */
 .projects-section {
     position: relative;
@@ -722,10 +722,63 @@ a {
 .card-fan-wrapper {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3.5rem 1rem 6.5rem 1rem;
+    padding: 2rem 1rem 6.5rem 1rem;
     perspective: 1400px;
+}
+
+/* Fan Deck Controls (Indicators & Arrows) */
+.fan-deck-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+    z-index: 10;
+}
+
+.fan-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: var(--transition-fast);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.fan-nav-btn:hover {
+    background: var(--text-primary);
+    color: #ffffff;
+    border-color: var(--text-primary);
+}
+
+.fan-deck-indicators {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.fan-indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.fan-indicator-dot.active {
+    width: 26px;
+    background: var(--accent-primary);
 }
 
 .card-fan-deck {
@@ -749,11 +802,12 @@ a {
     overflow: hidden;
     cursor: pointer;
     transform-origin: center 110%;
-    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
-                border-color 0.3s ease,
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.35s ease,
+                opacity 0.5s ease,
                 z-index 0.2s;
-    will-change: transform;
+    will-change: transform, opacity;
 }
 
 .fan-card .mini-browser-window {
@@ -764,50 +818,141 @@ a {
     box-shadow: none;
 }
 
-/* 4-Card Fan Resting State (Fanned Out like the reference image) */
-.fan-card-1 {
-    transform: rotate(-14deg) translateX(-210px) translateY(18px);
-    z-index: 1;
+/* Glitch-Free Selection Shield for Background Cards */
+.fan-card-click-shield {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    cursor: pointer;
+    background: transparent;
 }
 
-.fan-card-2 {
-    transform: rotate(-5deg) translateX(-70px) translateY(-4px);
-    z-index: 2;
+/* Dynamic 4-Card Rotation Position Classes (Auto-Swapping) */
+.fan-card.pos-0 {
+    transform: rotate(0deg) translateX(0) translateY(-25px) scale(1.05);
+    z-index: 10;
+    opacity: 1;
+    border-color: var(--accent-primary);
+    box-shadow: 0 40px 90px -15px rgba(46, 94, 255, 0.35), 0 0 0 2px var(--accent-primary);
 }
 
-.fan-card-3 {
-    transform: rotate(5deg) translateX(70px) translateY(-4px);
+.fan-card.pos-0 .fan-card-click-shield {
+    display: none;
+}
+
+.fan-card.pos-1 {
+    transform: rotate(11deg) translateX(190px) translateY(14px) scale(0.96);
     z-index: 3;
+    opacity: 0.95;
 }
 
-.fan-card-4 {
-    transform: rotate(14deg) translateX(210px) translateY(18px);
+.fan-card.pos-2 {
+    transform: rotate(-14deg) translateX(-200px) translateY(20px) scale(0.91);
+    z-index: 1;
+    opacity: 0.85;
+}
+
+.fan-card.pos-3 {
+    transform: rotate(-5deg) translateX(-75px) translateY(-3px) scale(0.98);
     z-index: 4;
+    opacity: 0.95;
 }
 
-/* Fan Spread Expansion on Deck Hover */
-.card-fan-deck:hover .fan-card-1 {
-    transform: rotate(-18deg) translateX(-280px) translateY(24px);
+/* Hover Spread on Deck */
+.card-fan-deck:hover .fan-card.pos-1 {
+    transform: rotate(15deg) translateX(240px) translateY(18px) scale(0.97);
 }
 
-.card-fan-deck:hover .fan-card-2 {
-    transform: rotate(-7deg) translateX(-95px) translateY(-8px);
+.card-fan-deck:hover .fan-card.pos-2 {
+    transform: rotate(-18deg) translateX(-260px) translateY(24px) scale(0.92);
 }
 
-.card-fan-deck:hover .fan-card-3 {
-    transform: rotate(7deg) translateX(95px) translateY(-8px);
+.card-fan-deck:hover .fan-card.pos-3 {
+    transform: rotate(-7deg) translateX(-95px) translateY(-5px) scale(0.99);
 }
 
-.card-fan-deck:hover .fan-card-4 {
-    transform: rotate(18deg) translateX(280px) translateY(24px);
+/* Floating Project Badge & GitHub Icon Inside Preview Window */
+.browser-floating-badge {
+    position: absolute;
+    bottom: 1.1rem;
+    left: 1.1rem;
+    right: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.55rem 1rem;
+    background: rgba(15, 16, 21, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    z-index: 20;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-/* Individual Card Active / Hover Focus State */
-.card-fan-deck .fan-card:hover {
-    transform: rotate(0deg) translateX(0) translateY(-35px) scale(1.06) !important;
-    z-index: 50 !important;
-    border-color: var(--accent-primary) !important;
-    box-shadow: 0 40px 90px -15px rgba(46, 94, 255, 0.32), 0 0 0 2px var(--accent-primary) !important;
+.browser-floating-badge:hover {
+    border-color: var(--accent-primary);
+}
+
+.badge-title {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--accent-primary);
+    box-shadow: 0 0 8px var(--accent-primary);
+    animation: badgePulse 2s infinite ease-in-out;
+}
+
+@keyframes badgePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.badge-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.badge-icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+
+.badge-icon-btn:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.badge-visit-btn:hover {
+    background: #ffffff;
+    color: #0a0a0a;
+    border-color: #ffffff;
 }
 
 /* Mini Browser Window Real-Time Frame (Scaled Full Desktop Fit) */

@@ -287,9 +287,22 @@
                 </div>
 
                 <div class="card-fan-wrapper">
+                    <!-- Deck Navigation Indicator Pills -->
+                    <div class="fan-deck-controls">
+                        <button class="fan-nav-btn prev-btn" id="fan-prev-btn" aria-label="Previous Project"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="fan-deck-indicators" id="fan-deck-indicators">
+                            <span class="fan-indicator-dot active" data-index="0"></span>
+                            <span class="fan-indicator-dot" data-index="1"></span>
+                            <span class="fan-indicator-dot" data-index="2"></span>
+                            <span class="fan-indicator-dot" data-index="3"></span>
+                        </div>
+                        <button class="fan-nav-btn next-btn" id="fan-next-btn" aria-label="Next Project"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
                     <div class="card-fan-deck" id="card-fan-deck">
                         <!-- Card 1: Vector Job -->
-                        <div class="fan-card fan-card-1" data-project="vector-job">
+                        <div class="fan-card" data-index="0" data-project="vector-job">
+                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
                             <div class="mini-browser-window">
                                 <div class="browser-window-header">
                                     <div class="browser-dots">
@@ -309,12 +322,25 @@
                                     <div class="browser-iframe-scaler">
                                         <iframe src="https://vector-white-website.pages.dev" class="browser-iframe" title="Vector Job Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                                     </div>
+                                    <!-- Floating Project Name & GitHub Icon Inside Preview -->
+                                    <div class="browser-floating-badge">
+                                        <div class="badge-title"><span class="badge-dot"></span> VECTOR JOB</div>
+                                        <div class="badge-actions">
+                                            <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="badge-icon-btn" title="View Source on GitHub" aria-label="GitHub">
+                                                <i class="fa-brands fa-github"></i>
+                                            </a>
+                                            <a href="https://vector-white-website.pages.dev" target="_blank" rel="noopener" class="badge-icon-btn badge-visit-btn" title="Open Live Site" aria-label="Live Site">
+                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Card 2: VTU Labs -->
-                        <div class="fan-card fan-card-2" data-project="vtu-labs">
+                        <div class="fan-card" data-index="1" data-project="vtu-labs">
+                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
                             <div class="mini-browser-window">
                                 <div class="browser-window-header">
                                     <div class="browser-dots">
@@ -334,12 +360,25 @@
                                     <div class="browser-iframe-scaler">
                                         <iframe src="https://vishnuhas.github.io/labs/" class="browser-iframe" title="VTU Labs Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                                     </div>
+                                    <!-- Floating Project Name & GitHub Icon Inside Preview -->
+                                    <div class="browser-floating-badge">
+                                        <div class="badge-title"><span class="badge-dot"></span> VTU LABS</div>
+                                        <div class="badge-actions">
+                                            <a href="https://github.com/vishnuHas/labs" target="_blank" rel="noopener" class="badge-icon-btn" title="View Source on GitHub" aria-label="GitHub">
+                                                <i class="fa-brands fa-github"></i>
+                                            </a>
+                                            <a href="https://vishnuhas.github.io/labs/" target="_blank" rel="noopener" class="badge-icon-btn badge-visit-btn" title="Open Live Site" aria-label="Live Site">
+                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Card 3: StudentOS -->
-                        <div class="fan-card fan-card-3" data-project="studentos">
+                        <div class="fan-card" data-index="2" data-project="studentos">
+                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
                             <div class="mini-browser-window">
                                 <div class="browser-window-header">
                                     <div class="browser-dots">
@@ -359,12 +398,25 @@
                                     <div class="browser-iframe-scaler">
                                         <iframe src="https://vishnu-studentos.web.app/" class="browser-iframe" title="StudentOS Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
                                     </div>
+                                    <!-- Floating Project Name & GitHub Icon Inside Preview -->
+                                    <div class="browser-floating-badge">
+                                        <div class="badge-title"><span class="badge-dot"></span> STUDENTOS AI</div>
+                                        <div class="badge-actions">
+                                            <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="badge-icon-btn" title="View Source on GitHub" aria-label="GitHub">
+                                                <i class="fa-brands fa-github"></i>
+                                            </a>
+                                            <a href="https://vishnu-studentos.web.app/" target="_blank" rel="noopener" class="badge-icon-btn badge-visit-btn" title="Open Live Site" aria-label="Live Site">
+                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Card 4: Hackateer -->
-                        <div class="fan-card fan-card-4" data-project="hackateer">
+                        <div class="fan-card" data-index="3" data-project="hackateer">
+                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
                             <div class="mini-browser-window">
                                 <div class="browser-window-header">
                                     <div class="browser-dots">
@@ -383,6 +435,18 @@
                                 <div class="browser-window-body">
                                     <div class="browser-iframe-scaler">
                                         <iframe src="https://hackateer.pages.dev/" class="browser-iframe" title="Hackateer Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                                    </div>
+                                    <!-- Floating Project Name & GitHub Icon Inside Preview -->
+                                    <div class="browser-floating-badge">
+                                        <div class="badge-title"><span class="badge-dot"></span> HACKATEER</div>
+                                        <div class="badge-actions">
+                                            <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="badge-icon-btn" title="View Source on GitHub" aria-label="GitHub">
+                                                <i class="fa-brands fa-github"></i>
+                                            </a>
+                                            <a href="https://hackateer.pages.dev/" target="_blank" rel="noopener" class="badge-icon-btn badge-visit-btn" title="Open Live Site" aria-label="Live Site">
+                                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

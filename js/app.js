@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbarScroll();
     initCTAButtonAnimation();
     initIframeScalers();
+    initCardFanAutoSwap();
 });
 
 /* --------------------------------------------------------------------------
@@ -821,3 +822,112 @@ function initIframeScalers() {
     setTimeout(window.scaleAllBrowserFrames, 300);
     setTimeout(window.scaleAllBrowserFrames, 1000);
 }
+
+/* --------------------------------------------------------------------------
+   10. AUTO-SWAPPING CARD FAN DECK ENGINE
+   -------------------------------------------------------------------------- */
+function initCardFanAutoSwap() {
+    const deck = document.getElementById('card-fan-deck');
+    if (!deck) return;
+
+    const cards = Array.from(deck.querySelectorAll('.fan-card'));
+    const dots = Array.from(document.querySelectorAll('.fan-indicator-dot'));
+    const prevBtn = document.getElementById('fan-prev-btn');
+    const nextBtn = document.getElementById('fan-next-btn');
+    
+    if (cards.length === 0) return;
+
+    let activeIndex = 0;
+    let autoSwapTimer = null;
+    let isPaused = false;
+
+    function applyPositions() {
+        cards.forEach((card, i) => {
+            const offset = (i - activeIndex + cards.length) % cards.length;
+            card.classList.remove('pos-0', 'pos-1', 'pos-2', 'pos-3');
+            card.classList.add(`pos-${offset}`);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeIndex);
+        });
+
+        if (window.scaleAllBrowserFrames) {
+            setTimeout(window.scaleAllBrowserFrames, 60);
+        }
+    }
+
+    function setActive(index) {
+        activeIndex = (index + cards.length) % cards.length;
+        applyPositions();
+    }
+
+    function nextCard() {
+        setActive(activeIndex + 1);
+    }
+
+    function prevCard() {
+        setActive(activeIndex - 1);
+    }
+
+    function startAutoSwap() {
+        stopAutoSwap();
+        autoSwapTimer = setInterval(() => {
+            if (!isPaused) {
+                nextCard();
+            }
+        }, 3800);
+    }
+
+    function stopAutoSwap() {
+        if (autoSwapTimer) {
+            clearInterval(autoSwapTimer);
+            autoSwapTimer = null;
+        }
+    }
+
+    // Initialize positions and timer
+    applyPositions();
+    startAutoSwap();
+
+    // Click on card / shield to bring to front without glitching
+    cards.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('.badge-icon-btn') || e.target.closest('.browser-external-link')) {
+                return;
+            }
+            if (activeIndex !== index) {
+                e.preventDefault();
+                setActive(index);
+                startAutoSwap();
+            }
+        });
+    });
+
+    // Navigation Controls
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextCard();
+            startAutoSwap();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevCard();
+            startAutoSwap();
+        });
+    }
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            setActive(i);
+            startAutoSwap();
+        });
+    });
+
+    // Pause on hover so the user can interact
+    deck.addEventListener('mouseenter', () => { isPaused = true; });
+    deck.addEventListener('mouseleave', () => { isPaused = false; });
+}
+
