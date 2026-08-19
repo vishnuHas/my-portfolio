@@ -755,9 +755,7 @@ a {
 }
 
 .project-panel:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-primary);
-    box-shadow: 0 25px 50px -10px rgba(46, 94, 255, 0.12);
+    transform: none;
 }
 
 .panel-header-row {
@@ -1089,9 +1087,7 @@ a {
 }
 
 .id-card-wrapper:hover .id-badge-card {
-    transform: rotate(2.5deg) translateY(6px);
-    border-color: var(--accent-primary);
-    box-shadow: 0 30px 60px rgba(46, 94, 255, 0.14);
+    transform: none;
 }
 
 /* Punched Hole at Top Center of Card */

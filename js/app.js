@@ -338,18 +338,17 @@ function initGSAPAnimations() {
     const idCards = gsap.utils.toArray('.lanyard-row-grid .id-card-wrapper');
     if (idCards.length > 0) {
         gsap.fromTo(idCards,
-            { y: 70, opacity: 0, rotation: -3 },
+            { y: 25, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
-                rotation: 0,
-                duration: 0.9,
-                stagger: 0.18,
+                duration: 0.8,
+                stagger: 0.15,
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: '.lanyard-row-grid',
                     start: 'top 85%',
-                    toggleActions: "play reverse play reverse" // Works on scroll down AND scroll up!
+                    toggleActions: "play reverse play reverse"
                 }
             }
         );
