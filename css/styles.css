@@ -712,144 +712,102 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   8. FEATURED PROJECTS SHOWCASE (CLEAN RESPONSIVE GRID - NO SCROLLJACKING)
+   8. FEATURED PROJECTS SHOWCASE (CARD FAN ON HOVER - PURE PREVIEWS)
    -------------------------------------------------------------------------- */
 .projects-section {
     position: relative;
+    overflow: visible;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.2rem;
+.card-fan-wrapper {
     width: 100%;
-}
-
-.project-panel {
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    padding: 2.5rem 2.2rem;
-    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 420px;
-    transition: box-shadow var(--transition-normal), border-color 0.3s;
-}
-
-.project-panel:hover {
-    transform: none;
-    border-color: rgba(46, 94, 255, 0.35);
-    box-shadow: 0 20px 45px -10px rgba(46, 94, 255, 0.08);
-}
-
-.panel-header-row {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.2rem;
+    padding: 3.5rem 1rem 6.5rem 1rem;
+    perspective: 1400px;
 }
 
-.panel-num {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--accent-primary);
-}
-
-.panel-year {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    color: var(--text-primary);
-}
-
-.panel-title {
-    font-size: clamp(1.4rem, 2.5vw, 1.75rem);
-    margin-bottom: 0.8rem;
-    line-height: 1.2;
-    color: var(--text-primary);
-}
-
-.panel-desc {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.2rem;
-    line-height: 1.65;
-    flex-grow: 1;
-}
-
-.panel-metrics {
+.card-fan-deck {
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.p-chip {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    padding: 0.3rem 0.75rem;
-    border-radius: 999px;
-}
-
-.panel-actions {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 0.8rem;
+    position: relative;
     width: 100%;
-    margin-top: auto;
+    max-width: 1200px;
+    height: 380px;
 }
 
-.btn-panel-action {
-    flex: 1;
-    background-color: var(--text-primary);
-    color: #ffffff;
-    border: none;
-    padding: 0.85rem 1.4rem;
-    border-radius: 999px;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
+.fan-card {
+    position: absolute;
+    width: clamp(380px, 38vw, 500px);
+    max-width: 92vw;
+    background: #0f1015;
+    border-radius: 20px;
+    box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.25);
+    border: 1px solid #23252e;
+    overflow: hidden;
     cursor: pointer;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-fast);
+    transform-origin: center 110%;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease,
+                z-index 0.2s;
+    will-change: transform;
 }
 
-.btn-panel-action:hover {
-    background-color: var(--accent-primary);
+.fan-card .mini-browser-window {
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
-.btn-panel-icon {
-    width: 46px;
-    height: 46px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.15rem;
-    color: var(--text-primary);
-    transition: var(--transition-fast);
+/* 4-Card Fan Resting State (Fanned Out like the reference image) */
+.fan-card-1 {
+    transform: rotate(-14deg) translateX(-210px) translateY(18px);
+    z-index: 1;
 }
 
-.btn-panel-icon:hover {
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
+.fan-card-2 {
+    transform: rotate(-5deg) translateX(-70px) translateY(-4px);
+    z-index: 2;
+}
+
+.fan-card-3 {
+    transform: rotate(5deg) translateX(70px) translateY(-4px);
+    z-index: 3;
+}
+
+.fan-card-4 {
+    transform: rotate(14deg) translateX(210px) translateY(18px);
+    z-index: 4;
+}
+
+/* Fan Spread Expansion on Deck Hover */
+.card-fan-deck:hover .fan-card-1 {
+    transform: rotate(-18deg) translateX(-280px) translateY(24px);
+}
+
+.card-fan-deck:hover .fan-card-2 {
+    transform: rotate(-7deg) translateX(-95px) translateY(-8px);
+}
+
+.card-fan-deck:hover .fan-card-3 {
+    transform: rotate(7deg) translateX(95px) translateY(-8px);
+}
+
+.card-fan-deck:hover .fan-card-4 {
+    transform: rotate(18deg) translateX(280px) translateY(24px);
+}
+
+/* Individual Card Active / Hover Focus State */
+.card-fan-deck .fan-card:hover {
+    transform: rotate(0deg) translateX(0) translateY(-35px) scale(1.06) !important;
+    z-index: 50 !important;
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 40px 90px -15px rgba(46, 94, 255, 0.32), 0 0 0 2px var(--accent-primary) !important;
 }
 
 /* Mini Browser Window Real-Time Frame (Scaled Full Desktop Fit) */
