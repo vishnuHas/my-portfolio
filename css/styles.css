@@ -532,6 +532,7 @@ a {
 .editorial-heading {
     font-size: clamp(2rem, 4.5vw, 2.8rem);
     line-height: 1.15;
+    perspective: 800px;
 }
 
 .editorial-text-block {
@@ -543,6 +544,12 @@ a {
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
+}
+
+.scrub-word {
+    display: inline-block;
+    will-change: opacity, transform, filter;
+    transform-origin: center bottom;
 }
 
 .editorial-meta-row {

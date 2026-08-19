@@ -1,6 +1,7 @@
 /* ==========================================================================
    VISHNU N — CINEMATIC PORTFOLIO JAVASCRIPT ENGINE
    Preloader | Custom Magnetic Cursor | GSAP Horizontal Pin | Modals
+   Bidirectional Scroll-Driven Text & Element Animations (Scroll Down & Up)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -56,6 +57,9 @@ function initPreloader() {
                     ease: 'power3.out',
                     delay: 0.3
                 });
+
+                // Refresh ScrollTrigger calculations after preloader exit
+                ScrollTrigger.refresh();
             }, 400);
         } else {
             counter.textContent = `${count < 10 ? '0' : ''}${count}%`;
@@ -117,7 +121,7 @@ function initCustomCursor() {
 }
 
 /* --------------------------------------------------------------------------
-   3. GSAP SCROLLTRIGGER ANIMATIONS & HORIZONTAL PROJECT PARALLAX
+   3. GSAP SCROLLTRIGGER ANIMATIONS (SCROLL DOWN & SCROLL UP BIDIRECTIONAL)
    -------------------------------------------------------------------------- */
 function initGSAPAnimations() {
     // 1. GSAP ScrollTrigger Horizontal Pin ONLY for Desktop (>1024px)
@@ -152,7 +156,7 @@ function initGSAPAnimations() {
         });
     }
 
-    // 2. Parallax Hero Elements
+    // 2. Parallax Hero Elements (Bidirectional on scroll)
     gsap.to('#hero-accent-shape', {
         y: 120,
         scrollTrigger: {
@@ -173,49 +177,221 @@ function initGSAPAnimations() {
         }
     });
 
-    // 3. Reveal Editorial Text
-    gsap.utils.toArray('.reveal-text').forEach(text => {
-        gsap.from(text, {
-            y: 40,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: text,
-                start: 'top 85%',
+    // ----------------------------------------------------------------------
+    // 3. BIDIRECTIONAL TEXT SCROLL ANIMATIONS (DOWN & UP)
+    // ----------------------------------------------------------------------
+    
+    // Helper function to split text nodes into individual word spans preserving HTML elements
+    function splitTextIntoWords(element) {
+        function processNode(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.textContent;
+                if (!text) return null;
+                const words = text.split(/(\s+)/);
+                const fragment = document.createDocumentFragment();
+                words.forEach(word => {
+                    if (word.trim().length > 0) {
+                        const span = document.createElement('span');
+                        span.className = 'scrub-word';
+                        span.textContent = word;
+                        fragment.appendChild(span);
+                    } else if (word.length > 0) {
+                        fragment.appendChild(document.createTextNode(word));
+                    }
+                });
+                return fragment;
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const clone = node.cloneNode(false);
+                Array.from(node.childNodes).forEach(child => {
+                    const processed = processNode(child);
+                    if (processed) clone.appendChild(processed);
+                });
+                return clone;
             }
-        });
-    });
+            return node.cloneNode(true);
+        }
 
-    // 4. Stagger Reveal for 3 Side-by-Side Lanyard ID Cards
-    const idCards = gsap.utils.toArray('.lanyard-row-grid .id-card-wrapper');
-    if (idCards.length > 0) {
-        gsap.from(idCards, {
-            y: 70,
-            opacity: 0,
-            rotation: -3,
-            duration: 1,
-            stagger: 0.2,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.lanyard-row-grid',
-                start: 'top 85%',
-            }
+        const fragment = document.createDocumentFragment();
+        Array.from(element.childNodes).forEach(child => {
+            const processed = processNode(child);
+            if (processed) fragment.appendChild(processed);
         });
+
+        element.innerHTML = '';
+        element.appendChild(fragment);
     }
 
-    // 5. Education Cards Animation
-    gsap.utils.toArray('.education-card').forEach(card => {
-        gsap.from(card, {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 85%',
+    // A. Paragraph Kinetic Word Scrub Reveal (About Section & Bio)
+    // As you scroll DOWN, words progressively illuminate; as you scroll UP, words dim back!
+    document.querySelectorAll('.reveal-text').forEach(p => {
+        splitTextIntoWords(p);
+        const words = p.querySelectorAll('.scrub-word');
+        if (words.length > 0) {
+            gsap.fromTo(words, 
+                { opacity: 0.18, y: 8, filter: 'blur(1.5px)' },
+                {
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    stagger: 0.04,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: p,
+                        start: "top 88%",
+                        end: "bottom 58%",
+                        scrub: 0.8, // Bidirectional scrub forward and backward
+                        invalidateOnRefresh: true
+                    }
+                }
+            );
+        }
+    });
+
+    // B. Editorial Headings Word Scrub (e.g., "PASSIONATE ABOUT CODE, ELEGANCE & PERFORMANCE.")
+    document.querySelectorAll('.editorial-heading').forEach(heading => {
+        splitTextIntoWords(heading);
+        const words = heading.querySelectorAll('.scrub-word');
+        if (words.length > 0) {
+            gsap.fromTo(words,
+                { opacity: 0.15, y: 28, rotateX: -15 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0,
+                    stagger: 0.05,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: heading,
+                        start: "top 88%",
+                        end: "top 48%",
+                        scrub: 0.8, // Animate on both scroll down & up
+                        invalidateOnRefresh: true
+                    }
+                }
+            );
+        }
+    });
+
+    // C. Section Tags [ 01 / ABOUT ], [ 02 / TECH STACK ], etc.
+    document.querySelectorAll('.section-tag').forEach(tag => {
+        gsap.fromTo(tag,
+            { opacity: 0, x: -25 },
+            {
+                opacity: 1,
+                x: 0,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: tag,
+                    start: "top 92%",
+                    end: "top 68%",
+                    scrub: 0.6,
+                    invalidateOnRefresh: true
+                }
             }
-        });
+        );
+    });
+
+    // D. Section Titles (Tech Stack, Featured Work, Experience, Education, Contact)
+    document.querySelectorAll('.section-title-large, .contact-giant-title').forEach(title => {
+        gsap.fromTo(title,
+            { opacity: 0.15, y: 35 },
+            {
+                opacity: 1,
+                y: 0,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: title,
+                    start: "top 90%",
+                    end: "top 55%",
+                    scrub: 0.8,
+                    invalidateOnRefresh: true
+                }
+            }
+        );
+    });
+
+    // E. Editorial Meta Row (Location, Degree, Languages)
+    const metaCols = document.querySelectorAll('.editorial-meta-row .meta-col');
+    if (metaCols.length > 0) {
+        gsap.fromTo(metaCols,
+            { opacity: 0.12, y: 24 },
+            {
+                opacity: 1,
+                y: 0,
+                stagger: 0.1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: '.editorial-meta-row',
+                    start: "top 92%",
+                    end: "bottom 80%",
+                    scrub: 0.8,
+                    invalidateOnRefresh: true
+                }
+            }
+        );
+    }
+
+    // ----------------------------------------------------------------------
+    // 4. Stagger Reveal for 3 Side-by-Side Lanyard ID Cards (Bidirectional)
+    // ----------------------------------------------------------------------
+    const idCards = gsap.utils.toArray('.lanyard-row-grid .id-card-wrapper');
+    if (idCards.length > 0) {
+        gsap.fromTo(idCards,
+            { y: 70, opacity: 0, rotation: -3 },
+            {
+                y: 0,
+                opacity: 1,
+                rotation: 0,
+                duration: 0.9,
+                stagger: 0.18,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.lanyard-row-grid',
+                    start: 'top 85%',
+                    toggleActions: "play reverse play reverse" // Works on scroll down AND scroll up!
+                }
+            }
+        );
+    }
+
+    // ----------------------------------------------------------------------
+    // 5. Education Cards Animation (Bidirectional)
+    // ----------------------------------------------------------------------
+    gsap.utils.toArray('.education-card').forEach(card => {
+        gsap.fromTo(card,
+            { y: 40, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%',
+                    toggleActions: "play reverse play reverse" // Works on scroll down AND scroll up!
+                }
+            }
+        );
+    });
+
+    // ----------------------------------------------------------------------
+    // 6. Accordion Items Animation (Bidirectional)
+    // ----------------------------------------------------------------------
+    gsap.utils.toArray('.accordion-item').forEach((item, index) => {
+        gsap.fromTo(item,
+            { y: 25, opacity: 0.2 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.7,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 90%',
+                    toggleActions: "play reverse play reverse" // Works on scroll down AND scroll up!
+                }
+            }
+        );
     });
 }
 
@@ -235,6 +411,11 @@ function initAccordion() {
             if (!isActive) {
                 item.classList.add('active');
             }
+            
+            // Refresh scroll trigger heights if accordion opens/closes
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 400);
         });
     });
 }
@@ -283,6 +464,7 @@ function initCTAButtonAnimation() {
 
         setTimeout(() => {
             detailsBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            ScrollTrigger.refresh();
         }, 100);
     }
 
