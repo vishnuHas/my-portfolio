@@ -71,13 +71,20 @@ function initPreloader() {
 }
 
 /* --------------------------------------------------------------------------
-   2. CUSTOM RING CURSOR & MAGNETIC PULL
+   2. CUSTOM RING CURSOR & MAGNETIC PULL (DISABLED ON MOBILE/TOUCH)
    -------------------------------------------------------------------------- */
 function initCustomCursor() {
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
 
     if (!dot || !ring) return;
+
+    // Disable custom cursor immediately on touch devices / mobile phones
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 1024) {
+        dot.style.display = 'none';
+        ring.style.display = 'none';
+        return;
+    }
 
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
@@ -88,7 +95,7 @@ function initCustomCursor() {
 
         dot.style.left = `${mouseX}px`;
         dot.style.top = `${mouseY}px`;
-    });
+    }, { passive: true });
 
     function render() {
         ringX += (mouseX - ringX) * 0.15;
@@ -117,149 +124,185 @@ function initCustomCursor() {
                 const relY = e.clientY - rect.top - rect.height / 2;
 
                 target.style.transform = `translate(${relX * 0.25}px, ${relY * 0.25}px)`;
-            });
+            }, { passive: true });
         }
     });
 }
 
 /* --------------------------------------------------------------------------
-   3. GSAP SCROLLTRIGGER ANIMATIONS (SCROLL DOWN & SCROLL UP BIDIRECTIONAL)
+   3. GSAP SCROLLTRIGGER ANIMATIONS (ULTRA OPTIMIZED FOR 60FPS MOBILE)
    -------------------------------------------------------------------------- */
 function initGSAPAnimations() {
-    // 1. Parallax Hero Elements (Bidirectional on scroll)
-    gsap.to('#hero-accent-shape', {
-        y: 120,
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-        }
-    });
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 768;
 
-    gsap.to('#hero-parallax-card', {
-        y: -40,
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-        }
-    });
-
-    // ----------------------------------------------------------------------
-    // 3. BIDIRECTIONAL TEXT SCROLL ANIMATIONS (DOWN & UP)
-    // ----------------------------------------------------------------------
-    
-    // Helper function to split text nodes into individual word spans preserving HTML elements
-    function splitTextIntoWords(element) {
-        function processNode(node) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                const text = node.textContent;
-                if (!text) return null;
-                const words = text.split(/(\s+)/);
-                const fragment = document.createDocumentFragment();
-                words.forEach(word => {
-                    if (word.trim().length > 0) {
-                        const span = document.createElement('span');
-                        span.className = 'scrub-word';
-                        span.textContent = word;
-                        fragment.appendChild(span);
-                    } else if (word.length > 0) {
-                        fragment.appendChild(document.createTextNode(word));
-                    }
-                });
-                return fragment;
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-                const clone = node.cloneNode(false);
-                Array.from(node.childNodes).forEach(child => {
-                    const processed = processNode(child);
-                    if (processed) clone.appendChild(processed);
-                });
-                return clone;
+    // 1. Parallax Hero Elements (Desktop Only to save mobile GPU)
+    if (!isTouch) {
+        gsap.to('#hero-accent-shape', {
+            y: 120,
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
             }
-            return node.cloneNode(true);
-        }
-
-        const fragment = document.createDocumentFragment();
-        Array.from(element.childNodes).forEach(child => {
-            const processed = processNode(child);
-            if (processed) fragment.appendChild(processed);
         });
 
-        element.innerHTML = '';
-        element.appendChild(fragment);
+        gsap.to('#hero-parallax-card', {
+            y: -40,
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
     }
 
-    // A. Paragraph Kinetic Word Scrub Reveal (About Section & Bio)
-    // As you scroll DOWN, words progressively illuminate; as you scroll UP, words dim back!
-    document.querySelectorAll('.reveal-text').forEach(p => {
-        splitTextIntoWords(p);
-        const words = p.querySelectorAll('.scrub-word');
-        if (words.length > 0) {
-            gsap.fromTo(words, 
-                { opacity: 0.18, y: 8, filter: 'blur(1.5px)' },
+    // ----------------------------------------------------------------------
+    // 3. TEXT SCROLL ANIMATIONS (LIGHTWEIGHT ON MOBILE, SCRUB ON DESKTOP)
+    // ----------------------------------------------------------------------
+    if (isTouch) {
+        // Fast, butter-smooth block fades on mobile (zero CPU lag)
+        document.querySelectorAll('.reveal-text, .editorial-heading, .section-title-large, .contact-giant-title').forEach(el => {
+            gsap.fromTo(el,
+                { opacity: 0.2, y: 12 },
                 {
                     opacity: 1,
                     y: 0,
-                    filter: 'blur(0px)',
-                    stagger: 0.04,
+                    duration: 0.5,
                     ease: "power2.out",
                     scrollTrigger: {
-                        trigger: p,
-                        start: "top 88%",
-                        end: "bottom 58%",
-                        scrub: 0.8, // Bidirectional scrub forward and backward
-                        invalidateOnRefresh: true
+                        trigger: el,
+                        start: "top 92%",
+                        toggleActions: "play none none reverse"
                     }
                 }
             );
-        }
-    });
+        });
 
-    // B. Editorial Headings Word Scrub (e.g., "PASSIONATE ABOUT CODE, ELEGANCE & PERFORMANCE.")
-    document.querySelectorAll('.editorial-heading').forEach(heading => {
-        splitTextIntoWords(heading);
-        const words = heading.querySelectorAll('.scrub-word');
-        if (words.length > 0) {
-            gsap.fromTo(words,
-                { opacity: 0.15, y: 28, rotateX: -15 },
+        document.querySelectorAll('.section-tag').forEach(tag => {
+            gsap.fromTo(tag,
+                { opacity: 0, x: -12 },
                 {
                     opacity: 1,
-                    y: 0,
-                    rotateX: 0,
-                    stagger: 0.05,
-                    ease: "power3.out",
+                    x: 0,
+                    duration: 0.4,
                     scrollTrigger: {
-                        trigger: heading,
-                        start: "top 88%",
-                        end: "top 48%",
-                        scrub: 0.8, // Animate on both scroll down & up
+                        trigger: tag,
+                        start: "top 95%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    } else {
+        // Helper function to split text nodes into individual word spans on Desktop
+        function splitTextIntoWords(element) {
+            function processNode(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent;
+                    if (!text) return null;
+                    const words = text.split(/(\s+)/);
+                    const fragment = document.createDocumentFragment();
+                    words.forEach(word => {
+                        if (word.trim().length > 0) {
+                            const span = document.createElement('span');
+                            span.className = 'scrub-word';
+                            span.textContent = word;
+                            fragment.appendChild(span);
+                        } else if (word.length > 0) {
+                            fragment.appendChild(document.createTextNode(word));
+                        }
+                    });
+                    return fragment;
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const clone = node.cloneNode(false);
+                    Array.from(node.childNodes).forEach(child => {
+                        const processed = processNode(child);
+                        if (processed) clone.appendChild(processed);
+                    });
+                    return clone;
+                }
+                return node.cloneNode(true);
+            }
+
+            const fragment = document.createDocumentFragment();
+            Array.from(element.childNodes).forEach(child => {
+                const processed = processNode(child);
+                if (processed) fragment.appendChild(processed);
+            });
+
+            element.innerHTML = '';
+            element.appendChild(fragment);
+        }
+
+        // A. Paragraph Kinetic Word Scrub Reveal
+        document.querySelectorAll('.reveal-text').forEach(p => {
+            splitTextIntoWords(p);
+            const words = p.querySelectorAll('.scrub-word');
+            if (words.length > 0) {
+                gsap.fromTo(words, 
+                    { opacity: 0.18, y: 8 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.03,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: p,
+                            start: "top 88%",
+                            end: "bottom 58%",
+                            scrub: 0.8,
+                            invalidateOnRefresh: true
+                        }
+                    }
+                );
+            }
+        });
+
+        // B. Editorial Headings Word Scrub
+        document.querySelectorAll('.editorial-heading').forEach(heading => {
+            splitTextIntoWords(heading);
+            const words = heading.querySelectorAll('.scrub-word');
+            if (words.length > 0) {
+                gsap.fromTo(words,
+                    { opacity: 0.15, y: 20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.04,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: heading,
+                            start: "top 88%",
+                            end: "top 48%",
+                            scrub: 0.8,
+                            invalidateOnRefresh: true
+                        }
+                    }
+                );
+            }
+        });
+
+        // C. Section Tags
+        document.querySelectorAll('.section-tag').forEach(tag => {
+            gsap.fromTo(tag,
+                { opacity: 0, x: -25 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: tag,
+                        start: "top 92%",
+                        end: "top 68%",
+                        scrub: 0.6,
                         invalidateOnRefresh: true
                     }
                 }
             );
-        }
-    });
-
-    // C. Section Tags [ 01 / ABOUT ], [ 02 / TECH STACK ], etc.
-    document.querySelectorAll('.section-tag').forEach(tag => {
-        gsap.fromTo(tag,
-            { opacity: 0, x: -25 },
-            {
-                opacity: 1,
-                x: 0,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: tag,
-                    start: "top 92%",
-                    end: "top 68%",
-                    scrub: 0.6,
-                    invalidateOnRefresh: true
-                }
-            }
-        );
-    });
+        });
+    }
 
     // D. Section Titles (Tech Stack, Featured Work, Experience, Education, Contact)
     document.querySelectorAll('.section-title-large, .contact-giant-title').forEach(title => {
@@ -926,8 +969,12 @@ function initCardFanAutoSwap() {
         });
     });
 
-    // Pause on hover so the user can interact
+    // Pause on hover or touch scroll so user has buttery smooth 60fps scrolling
     deck.addEventListener('mouseenter', () => { isPaused = true; });
     deck.addEventListener('mouseleave', () => { isPaused = false; });
+    window.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+    window.addEventListener('touchend', () => {
+        setTimeout(() => { isPaused = false; }, 2500);
+    }, { passive: true });
 }
 
