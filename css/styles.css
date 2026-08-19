@@ -871,40 +871,35 @@ a {
     transform: rotate(-7deg) translateX(-95px) translateY(-5px) scale(0.99);
 }
 
-/* Floating Project Badge & GitHub Icon Inside Preview Window */
-.browser-floating-badge {
+/* Separate Floating Project Pill (Bottom-Left) */
+.floating-project-pill {
     position: absolute;
     bottom: 1.1rem;
     left: 1.1rem;
-    right: 1.1rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.55rem 1rem;
+    gap: 0.55rem;
+    padding: 0.5rem 0.95rem;
     background: rgba(15, 16, 21, 0.85);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
     z-index: 20;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    pointer-events: auto;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.browser-floating-badge:hover {
-    border-color: var(--accent-primary);
-}
-
-.badge-title {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     font-family: var(--font-heading);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    pointer-events: auto;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.floating-project-pill:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(46, 94, 255, 0.25);
 }
 
 .badge-dot {
@@ -921,38 +916,36 @@ a {
     50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-.badge-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.badge-icon-btn {
-    width: 32px;
-    height: 32px;
+/* Separate Floating GitHub Button (Bottom-Right) */
+.floating-github-btn {
+    position: absolute;
+    bottom: 1.1rem;
+    right: 1.1rem;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 16, 21, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
-    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    font-size: 1.05rem;
+    z-index: 20;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    pointer-events: auto;
     text-decoration: none;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
-.badge-icon-btn:hover {
+.floating-github-btn:hover {
     background: var(--accent-primary);
     border-color: var(--accent-primary);
     color: #ffffff;
-    transform: translateY(-2px);
-}
-
-.badge-visit-btn:hover {
-    background: #ffffff;
-    color: #0a0a0a;
-    border-color: #ffffff;
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 12px 25px rgba(46, 94, 255, 0.35);
 }
 
 /* Mini Browser Window Real-Time Frame (Scaled Full Desktop Fit) */

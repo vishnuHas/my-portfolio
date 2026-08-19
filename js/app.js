@@ -893,7 +893,7 @@ function initCardFanAutoSwap() {
     // Click on card / shield to bring to front without glitching
     cards.forEach((card, index) => {
         card.addEventListener('click', (e) => {
-            if (e.target.closest('.badge-icon-btn') || e.target.closest('.browser-external-link')) {
+            if (e.target.closest('.floating-github-btn') || e.target.closest('.browser-external-link')) {
                 return;
             }
             if (activeIndex !== index) {
