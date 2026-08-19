@@ -515,14 +515,14 @@ function initProjectModals() {
         </div>
         <div class="browser-url-bar">
             <i class="fa-solid fa-lock"></i>
-            <span id="modal-vectorjob-url">https://vectorjob.com</span>
+            <span id="modal-vectorjob-url">https://vector-white-website.pages.dev</span>
         </div>
-        <a href="https://vectorjob.com" id="modal-vectorjob-link" target="_blank" rel="noopener" class="browser-external-link" title="Open in new window">
+        <a href="https://vector-white-website.pages.dev" id="modal-vectorjob-link" target="_blank" rel="noopener" class="browser-external-link" title="Open in new window">
             <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Site
         </a>
     </div>
     <div class="browser-window-body" style="height: 380px;">
-        <iframe src="https://vectorjob.com" id="modal-vectorjob-iframe" class="browser-iframe" title="Vector Job Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        <iframe src="https://vector-white-website.pages.dev" id="modal-vectorjob-iframe" class="browser-iframe" title="Vector Job Live Preview" style="width:100%; height:100%; border:none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
     </div>
 </div>
 
