@@ -2,22 +2,23 @@
 
   <!-- Dynamic Typing Banner Header -->
   <a href="https://github.com/vishnuHas">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=26&pause=1000&color=6366F1&center=true&vCenter=true&random=false&width=800&height=70&lines=Hi+%F0%9F%91%8B%2C+I'm+Vishnu+N;AI+%26+Full+Stack+Software+Engineer;Python+%E2%80%A2+TypeScript+%E2%80%A2+Kotlin+%E2%80%A2+Next.js;Building+Scalable+Intelligent+Systems+%E2%9C%A8" alt="Typing SVG Banner" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=26&pause=1000&color=6366F1&center=true&vCenter=true&random=false&width=800&height=70&lines=Hi+%F0%9F%91%8B%2C+I'm+Vishnu+N;AI+%26+Full+Stack+Software+Engineer;Python+%E2%80%A2+Next.js+%E2%80%A2+TypeScript+%E2%80%A2+Kotlin;Building+Scalable+Intelligent+Systems+%E2%9C%A8" alt="Typing SVG Banner" />
   </a>
 
   <p align="center">
-    <strong>Computer Science Engineer • AI / Full-Stack Developer • Android & Cloud Systems Builder</strong>
+    <strong>Computer Science Engineer • AI / Full-Stack Developer • Python &amp; Next.js Systems Builder</strong>
   </p>
 
   <p align="center">
     <a href="https://github.com/vishnuHas"><img src="https://img.shields.io/badge/Status-🟢%20Open%20for%20Opportunities-success?style=for-the-badge&logo=statuspage&logoColor=white&color=10B981" alt="Status Badge"/></a>
     <a href="https://github.com/vishnuHas"><img src="https://img.shields.io/badge/Location-Bengaluru%2C%20India-blue?style=for-the-badge&logo=googlemaps&logoColor=white&color=3B82F6" alt="Location Badge"/></a>
-    <a href="https://github.com/vishnuHas"><img src="https://img.shields.io/badge/Primary%20Stack-Python%20%7C%20TS%20%7C%20Kotlin%20%7C%20React-purple?style=for-the-badge&logo=codeigniter&logoColor=white&color=8B5CF6" alt="Stack Badge"/></a>
+    <a href="https://github.com/vishnuHas"><img src="https://img.shields.io/badge/Top%20Stack-Python%20%7C%20Next.js%20%7C%20TypeScript%20%7C%20AI-purple?style=for-the-badge&logo=python&logoColor=white&color=8B5CF6" alt="Top Stack Badge"/></a>
   </p>
 
   <!-- Quick Navigation Bar -->
   <p align="center">
     <a href="#-about-me"><b>About</b></a> •
+    <a href="#-top-languages--core-stack"><b>Top Languages</b></a> •
     <a href="#-github-telemetry--activity-metrics"><b>Analytics</b></a> •
     <a href="#-featured-engineering-repositories"><b>Repositories</b></a> •
     <a href="#-technical-arsenal"><b>Tech Stack</b></a> •
@@ -47,16 +48,68 @@ Education:    Bachelor of Engineering in Computer Science & Engineering
 Institution:  Sir M. Visvesvaraya Institute of Technology (Sir MVIT), Bengaluru (2023–2026)
 Location:     Bengaluru, Karnataka, India 🇮🇳
 Current Role: Full Stack & AI Engineer Intern
-Core Focus:   AI & ML Engineering, Distributed Full-Stack Architectures, Android Native (Kotlin)
-Languages:    Python, TypeScript, JavaScript, Kotlin, C++, Java, SQL
-Tech Pillars: PyTorch, Scikit-Learn, Next.js, React, FastAPI, Node.js, AWS, Docker, Firebase
+Core Focus:   Python AI/ML Systems, Next.js Full-Stack Architecture, Distributed Cloud & Mobile
+Top Stack:    Python, Next.js, TypeScript, Kotlin, React, FastAPI, AWS, Docker
 ```
 
-- 🔭 **Currently Building:** High-performance AI studio platforms (*CortexAI*), audio speech analysis tools (*AI-pronunciation*), and real-time collaboration engines (*Hackateer*).
-- 🐍 **Python & AI Focus:** Model evaluation, NLP pipelines, Scikit-learn predictive engines, OpenCV computer vision, and FastAPI microservices.
-- 📱 **Mobile & Native Systems:** Android application engineering with **Kotlin** (*Budakatu-Sante*) and zero-overhead native socket daemons in **Python**.
-- 🌐 **Web & Cloud Platforms:** Next.js App Router, TypeScript, Cloudflare Workers/Pages, PostgreSQL, Firebase, and Vercel.
+- 🐍 **Python & AI Systems:** Advanced model engineering, Scikit-learn predictive engines, OpenCV computer vision, PyTorch ML pipelines, and FastAPI high-concurrency microservices.
+- ⚡ **Next.js & Modern Web:** Production full-stack apps with Next.js App Router, React Server Components, Server Actions, Tailwind CSS, and Edge runtime on Cloudflare/Vercel.
+- 📱 **Mobile & Native Platforms:** Android application engineering with **Kotlin** (*Budakatu-Sante*) and zero-overhead native socket daemons in **Python**.
 - 🎓 **Academic Leadership:** Creator of **VTU Labs Portal** — curated academic repository assisting 500+ university engineering students across Karnataka.
+
+<br />
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- TOP LANGUAGES & CORE STACK SPOTLIGHT                                    -->
+<!-- ----------------------------------------------------------------------- -->
+## ⚡ Top Languages & Core Stack
+
+<div align="center">
+  <table border="0" cellpadding="10" cellspacing="0" width="100%">
+    <tr>
+      <td align="center" width="20%" style="background:#0d1117; border-radius:12px; padding:15px;">
+        <a href="https://www.python.org" target="_blank">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="52" height="52" alt="Python" />
+        </a>
+        <br />
+        <b><font size="+1">Python</font></b><br />
+        <sub>AI &bull; FastAPI &bull; ML &bull; Vision</sub>
+      </td>
+      <td align="center" width="20%" style="background:#0d1117; border-radius:12px; padding:15px;">
+        <a href="https://nextjs.org" target="_blank">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" width="52" height="52" alt="Next.js" />
+        </a>
+        <br />
+        <b><font size="+1">Next.js</font></b><br />
+        <sub>App Router &bull; SSR &bull; Full-Stack</sub>
+      </td>
+      <td align="center" width="20%" style="background:#0d1117; border-radius:12px; padding:15px;">
+        <a href="https://www.typescriptlang.org" target="_blank">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" width="52" height="52" alt="TypeScript" />
+        </a>
+        <br />
+        <b><font size="+1">TypeScript</font></b><br />
+        <sub>Type Safety &bull; Robust Apps</sub>
+      </td>
+      <td align="center" width="20%" style="background:#0d1117; border-radius:12px; padding:15px;">
+        <a href="https://kotlinlang.org" target="_blank">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kotlin/kotlin-original.svg" width="52" height="52" alt="Kotlin" />
+        </a>
+        <br />
+        <b><font size="+1">Kotlin</font></b><br />
+        <sub>Android Native &bull; Jetpack</sub>
+      </td>
+      <td align="center" width="20%" style="background:#0d1117; border-radius:12px; padding:15px;">
+        <a href="https://react.dev" target="_blank">
+          <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" width="52" height="52" alt="React" />
+        </a>
+        <br />
+        <b><font size="+1">React</font></b><br />
+        <sub>Interactive UIs &bull; Components</sub>
+      </td>
+    </tr>
+  </table>
+</div>
 
 <br />
 
@@ -194,7 +247,7 @@ Tech Pillars: PyTorch, Scikit-Learn, Next.js, React, FastAPI, Node.js, AWS, Dock
       </p>
       <p>Brand telemetry and market sentiment analytics dashboard delivering real-time digital engagement tracking, campaign performance monitoring, and visual analytics.</p>
       <p>
-        <code>JavaScript</code> • <code>Vercel</code> • <code>Tailwind CSS</code> • <code>Data Viz</code>
+        <code>Next.js</code> • <code>JavaScript</code> • <code>Vercel</code> • <code>Tailwind CSS</code>
       </p>
     </td>
     <td width="50%" valign="top">
@@ -270,17 +323,18 @@ Tech Pillars: PyTorch, Scikit-Learn, Next.js, React, FastAPI, Node.js, AWS, Dock
 
 <div align="center">
 
-  ### 💻 Programming Languages
+  ### 💻 Programming & Framework Powerhouses
   <p>
     <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
     <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+    <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
     <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
     <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++" />
     <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
     <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="SQL" />
-    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
-    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
   </p>
 
   ### 🤖 Artificial Intelligence & Machine Learning
@@ -295,17 +349,16 @@ Tech Pillars: PyTorch, Scikit-Learn, Next.js, React, FastAPI, Node.js, AWS, Dock
     <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
   </p>
 
-  ### 🌐 Web & Frontend Frameworks
+  ### 🌐 Frontend & UI Engineering
   <p>
-    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
-    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
     <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
     <img src="https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
   </p>
 
   ### ⚙️ Backend, Systems & APIs
   <p>
-    <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
     <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
     <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
     <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
