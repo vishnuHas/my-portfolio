@@ -2,705 +2,1238 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishnu N — Software Engineer & AI Developer</title>
-    <meta name="description" content="Cinematic portfolio of Vishnu N - Software Engineer, AI Specialist & Cloud Developer based in Bengaluru.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Vishnu N — Full Stack &amp; AI Developer</title>
+    <meta name="description" content="Personal portfolio of Vishnu N — Full Stack, AI &amp; Cloud Developer based in Bengaluru, India.">
+    <meta name="theme-color" content="#ffffff">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Vishnu N — Software Engineer & AI Developer">
-    <meta property="og:description" content="Cinematic personal portfolio of Vishnu N featuring AI applications, cloud infrastructure, and full-stack web engineering.">
-    
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Plus Jakarta Sans + JetBrains Mono + Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;700;800;900&family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,400..700,0..1,0" />
     
-    <!-- FontAwesome Icons -->
+    <!-- Devicon & FontAwesome Icons -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Stylesheet -->
+    <!-- Core Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- GSAP & ScrollTrigger Libraries -->
+    <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
-<body class="is-loading">
+<body>
 
-    <!-- Preloader Overlay -->
-    <div id="preloader" class="preloader">
-        <div class="preloader-content">
-            <div class="preloader-counter" id="preloader-counter">00%</div>
-            <div class="preloader-line-wrapper">
-                <div class="preloader-line" id="preloader-line"></div>
-            </div>
-            <span class="preloader-subtext">INITIALIZING SYSTEMS</span>
-        </div>
-        <div class="preloader-curtain" id="preloader-curtain"></div>
-    </div>
-
-    <!-- Custom Ring & Dot Cursor -->
-    <div id="cursor-dot" class="cursor-dot"></div>
-    <div id="cursor-ring" class="cursor-ring"></div>
-
-    <!-- Header Navigation Bar -->
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo hover-magnetic">
-                <span class="logo-accent">V</span>ISHNU <span class="logo-accent">N</span>
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- 1. FIXED TOP NAVBAR                                                     -->
+    <!-- ----------------------------------------------------------------------- -->
+    <header class="header-navbar" id="top-navbar">
+        <div class="header-container">
+            <a href="#home" class="brand-logo" aria-label="Vishnu N">
+                <div class="logo-symbol">
+                    <svg viewBox="0 0 32 32" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 8L11 24L16 13L21 24L28 8" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="logo-name">VISHNU.N</span>
             </a>
 
-            <nav class="nav-menu">
-                <a href="#about" class="nav-link hover-magnetic"><span class="nav-num">01</span> About</a>
-                <a href="#skills" class="nav-link hover-magnetic"><span class="nav-num">02</span> Tech</a>
-                <a href="#projects" class="nav-link hover-magnetic"><span class="nav-num">03</span> Projects</a>
-                <a href="#experience" class="nav-link hover-magnetic"><span class="nav-num">04</span> Experience</a>
-                <a href="#education" class="nav-link hover-magnetic"><span class="nav-num">05</span> Education</a>
-                <a href="#contact" class="nav-link hover-magnetic"><span class="nav-num">06</span> Contact</a>
+            <nav class="center-nav-links">
+                <a href="#home" class="nav-anchor active">HOME</a>
+                <a href="#about" class="nav-anchor">ABOUT</a>
+                <a href="#projects" class="nav-anchor">PROJECTS</a>
+                <a href="#skills" class="nav-anchor">SKILLS</a>
+                <a href="#experience" class="nav-anchor">EXPERIENCE</a>
+                <a href="#education" class="nav-anchor">EDUCATION</a>
+                <a href="#contact" class="nav-anchor">CONTACT</a>
             </nav>
 
-            <div class="nav-actions">
-                <button class="btn-magnetic hover-magnetic" id="nav-contact-btn">
-                    <span>GET IN TOUCH</span>
-                    <i class="fa-solid fa-arrow-down"></i>
+            <div class="header-cta-group">
+                <a href="#contact" class="btn-dark-pill nav-cta-btn">
+                    <span>Let's Connect</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square cta-arrow"></i>
+                </a>
+                <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
                 </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer Overlay -->
+        <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+            <nav class="mobile-nav-links">
+                <a href="#home" class="mobile-nav-link active"><span class="mob-num">01</span> HOME</a>
+                <a href="#about" class="mobile-nav-link"><span class="mob-num">02</span> ABOUT</a>
+                <a href="#projects" class="mobile-nav-link"><span class="mob-num">03</span> PROJECTS</a>
+                <a href="#skills" class="mobile-nav-link"><span class="mob-num">04</span> SKILLS</a>
+                <a href="#experience" class="mobile-nav-link"><span class="mob-num">05</span> EXPERIENCE</a>
+                <a href="#education" class="mobile-nav-link"><span class="mob-num">06</span> EDUCATION</a>
+                <a href="#contact" class="mobile-nav-link"><span class="mob-num">07</span> CONTACT</a>
+            </nav>
+            <div class="mobile-nav-footer">
+                <a href="#contact" class="btn-dark-pill btn-mob-connect">
+                    <span>Let's Connect</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </a>
             </div>
         </div>
     </header>
 
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <!-- Parallax Geometric Accent Shape -->
-            <div class="hero-accent-shape" id="hero-accent-shape"></div>
-            
-            <div class="container hero-container">
-                <div class="hero-header-meta">
-                    <span class="status-pill"><span class="status-dot"></span> AVAILABLE FOR SOFTWARE ENGINEERING ROLES</span>
-                    <span class="location-pill"><i class="fa-solid fa-location-dot"></i> BENGALURU, INDIA</span>
-                </div>
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- 2. LEFT VERTICAL NUMBERED TIMELINE RAIL (INTERACTIVE DRAGGABLE PUZZLE)  -->
+    <!-- ----------------------------------------------------------------------- -->
+    <aside class="left-timeline-rail" id="timeline-rail" aria-label="Section Navigation">
+        
+        <div class="rail-indicator" draggable="true" data-target="skills" data-order="4" title="Drag to reorder / Click to scroll">
+            <span class="rail-num">04</span>
+            <span class="rail-label">SKILLS</span>
+            <span class="rail-dot"></span>
+        </div>
+        <div class="rail-line-segment"></div>
+        
+        <div class="rail-indicator" draggable="true" data-target="home" data-order="1" title="Drag to reorder / Click to scroll">
+            <span class="rail-num">01</span>
+            <span class="rail-label">HOME</span>
+            <span class="rail-dot"></span>
+        </div>
+        <div class="rail-line-segment"></div>
+        
+        <div class="rail-indicator" draggable="true" data-target="education" data-order="6" title="Drag to reorder / Click to scroll">
+            <span class="rail-num">06</span>
+            <span class="rail-label">EDUCATION</span>
+            <span class="rail-dot"></span>
+        </div>
+        <div class="rail-line-segment"></div>
 
-                <!-- Giant Editorial Display Typography -->
-                <div class="hero-title-wrapper">
-                    <h1 class="hero-display-title" id="hero-title">
-                        <span class="title-line title-line-1"><span class="title-char">V</span><span class="title-char">I</span><span class="title-char">S</span><span class="title-char">H</span><span class="title-char">N</span><span class="title-char">U</span></span>
-                        <span class="title-line title-line-2"><span class="accent-text">N.</span></span>
-                    </h1>
-                </div>
+        <div class="rail-indicator" draggable="true" data-target="about" data-order="2" title="Drag to reorder / Click to scroll">
+            <span class="rail-num">02</span>
+            <span class="rail-label">ABOUT</span>
+            <span class="rail-dot"></span>
+        </div>
+        <div class="rail-line-segment"></div>
 
+        <div class="rail-indicator" draggable="true" data-target="experience" data-order="5" title="Drag to reorder / Click to scroll">
+            <span class="rail-num">05</span>
+            <span class="rail-label">EXPERIENCE</span>
+            <span class="rail-dot"></span>
+        </div>
+        <div class="rail-line-segment"></div>
+
+        <div class="rail-indicator" draggable="true" data-target="projects" data-order="3" title="Drag to reorder / Click to scroll">
+            <span class="rail-num">03</span>
+            <span class="rail-label">PROJECTS</span>
+            <span class="rail-dot"></span>
+        </div>
+        <div class="rail-line-segment"></div>
+
+        <div class="rail-indicator" draggable="true" data-target="contact" data-order="7" title="Drag to reorder / Click to scroll">
+            <span class="rail-num">07</span>
+            <span class="rail-label">CONTACT</span>
+            <span class="rail-dot"></span>
+        </div>
+    </aside>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- MAIN CONTENT VIEWPORT                                                   -->
+    <!-- ----------------------------------------------------------------------- -->
+    <div class="site-main-content">
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- SECTION 01: HERO                                                    -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="home" class="page-section hero-section">
+            <div class="section-container">
                 <div class="hero-grid">
-                    <div class="hero-left-col">
-                        <h2 class="hero-subtitle">
-                            SOFTWARE ENGINEER & <br><span class="accent-underline">AI FULL-STACK DEVELOPER</span>
-                        </h2>
-                        <p class="hero-bio-lead">
-                            Engineering scalable cloud infrastructure on AWS, high-performance web systems with React/Next.js, native Android applications, and autonomous AI pipelines.
+                    
+                    <!-- Hero Left: Typography & Actions -->
+                    <div class="hero-left-column">
+                        <span class="eyebrow-text">HELLO, I'M</span>
+                        <h1 class="hero-main-title">
+                            Vishnu <span class="gradient-letter">N</span>
+                        </h1>
+                        <p class="hero-role-title">Full Stack &amp; AI Developer</p>
+                        
+                        <p class="hero-bio-paragraph">
+                            I build exceptional digital experiences, <strong class="text-dark-accent">AWS Cloud Pipelines</strong>, and <strong class="text-dark-accent">Generative AI Systems</strong> with clean code and creative engineering.
                         </p>
-                    </div>
 
-                    <!-- Clean Typographic Code Feature Card (Floating chips removed for ultra-clean look) -->
-                    <div class="hero-right-col" id="hero-parallax-card">
-                        <div class="hero-code-card">
-                            <div class="code-card-header">
-                                <span class="code-dot red"></span>
-                                <span class="code-dot yellow"></span>
-                                <span class="code-dot green"></span>
-                                <span class="code-title">vishnu_engineer.ts</span>
-                            </div>
-                            <div class="code-card-body">
-                                <pre><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
-  <span class="code-prop">name</span>: <span class="code-str">"Vishnu N"</span>,
-  <span class="code-prop">role</span>: <span class="code-str">"Full-Stack & AI Engineer"</span>,
-  <span class="code-prop">journey</span>: [<span class="code-str">"Rapsol"</span>, <span class="code-str">"MindMatrixEd"</span>, <span class="code-str">"ShadowFox"</span>],
-  <span class="code-prop">stack</span>: [<span class="code-str">"Kotlin"</span>, <span class="code-str">"Python"</span>, <span class="code-str">"React"</span>, <span class="code-str">"AWS"</span>],
-  <span class="code-prop">uptime</span>: <span class="code-num">0.999</span>
-};</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hero Bottom Metrics Strip -->
-                <div class="hero-metrics-strip">
-                    <div class="metric-item">
-                        <span class="metric-num">3</span>
-                        <span class="metric-desc">Tech Internships</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-num">500+</span>
-                        <span class="metric-desc">Students Served</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-num">99.9%</span>
-                        <span class="metric-desc">AWS Model Uptime</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-num">4+</span>
-                        <span class="metric-desc">Production AI Apps</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <a href="#about" class="hero-scroll-down hover-magnetic" aria-label="Scroll to about section">
-                <span class="scroll-text">SCROLL</span>
-                <i class="fa-solid fa-arrow-down"></i>
-            </a>
-        </section>
-
-        <!-- About Section (Editorial Split-Screen) -->
-        <section id="about" class="about-section section-spacing">
-            <div class="container">
-                <div class="editorial-grid">
-                    <div class="editorial-left">
-                        <span class="section-tag">[ 01 / ABOUT ]</span>
-                        <h2 class="editorial-heading">PASSIONATE ABOUT <span class="accent-text">CODE</span>, ELEGANCE & PERFORMANCE.</h2>
-                    </div>
-
-                    <div class="editorial-right">
-                        <div class="editorial-text-block">
-                            <p class="reveal-text">
-                                I am a Computer Science Engineering student at <strong>Sir M. Visvesvaraya Institute of Technology (Sir MVIT)</strong>, Bengaluru. I specialize in building software systems that seamlessly connect intuitive front-end interfaces with high-availability backends and AI models.
-                            </p>
-                            <p class="reveal-text">
-                                Across internships at <strong>Rapsol Technology</strong>, <strong>MindMatrixEd</strong>, and <strong>ShadowFox</strong>, I have engineered AWS cloud ML pipelines (99.9% uptime), native Android apps with GenAI (Kotlin & Jetpack Compose), and machine learning models.
-                            </p>
+                        <div class="hero-buttons-row">
+                            <a href="#projects" class="btn-dark-pill btn-primary-hero">
+                                <span>Explore Work</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn-outline-pill">
+                                <span>Get In Touch</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </a>
                         </div>
 
-                        <div class="editorial-meta-row">
-                            <div class="meta-col">
-                                <span class="meta-label">LOCATION</span>
-                                <span class="meta-val">Bengaluru, KA, India</span>
-                            </div>
-                            <div class="meta-col">
-                                <span class="meta-label">DEGREE</span>
-                                <span class="meta-val">B.E. Computer Science</span>
-                            </div>
-                            <div class="meta-col">
-                                <span class="meta-label">LANGUAGES</span>
-                                <span class="meta-val">English, Kannada, Hindi</span>
-                            </div>
+                        <!-- Interactive Developer Easter Egg Pill (Fake Error Concept) -->
+                        <div class="interactive-error-pill" id="interactive-error-trigger" role="button" tabindex="0" title="Click to inspect system diagnostics">
+                            <span class="error-badge-dot"></span>
+                            <span class="error-badge-code">ERR_404:</span>
+                            <span class="error-badge-label">Bug Not Found</span>
+                            <span class="error-inspect-tag">Inspect <i class="fa-solid fa-chevron-right"></i></span>
                         </div>
                     </div>
+
+                    <!-- Hero Right: Portal Illustration & Floating Stat Card -->
+                    <div class="hero-right-column">
+                        <div class="hero-visual-stage">
+                            
+                            <!-- Main Portal Artwork Image -->
+                            <div class="hero-artwork-frame">
+                                <img src="images/hero-portal-artwork.jpg" alt="AI &amp; Cloud Innovation Portal" class="hero-portal-artwork-img" loading="eager">
+                            </div>
+
+                            <!-- Floating Stat Card Positioned on Visual Stage -->
+                            <div class="floating-experience-card">
+                                <div class="stat-big-num">4+</div>
+                                <div class="stat-subtext">Production AI<br>&amp; Web Platforms</div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
+
+                <!-- Animated Mouse Scroll Placed Centered in the Middle -->
+                <div class="hero-scroll-wrapper">
+                    <a href="#about" class="hero-scroll-indicator" aria-label="Scroll to about section">
+                        <div class="mouse-icon">
+                            <div class="mouse-wheel"></div>
+                        </div>
+                        <span class="scroll-label">SCROLL</span>
+                    </a>
+                </div>
+
             </div>
         </section>
 
-        <!-- Tech Stack & Skills Section -->
-        <section id="skills" class="skills-section section-spacing">
-            <div class="container">
-                <div class="section-header-editorial">
-                    <span class="section-tag">[ 02 / TECH STACK ]</span>
-                    <h2 class="section-title-large">CORE <span class="accent-text">CAPABILITIES</span></h2>
+        <!-- ------------------------------------------------------------------- -->
+        <!-- SECTION 02: ABOUT ME                                                -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="about" class="page-section about-section">
+            <div class="section-container">
+                
+                <div class="about-grid">
+                    
+                    <!-- Left Column: Tag & Heading -->
+                    <div class="about-left-col">
+                        <span class="section-blue-tag">ABOUT</span>
+                        
+                        <h2 class="about-heading">
+                            PASSIONATE ABOUT<br>
+                            <span class="text-blue-accent">CODE,</span> ELEGANCE &amp;<br>
+                            PERFORMANCE.
+                        </h2>
+                    </div>
+
+                    <!-- Right Column: Narrative Bios & 3-Column Metadata -->
+                    <div class="about-right-col">
+                        <p class="about-description">
+                            I am a Computer Science Engineering student at <strong>Sir M. Visvesvaraya Institute of Technology (Sir MVIT)</strong>, Bengaluru. I specialize in building software systems that seamlessly connect intuitive front-end interfaces with high-availability backends and AI models.
+                        </p>
+
+                        <p class="about-description">
+                            Across internships at <strong>Rapsol Technology</strong>, <strong>MindMatrixEd</strong>, and <strong>ShadowFox</strong>, I have engineered AWS cloud ML pipelines (99.9% uptime), native Android apps with GenAI (Kotlin &amp; Jetpack Compose), and machine learning models.
+                        </p>
+
+                        <div class="about-meta-divider"></div>
+
+                        <!-- 3-Column Metadata: Location, Degree, Languages -->
+                        <div class="about-metadata-grid">
+                            <div class="about-meta-item">
+                                <span class="about-meta-label">LOCATION</span>
+                                <span class="about-meta-val">Bengaluru, KA, India</span>
+                            </div>
+                            <div class="about-meta-item">
+                                <span class="about-meta-label">DEGREE</span>
+                                <span class="about-meta-val">B.E. Computer Science</span>
+                            </div>
+                            <div class="about-meta-item">
+                                <span class="about-meta-label">LANGUAGES</span>
+                                <span class="about-meta-val">English, Kannada, Hindi</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-            <!-- Ticker Marquee Strip -->
-            <div class="ticker-wrapper">
-                <div class="ticker-track">
-                    <span class="ticker-item">KOTLIN & JETPACK COMPOSE</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">GENAI INTEGRATION</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">PYTHON & ML</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">REACT & NEXT.JS</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">AWS CLOUD (EC2/S3/LAMBDA)</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">FIREBASE & REST APIS</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">SELENIUM AUTOMATION</span><span class="ticker-star">&bull;</span>
-                    <!-- Duplicate for seamless looping -->
-                    <span class="ticker-item">KOTLIN & JETPACK COMPOSE</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">GENAI INTEGRATION</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">PYTHON & ML</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">REACT & NEXT.JS</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">AWS CLOUD (EC2/S3/LAMBDA)</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">FIREBASE & REST APIS</span><span class="ticker-star">&bull;</span>
-                    <span class="ticker-item">SELENIUM AUTOMATION</span><span class="ticker-star">&bull;</span>
-                </div>
-            </div>
-
-            <!-- Interactive Accordion Expand List -->
-            <div class="container">
-                <div class="skills-accordion-list">
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="acc-num">01</span>
-                            <h3 class="acc-title">ANDROID & MOBILE DEVELOPMENT</h3>
-                            <i class="fa-solid fa-plus acc-icon"></i>
-                        </div>
-                        <div class="accordion-body">
-                            <p>Developing native Android applications using Kotlin and Jetpack Compose, managing end-to-end workflows, debugging, testing, and full-stack Firebase integration.</p>
-                            <div class="acc-tags">
-                                <span>Kotlin</span><span>Jetpack Compose</span><span>Android Studio</span><span>Firebase</span><span>GenAI</span><span>UI/UX</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="acc-num">02</span>
-                            <h3 class="acc-title">FULL-STACK WEB DEVELOPMENT</h3>
-                            <i class="fa-solid fa-plus acc-icon"></i>
-                        </div>
-                        <div class="accordion-body">
-                            <p>Building high-performance React and Next.js applications, server-side rendering, code-splitting, WebSocket real-time connections, and responsive CSS architectures.</p>
-                            <div class="acc-tags">
-                                <span>React</span><span>Next.js</span><span>Node.js</span><span>JavaScript</span><span>Tailwind CSS</span><span>WebSockets</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="acc-num">03</span>
-                            <h3 class="acc-title">ARTIFICIAL INTELLIGENCE & GENAI</h3>
-                            <i class="fa-solid fa-plus acc-icon"></i>
-                        </div>
-                        <div class="accordion-body">
-                            <p>Leveraging Google AI Studio and Cloud Labs for GenAI mobile integration, constructing CNN facial recognition computer vision systems, and optimizing LLM pipelines.</p>
-                            <div class="acc-tags">
-                                <span>GenAI</span><span>Google AI Studio</span><span>LLM APIs</span><span>Python</span><span>CNNs</span><span>OpenCV</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span class="acc-num">04</span>
-                            <h3 class="acc-title">AWS CLOUD & DEVOPS</h3>
-                            <i class="fa-solid fa-plus acc-icon"></i>
-                        </div>
-                        <div class="accordion-body">
-                            <p>Deploying production applications on AWS infrastructure (EC2 compute, S3 storage, Lambda serverless), CI/CD pipelines, Git version control, and API testing with Postman.</p>
-                            <div class="acc-tags">
-                                <span>AWS EC2</span><span>AWS S3</span><span>AWS Lambda</span><span>Git</span><span>GitHub</span><span>Postman</span><span>REST APIs</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Featured Projects Showcase -->
-        <section id="projects" class="projects-section section-spacing">
-            <div class="container">
-                <div class="section-header-editorial">
-                    <span class="section-tag">[ 03 / FEATURED WORK ]</span>
-                    <h2 class="section-title-large">SELECTED <span class="accent-text">PROJECTS</span></h2>
-                </div>
-
-                <div class="card-fan-wrapper">
-                    <!-- Deck Navigation Indicator Pills -->
-                    <div class="fan-deck-controls">
-                        <button class="fan-nav-btn prev-btn" id="fan-prev-btn" aria-label="Previous Project"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="fan-deck-indicators" id="fan-deck-indicators">
-                            <span class="fan-indicator-dot active" data-index="0"></span>
-                            <span class="fan-indicator-dot" data-index="1"></span>
-                            <span class="fan-indicator-dot" data-index="2"></span>
-                            <span class="fan-indicator-dot" data-index="3"></span>
-                        </div>
-                        <button class="fan-nav-btn next-btn" id="fan-next-btn" aria-label="Next Project"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-
-                    <div class="card-fan-deck" id="card-fan-deck">
-                        <!-- Card 1: Vector Job -->
-                        <div class="fan-card" data-index="0" data-project="vector-job">
-                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
-                            <div class="mini-browser-window">
-                                <div class="browser-window-header">
-                                    <div class="browser-dots">
-                                        <span class="b-dot red"></span>
-                                        <span class="b-dot yellow"></span>
-                                        <span class="b-dot green"></span>
-                                    </div>
-                                    <div class="browser-url-bar">
-                                        <i class="fa-solid fa-lock"></i>
-                                        <span class="browser-url-text">https://vector-white-website.pages.dev</span>
-                                    </div>
-                                    <a href="https://vector-white-website.pages.dev" target="_blank" rel="noopener" class="browser-external-link" title="Open live site">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                                <div class="browser-window-body">
-                                    <div class="browser-iframe-scaler">
-                                        <iframe src="https://vector-white-website.pages.dev" class="browser-iframe" title="Vector Job Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-                                    </div>
-                                    <!-- Separate Floating Project Name & Floating GitHub Icon -->
-                                    <div class="floating-project-pill">
-                                        <span class="badge-dot"></span> VECTOR JOB
-                                    </div>
-                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="floating-github-btn" title="View Source on GitHub" aria-label="GitHub Source Code">
-                                        <i class="fa-brands fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 2: VTU Labs -->
-                        <div class="fan-card" data-index="1" data-project="vtu-labs">
-                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
-                            <div class="mini-browser-window">
-                                <div class="browser-window-header">
-                                    <div class="browser-dots">
-                                        <span class="b-dot red"></span>
-                                        <span class="b-dot yellow"></span>
-                                        <span class="b-dot green"></span>
-                                    </div>
-                                    <div class="browser-url-bar">
-                                        <i class="fa-solid fa-lock"></i>
-                                        <span class="browser-url-text">https://vishnuhas.github.io/labs/</span>
-                                    </div>
-                                    <a href="https://vishnuhas.github.io/labs/" target="_blank" rel="noopener" class="browser-external-link" title="Open live site">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                                <div class="browser-window-body">
-                                    <div class="browser-iframe-scaler">
-                                        <iframe src="https://vishnuhas.github.io/labs/" class="browser-iframe" title="VTU Labs Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-                                    </div>
-                                    <!-- Separate Floating Project Name & Floating GitHub Icon -->
-                                    <div class="floating-project-pill">
-                                        <span class="badge-dot"></span> VTU LABS
-                                    </div>
-                                    <a href="https://github.com/vishnuHas/labs" target="_blank" rel="noopener" class="floating-github-btn" title="View Source on GitHub" aria-label="GitHub Source Code">
-                                        <i class="fa-brands fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: StudentOS -->
-                        <div class="fan-card" data-index="2" data-project="studentos">
-                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
-                            <div class="mini-browser-window">
-                                <div class="browser-window-header">
-                                    <div class="browser-dots">
-                                        <span class="b-dot red"></span>
-                                        <span class="b-dot yellow"></span>
-                                        <span class="b-dot green"></span>
-                                    </div>
-                                    <div class="browser-url-bar">
-                                        <i class="fa-solid fa-lock"></i>
-                                        <span class="browser-url-text">https://vishnu-studentos.web.app/</span>
-                                    </div>
-                                    <a href="https://vishnu-studentos.web.app/" target="_blank" rel="noopener" class="browser-external-link" title="Open live site">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                                <div class="browser-window-body">
-                                    <div class="browser-iframe-scaler">
-                                        <iframe src="https://vishnu-studentos.web.app/" class="browser-iframe" title="StudentOS Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-                                    </div>
-                                    <!-- Separate Floating Project Name & Floating GitHub Icon -->
-                                    <div class="floating-project-pill">
-                                        <span class="badge-dot"></span> STUDENTOS AI
-                                    </div>
-                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="floating-github-btn" title="View Source on GitHub" aria-label="GitHub Source Code">
-                                        <i class="fa-brands fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4: Hackateer -->
-                        <div class="fan-card" data-index="3" data-project="hackateer">
-                            <div class="fan-card-click-shield" title="Click to bring to front"></div>
-                            <div class="mini-browser-window">
-                                <div class="browser-window-header">
-                                    <div class="browser-dots">
-                                        <span class="b-dot red"></span>
-                                        <span class="b-dot yellow"></span>
-                                        <span class="b-dot green"></span>
-                                    </div>
-                                    <div class="browser-url-bar">
-                                        <i class="fa-solid fa-lock"></i>
-                                        <span class="browser-url-text">https://hackateer.pages.dev/</span>
-                                    </div>
-                                    <a href="https://hackateer.pages.dev/" target="_blank" rel="noopener" class="browser-external-link" title="Open live site">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                                <div class="browser-window-body">
-                                    <div class="browser-iframe-scaler">
-                                        <iframe src="https://hackateer.pages.dev/" class="browser-iframe" title="Hackateer Live Preview" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-                                    </div>
-                                    <!-- Separate Floating Project Name & Floating GitHub Icon -->
-                                    <div class="floating-project-pill">
-                                        <span class="badge-dot"></span> HACKATEER
-                                    </div>
-                                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="floating-github-btn" title="View Source on GitHub" aria-label="GitHub Source Code">
-                                        <i class="fa-brands fa-github"></i>
-                                    </a>
-                                </div>
+        <!-- ------------------------------------------------------------------- -->
+        <!-- SECTION 03: SELECTED PROJECTS (EXACT 3-CARD LAYOUT FROM IMAGE)      -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="projects" class="page-section projects-section">
+            <div class="section-container">
+                
+                <!-- Section Header with Blue Tag, Curve Line & View All Button -->
+                <div class="projects-section-header">
+                    <div class="header-text-group">
+                        <span class="section-blue-tag">MY WORK</span>
+                        <div class="heading-with-curve">
+                            <h2 class="section-heading-dark">Selected Projects</h2>
+                            <div class="decorative-header-curve" aria-hidden="true">
+                                <span class="curve-dot"></span>
+                                <svg width="70" height="24" viewBox="0 0 70 24" fill="none">
+                                    <path d="M0 2H40C52 2 58 18 68 22" stroke="#818CF8" stroke-width="1.8" stroke-linecap="round"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Compact & Interactive GitHub Codebases Bar -->
-                <div class="projects-github-interactive-bar">
-                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="github-interactive-pill">
-                        <div class="gh-pill-left">
-                            <span class="gh-live-radar"></span>
-                            <div class="gh-pill-text-group">
-                                <span class="gh-pill-title">Looking for offline ML models, Android apps &amp; algorithmic solvers?</span>
-                                <span class="gh-pill-meta"><i class="fa-solid fa-code-fork"></i> 20+ Open-Source Repositories &bull; Available on GitHub</span>
-                            </div>
-                        </div>
-
-                        <div class="gh-pill-right">
-                            <div class="gh-pill-tags">
-                                <span class="gh-tag">AI/CNN</span>
-                                <span class="gh-tag">Kotlin Native</span>
-                                <span class="gh-tag">Selenium</span>
-                            </div>
-                            <div class="gh-action-badge">
-                                <span>VIEW SOURCE CODE</span>
-                                <i class="fa-brands fa-github"></i>
-                                <i class="fa-solid fa-arrow-up-right-from-square action-arrow"></i>
-                            </div>
+                    
+                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="view-all-projects-btn">
+                        <span>View All Projects</span>
+                        <div class="view-all-circle">
+                            <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </a>
                 </div>
-            </div>
-        </section>
 
-        <!-- SEPARATE SECTION: WORK EXPERIENCE (ALL 3 HANGING ID CARDS UNIFORM SIZE & STRAP LENGTH) -->
-        <section id="experience" class="timeline-section section-spacing">
-            <div class="container">
-                <div class="section-header-editorial">
-                    <span class="section-tag">[ 04 / WORK EXPERIENCE ]</span>
-                    <h2 class="section-title-large">PROFESSIONAL <span class="accent-text">EXPERIENCE</span></h2>
-                </div>
-
-                <!-- Top Horizontal Suspender Rail Bar -->
-                <div class="lanyard-suspender-rail"></div>
-
-                <div class="lanyard-row-grid">
-                    <!-- ID Card 1: Rapsol Technology -->
-                    <div class="id-card-wrapper">
-                        <div class="lanyard-container">
-                            <div class="lanyard-strap long-strap">
-                                <span class="strap-text">RAPSOL TECHNOLOGY &bull; AWS CLOUD</span>
-                            </div>
-                            <div class="lanyard-clip">
-                                <div class="clip-ring"></div>
-                                <div class="clip-swivel"></div>
-                            </div>
-                        </div>
-
-                        <div class="milestone-card id-badge-card">
-                            <div class="id-card-content-top">
-                                <div class="id-card-hole"></div>
-                                
-                                <div class="id-card-top-row">
-                                    <span class="milestone-date">02/2023 — 06/2023</span>
-                                    <span class="id-badge-tag"><i class="fa-solid fa-shield-halved"></i> VERIFIED INTERN</span>
-                                </div>
-
-                                <h3 class="milestone-role">CLOUD COMPUTING INTERN</h3>
-                                <h4 class="milestone-company">Rapsol Technology Private Limited</h4>
-                                <h5 class="milestone-location"><i class="fa-solid fa-location-dot"></i> Bangalore, KA</h5>
-
-                                <p class="id-card-desc">Deployed scalable ML models on AWS cloud services (EC2, S3, Lambda) maintaining 99.9% uptime and accelerating model inference latency by 40%.</p>
-
-                                <ul class="milestone-bullet-list">
-                                    <li>AWS EC2/S3/Lambda 99.9% uptime deployment pipelines.</li>
-                                    <li>Sudoku backtracking solver with Selenium automation.</li>
-                                    <li>Reduced API inference latency by 40%.</li>
-                                </ul>
-                            </div>
-
-                            <div class="acc-tags" style="margin-top:1.2rem;">
-                                <span>AWS Cloud</span><span>Python</span><span>Selenium</span><span>REST APIs</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ID Card 2: MindMatrixEd -->
-                    <div class="id-card-wrapper">
-                        <div class="lanyard-container">
-                            <div class="lanyard-strap long-strap">
-                                <span class="strap-text">MINDMATRIXED &bull; VTU-MOU PARTNER</span>
-                            </div>
-                            <div class="lanyard-clip">
-                                <div class="clip-ring"></div>
-                                <div class="clip-swivel"></div>
-                            </div>
-                        </div>
-
-                        <div class="milestone-card id-badge-card">
-                            <div class="id-card-content-top">
-                                <div class="id-card-hole"></div>
-                                
-                                <div class="id-card-top-row">
-                                    <span class="milestone-date">02/2026 — 05/2026</span>
-                                    <span class="id-badge-tag"><i class="fa-solid fa-shield-halved"></i> VERIFIED INTERN</span>
-                                </div>
-
-                                <h3 class="milestone-role">ANDROID DEV INTERN</h3>
-                                <h4 class="milestone-company">MindMatrixEd (VTU-MoU Partner)</h4>
-                                <h5 class="milestone-location"><i class="fa-solid fa-globe"></i> Bengaluru (Remote)</h5>
-
-                                <p class="id-card-desc">Native Android development and Generative AI mobile environment integration with Kotlin & Jetpack Compose.</p>
-
-                                <ul class="milestone-bullet-list">
-                                    <li>Kotlin & Jetpack Compose native Android dev workflows.</li>
-                                    <li>GenAI integration via Google AI Studio & Cloud Labs.</li>
-                                    <li><strong>Budakatu-Sante:</strong> Tribal artistry mobile platform.</li>
-                                </ul>
-                            </div>
-
-                            <div class="acc-tags" style="margin-top:1.2rem;">
-                                <span>Kotlin</span><span>Jetpack Compose</span><span>GenAI</span><span>Firebase</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ID Card 3: ShadowFox -->
-                    <div class="id-card-wrapper">
-                        <div class="lanyard-container">
-                            <div class="lanyard-strap long-strap">
-                                <span class="strap-text">SHADOWFOX &bull; PID: SF-PID-2026-W4418</span>
-                            </div>
-                            <div class="lanyard-clip">
-                                <div class="clip-ring"></div>
-                                <div class="clip-swivel"></div>
-                            </div>
-                        </div>
-
-                        <div class="milestone-card id-badge-card">
-                            <div class="id-card-content-top">
-                                <div class="id-card-hole"></div>
-                                
-                                <div class="id-card-top-row">
-                                    <span class="milestone-date">08/2026 — 08/2026</span>
-                                    <span class="id-badge-tag"><i class="fa-solid fa-shield-halved"></i> VERIFIED INTERN</span>
-                                </div>
-
-                                <h3 class="milestone-role">AI ENGINEER INTERN</h3>
-                                <h4 class="milestone-company">ShadowFox Virtual Program</h4>
-                                <h5 class="milestone-location"><i class="fa-solid fa-laptop-code"></i> Virtual Program</h5>
-
-                                <p class="id-card-desc">Artificial Intelligence model engineering, machine learning pipeline experiments, and technical verification.</p>
-
-                                <ul class="milestone-bullet-list">
-                                    <li>Hands-on AI model development and ML experiments.</li>
-                                    <li>AI solutions engineering and model optimization.</li>
-                                    <li>Technical performance benchmarking.</li>
-                                </ul>
-                            </div>
-
-                            <div class="acc-tags" style="margin-top:1.2rem;">
-                                <span>AI Engineering</span><span>Python</span><span>ML Pipelines</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEPARATE SECTION: ACADEMIC EDUCATION -->
-        <section id="education" class="education-section section-spacing" style="background-color:#ffffff; border-top:1px solid var(--border-color);">
-            <div class="container">
-                <div class="section-header-editorial">
-                    <span class="section-tag">[ 05 / ACADEMIC EDUCATION ]</span>
-                    <h2 class="section-title-large">EDUCATION & <span class="accent-text">BACKGROUND</span></h2>
-                </div>
-
-                <div class="education-grid">
-                    <!-- Education 1 -->
-                    <div class="education-card">
-                        <div class="edu-badge"><i class="fa-solid fa-graduation-cap"></i> 2023 — 2026</div>
-                        <h3 class="edu-degree">BACHELOR OF ENGINEERING IN COMPUTER SCIENCE</h3>
-                        <h4 class="edu-institution">Sir M. Visvesvaraya Institute of Technology (Sir MVIT) &bull; Bengaluru</h4>
-                        <p class="edu-desc">Comprehensive computer science engineering curriculum covering Data Structures & Algorithms, Machine Learning Systems, Operating Systems, Database Management Systems, Cloud Computing, and Software Architecture.</p>
-                        <div class="acc-tags" style="margin-top:1rem;">
-                            <span>Data Structures</span><span>Algorithms</span><span>Machine Learning</span><span>DBMS</span><span>Cloud Systems</span>
-                        </div>
-                    </div>
-
-                    <!-- Education 2 -->
-                    <div class="education-card">
-                        <div class="edu-badge"><i class="fa-solid fa-certificate"></i> 2021 — 2023</div>
-                        <h3 class="edu-degree">DIPLOMA IN COMPUTER SCIENCE</h3>
-                        <h4 class="edu-institution">BES Institute of Technology &bull; Bengaluru</h4>
-                        <p class="edu-desc">Core diploma studies in Object-Oriented Programming (Java & C++), Web Development Fundamentals (HTML, CSS, JavaScript), Computer Systems Hardware & Assembly Architecture.</p>
-                        <div class="acc-tags" style="margin-top:1rem;">
-                            <span>OOP (Java/C++)</span><span>Web Fundamentals</span><span>Hardware Architecture</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section section-spacing">
-            <div class="container">
-                <div class="contact-editorial">
-                    <span class="section-tag">[ 06 / CONTACT ]</span>
+                <!-- Project Cards Grid (Exact Design from Reference Image with Real Projects) -->
+                <div class="projects-cards-grid-auto">
                     
-                    <h2 class="contact-giant-title">
-                        LET'S BUILD SOMETHING <br><span class="accent-text">EXTRAORDINARY.</span>
-                    </h2>
+                    <!-- Project 1: Vector Job -->
+                    <div class="project-item-card">
+                        <div class="project-preview-window">
+                            <div class="live-iframe-fit-cover">
+                                <iframe src="https://vector-white-website.pages.dev" title="Vector Job Live Preview" class="fit-cover-iframe" loading="lazy" scrolling="no" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                            </div>
+                        </div>
 
-                    <p class="contact-subtext">
-                        Open for Full-Time Software Engineering roles, AI Developer positions, and high-impact technology projects.
-                    </p>
-
-                    <!-- Animated Cycling CTA Button with Down Arrow -->
-                    <div class="magnetic-wrapper">
-                        <button id="contact-cta-btn" class="magnetic-cta-btn hover-magnetic">
-                            <span class="btn-text" id="cta-cycling-text">EMAIL</span>
-                            <i class="fa-solid fa-arrow-down cta-arrow"></i>
-                        </button>
+                        <div class="project-info-body">
+                            <div class="project-title-row">
+                                <h3 class="project-title">Vector Job</h3>
+                                <a href="https://vector-white-website.pages.dev" target="_blank" rel="noopener" class="project-arrow-btn" title="Launch Project" aria-label="Launch Vector Job">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="project-summary">AI job matching &amp; portfolio platform with intelligent skills extraction and automated recommendation ranking.</p>
+                            
+                            <div class="project-tech-tags">
+                                <span class="tag-pill"><span class="dot purple"></span> Next.js</span>
+                                <span class="tag-pill"><span class="dot blue"></span> Tailwind CSS</span>
+                                <span class="tag-pill"><span class="dot green"></span> FastAPI</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Direct Contact Details & Links (Revealed on click) -->
-                    <div class="contact-links-grid" id="contact-details-box">
-                        <a href="mailto:vishnu.n9880@gmail.com" class="contact-link-item hover-underline" id="link-email">
-                            <span class="link-label"><i class="fa-solid fa-envelope text-accent"></i> EMAIL</span>
-                            <span class="link-val">vishnu.n9880@gmail.com</span>
-                        </a>
+                    <!-- Project 2: VTU Labs -->
+                    <div class="project-item-card">
+                        <div class="project-preview-window">
+                            <div class="live-iframe-fit-cover">
+                                <iframe src="https://vishnuhas.github.io/labs/" title="VTU Labs Live Preview" class="fit-cover-iframe" loading="lazy" scrolling="no" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                            </div>
+                        </div>
 
-                        <a href="tel:+916362963637" class="contact-link-item hover-underline" id="link-phone">
-                            <span class="link-label"><i class="fa-solid fa-phone text-accent"></i> PHONE</span>
-                            <span class="link-val">+91 6362963637</span>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/vishnu-n-20489a2b1/" target="_blank" rel="noopener" class="contact-link-item hover-underline" id="link-linkedin">
-                            <span class="link-label"><i class="fa-brands fa-linkedin-in text-accent"></i> LINKEDIN</span>
-                            <span class="link-val">vishnu-n-20489a2b1</span>
-                        </a>
-
-                        <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="contact-link-item hover-underline" id="link-github">
-                            <span class="link-label"><i class="fa-brands fa-github text-accent"></i> GITHUB</span>
-                            <span class="link-val">vishnuHas</span>
-                        </a>
+                        <div class="project-info-body">
+                            <div class="project-title-row">
+                                <h3 class="project-title">VTU Labs</h3>
+                                <a href="https://vishnuhas.github.io/labs/" target="_blank" rel="noopener" class="project-arrow-btn" title="Launch Project" aria-label="Launch VTU Labs">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="project-summary">Unified academic code repository and curated notes portal serving 500+ university engineering students across VTU.</p>
+                            
+                            <div class="project-tech-tags">
+                                <span class="tag-pill"><span class="dot blue"></span> React</span>
+                                <span class="tag-pill"><span class="dot green"></span> Node.js</span>
+                                <span class="tag-pill"><span class="dot cyan"></span> PostgreSQL</span>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Project 3: StudentOS AI -->
+                    <div class="project-item-card">
+                        <div class="project-preview-window">
+                            <div class="live-iframe-fit-cover">
+                                <iframe src="https://vishnu-studentos.web.app/" title="StudentOS Live Preview" class="fit-cover-iframe" loading="lazy" scrolling="no" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="project-info-body">
+                            <div class="project-title-row">
+                                <h3 class="project-title">StudentOS AI</h3>
+                                <a href="https://vishnu-studentos.web.app/" target="_blank" rel="noopener" class="project-arrow-btn" title="Launch Project" aria-label="Launch StudentOS">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="project-summary">Comprehensive student study suite with Gemini AI note summarizer, intelligent assistant &amp; roadmap builder.</p>
+                            
+                            <div class="project-tech-tags">
+                                <span class="tag-pill"><span class="dot purple"></span> Next.js</span>
+                                <span class="tag-pill"><span class="dot purple"></span> Gemini API</span>
+                                <span class="tag-pill"><span class="dot green"></span> Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Hackateer -->
+                    <div class="project-item-card">
+                        <div class="project-preview-window">
+                            <div class="live-iframe-fit-cover">
+                                <iframe src="https://hackateer.pages.dev/" title="Hackateer Live Preview" class="fit-cover-iframe" loading="lazy" scrolling="no" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="project-info-body">
+                            <div class="project-title-row">
+                                <h3 class="project-title">Hackateer</h3>
+                                <a href="https://hackateer.pages.dev/" target="_blank" rel="noopener" class="project-arrow-btn" title="Launch Project" aria-label="Launch Hackateer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="project-summary">Unified hackathon management arena where students can host, participate, register, and collaborate in teams.</p>
+                            
+                            <div class="project-tech-tags">
+                                <span class="tag-pill"><span class="dot purple"></span> React</span>
+                                <span class="tag-pill"><span class="dot cyan"></span> Cloudflare</span>
+                                <span class="tag-pill"><span class="dot dark"></span> WebSockets</span>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </section>
-    </main>
 
-    <!-- Project Deep-Dive Modal -->
-    <div class="modal-overlay" id="project-modal">
-        <div class="modal-dialog">
-            <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
-            <div class="modal-content-area" id="modal-body"></div>
+        <!-- ------------------------------------------------------------------- -->
+        <!-- GITHUB LIVE DEV DASHBOARD & TELEMETRY HUB                          -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="github-dashboard" class="page-section github-dashboard-section">
+            <div class="section-container">
+                
+                <!-- Section Header with Blue Tag & GitHub Live Indicator -->
+                <div class="github-section-header">
+                    <div class="header-text-group">
+                        <div class="github-tag-pill">
+                            <span class="live-pulse-dot"></span>
+                            <span class="github-tag-text">LIVE GITHUB TELEMETRY</span>
+                        </div>
+                        <div class="heading-with-curve">
+                            <h2 class="section-heading-dark">Developer Dashboard</h2>
+                            <div class="decorative-header-curve" aria-hidden="true">
+                                <span class="curve-dot"></span>
+                                <svg width="70" height="24" viewBox="0 0 70 24" fill="none">
+                                    <path d="M0 2H40C52 2 58 18 68 22" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="github-profile-pill-btn">
+                        <i class="fa-brands fa-github"></i>
+                        <span>github.com/vishnuHas</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <!-- Bento GitHub Telemetry Dashboard Grid -->
+                <div class="github-dashboard-bento">
+                    
+                    <!-- Left Hero Card: Live Profile & Stats HUD -->
+                    <div class="gh-bento-card gh-card-profile">
+                        <div class="gh-card-header">
+                            <div class="gh-user-identity">
+                                <div class="gh-avatar-wrapper">
+                                    <img src="https://avatars.githubusercontent.com/vishnuHas" alt="Vishnu N" class="gh-avatar-img" onerror="this.src='https://github.com/github.png'" />
+                                    <span class="gh-status-indicator" title="Active & Building"></span>
+                                </div>
+                                <div class="gh-identity-meta">
+                                    <h3 class="gh-user-name">Vishnu N <span class="gh-user-handle">@vishnuHas</span></h3>
+                                    <p class="gh-user-role">Full Stack &amp; AI Engineer &bull; Bengaluru, India</p>
+                                </div>
+                            </div>
+                            <span class="gh-metric-badge">🟢 Online</span>
+                        </div>
+
+                        <div class="gh-quick-stats-row">
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-number">100%</span>
+                                <span class="gh-stat-label">Build Health</span>
+                            </div>
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-number">12+</span>
+                                <span class="gh-stat-label">Live Repos</span>
+                            </div>
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-number">&gt;500</span>
+                                <span class="gh-stat-label">VTU Users</span>
+                            </div>
+                            <div class="gh-stat-box">
+                                <span class="gh-stat-number">2026</span>
+                                <span class="gh-stat-label">BE CSE Grad</span>
+                            </div>
+                        </div>
+
+                        <!-- Real-time SVG Stats Embed -->
+                        <div class="gh-stats-embed-container">
+                            <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=vishnuHas&theme=tokyonight" alt="GitHub Stats" class="gh-stats-card-img" loading="lazy" />
+                        </div>
+                    </div>
+
+                    <!-- Right Top Card: Streak & Momentum -->
+                    <div class="gh-bento-card gh-card-streak">
+                        <div class="gh-card-header">
+                            <h4 class="gh-card-title"><i class="fa-solid fa-fire text-amber"></i> Contribution Streak</h4>
+                            <span class="gh-pill-sub">TokyoNight Telemetry</span>
+                        </div>
+                        <div class="gh-stats-embed-container">
+                            <img src="https://github-readme-streak-stats.herokuapp.com/?user=vishnuHas&theme=tokyonight&hide_border=true&border_radius=12&background=0f172a&ring=6366f1&fire=f59e0b&currStreakNum=e2e8f0&sideNums=e2e8f0&sideLabels=94a3b8&dates=94a3b8" alt="GitHub Streak" class="gh-stats-card-img" loading="lazy" />
+                        </div>
+                    </div>
+
+                    <!-- Right Bottom Card: Interactive Dev Terminal & Live Action -->
+                    <div class="gh-bento-card gh-card-terminal">
+                        <div class="gh-terminal-bar">
+                            <div class="gh-term-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="gh-term-title">vishnu@github-dashboard:~/portfolio</span>
+                        </div>
+                        <div class="gh-term-screen">
+                            <div class="gh-term-row"><span class="gh-prompt">vishnu@matrix:~$</span> <span class="gh-cmd">curl -s https://api.github.com/users/vishnuHas</span></div>
+                            <div class="gh-term-row text-dim">{ "status": "Ready for high-impact AI/SWE challenges", "location": "Bengaluru" }</div>
+                            <div class="gh-term-row"><span class="gh-prompt">vishnu@matrix:~$</span> <span class="gh-cmd">git status</span></div>
+                            <div class="gh-term-row text-emerald">&gt; On branch main. Working tree clean. Zero runtime defects.</div>
+                        </div>
+                        <div class="gh-terminal-footer">
+                            <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="gh-term-btn">
+                                <i class="fa-brands fa-github"></i>
+                                <span>Explore All Repositories</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- ------------------------------------------------------------------- -->
+        <!-- SECTION 04: SKILLS / TECH STACK                                     -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="skills" class="page-section skills-section">
+            <div class="section-container">
+                
+                <div class="skills-section-header">
+                    <span class="section-blue-tag">TECH STACK</span>
+                    <h2 class="section-heading-dark">Technologies I work with</h2>
+                </div>
+
+                <!-- Brick Wall Layout - All Skills -->
+                <div class="brick-wall-container">
+
+                    <!-- Row 1 -->
+                    <div class="brick-row">
+                        <div class="brick brick-md">
+                            <i class="devicon-react-original colored"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <i class="devicon-nextjs-plain"></i>
+                            <span>Next.js</span>
+                        </div>
+                        <div class="brick brick-sm">
+                            <i class="devicon-python-plain colored"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                            <span>AWS Cloud</span>
+                        </div>
+                        <div class="brick brick-md">
+                            <i class="devicon-docker-plain colored"></i>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 (offset) -->
+                    <div class="brick-row brick-row-offset">
+                        <div class="brick brick-lg">
+                            <i class="devicon-javascript-plain colored"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="brick brick-sm">
+                            <i class="devicon-java-plain colored"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="brick brick-md">
+                            <i class="devicon-pytorch-original colored"></i>
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <i class="devicon-tensorflow-original colored"></i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="brick brick-sm">
+                            <i class="devicon-github-original"></i>
+                            <span>Git</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="brick-row">
+                        <div class="brick brick-sm">
+                            <i class="devicon-tailwindcss-plain colored"></i>
+                            <span>Tailwind</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <i class="devicon-nodejs-plain colored"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="brick brick-md">
+                            <i class="devicon-opencv-plain colored"></i>
+                            <span>OpenCV</span>
+                        </div>
+                        <div class="brick brick-sm">
+                            <i class="devicon-linux-plain colored"></i>
+                            <span>Linux</span>
+                        </div>
+                        <div class="brick brick-xl">
+                            <i class="devicon-postgresql-plain colored"></i>
+                            <span>PostgreSQL / SQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 (offset) -->
+                    <div class="brick-row brick-row-offset">
+                        <div class="brick brick-md">
+                            <i class="devicon-html5-plain colored"></i>
+                            <span>HTML5 &amp; CSS3</span>
+                        </div>
+                        <div class="brick brick-sm">
+                            <i class="devicon-flask-original"></i>
+                            <span>FastAPI</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <span class="material-symbols-outlined brick-ms-icon">auto_awesome</span>
+                            <span>Gemini LLMs</span>
+                        </div>
+                        <div class="brick brick-md">
+                            <i class="devicon-android-plain colored"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <i class="devicon-githubactions-plain colored"></i>
+                            <span>GitHub Actions</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="brick-row">
+                        <div class="brick brick-lg">
+                            <i class="devicon-googlecloud-plain colored"></i>
+                            <span>Google Cloud</span>
+                        </div>
+                        <div class="brick brick-md">
+                            <span class="material-symbols-outlined brick-ms-icon">memory</span>
+                            <span>Deep Learning</span>
+                        </div>
+                        <div class="brick brick-sm">
+                            <i class="devicon-postman-plain colored"></i>
+                            <span>Postman</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <i class="devicon-kotlin-plain colored"></i>
+                            <span>Jetpack Compose</span>
+                        </div>
+                        <div class="brick brick-sm">
+                            <span class="material-symbols-outlined brick-ms-icon">animation</span>
+                            <span>GSAP</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 6 (offset) -->
+                    <div class="brick-row brick-row-offset">
+                        <div class="brick brick-sm">
+                            <i class="devicon-selenium-original colored"></i>
+                            <span>Selenium</span>
+                        </div>
+                        <div class="brick brick-xl">
+                            <i class="devicon-pytorch-original colored"></i>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="brick brick-md">
+                            <i class="devicon-react-original colored"></i>
+                            <span>React Native</span>
+                        </div>
+                        <div class="brick brick-lg">
+                            <i class="devicon-firebase-plain colored"></i>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- SECTION 05: PROFESSIONAL WORK EXPERIENCE                            -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="experience" class="page-section experience-section">
+            <div class="section-container">
+                
+                <div class="projects-section-header">
+                    <div class="header-text-group">
+                        <span class="section-blue-tag">EXPERIENCE</span>
+                        <h2 class="section-heading-dark">Industry Internships</h2>
+                    </div>
+                </div>
+
+                <div class="experience-cards-grid">
+                    
+                    <!-- Experience 1: Rapsol Technology (Hanging ID Badge) -->
+                    <div class="id-badge-wrapper" style="--hang-tilt: -1.4deg;">
+                        
+                        <!-- Lanyard Strap & Metallic Clasp Rigging -->
+                        <div class="id-lanyard-assembly" aria-hidden="true">
+                            <div class="id-strap-loop strap-blue">
+                                <span class="id-strap-text">RAPSOL</span>
+                            </div>
+                            <div class="id-metal-clasp">
+                                <div class="id-clasp-swivel"></div>
+                                <div class="id-clasp-clip"></div>
+                            </div>
+                        </div>
+
+                        <!-- ID Badge Card Body -->
+                        <div class="id-card-body">
+                            
+                            <!-- Oval Punch Slot at top center -->
+                            <div class="id-punch-slot-wrapper">
+                                <div class="id-punch-slot"></div>
+                            </div>
+
+                            <!-- Header: Gold Chip + Serial Code + Status Badge -->
+                            <div class="id-header-row">
+                                <div class="id-chip-group">
+                                    <div class="id-gold-chip" title="RFID Smart Chip">
+                                        <div class="chip-grid-lines"></div>
+                                    </div>
+                                    <span class="id-serial-num">ID: #RAP-23-01</span>
+                                </div>
+                                <div class="id-status-pill status-verified"><i class="fa-solid fa-circle-check"></i> VERIFIED</div>
+                            </div>
+
+                            <!-- Role Info -->
+                            <div class="id-profile-section">
+                                <span class="id-period-tag">02/2023 — 06/2023</span>
+                                <h3 class="id-role-title">AWS Cloud &amp; Backend Engineering Intern</h3>
+                                <div class="id-company-row">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>Rapsol Technology &bull; Bengaluru, India</span>
+                                </div>
+                            </div>
+
+                            <p class="id-summary-text">
+                                Architected production AWS cloud infrastructure supporting real-time machine learning inference, high-availability microservices, and automated CI/CD deployment pipelines.
+                            </p>
+
+                            <ul class="id-bullets-list">
+                                <li>Configured AWS EC2, S3, and Lambda serverless workloads achieving <strong>99.9% model uptime</strong>.</li>
+                                <li>Automated database backups, cloud security policies, and performance scaling scripts.</li>
+                                <li>Standardized Docker containerization workflow to streamline deployments.</li>
+                            </ul>
+
+                            <div class="id-tech-pills">
+                                <span>AWS Lambda</span>
+                                <span>EC2 / S3</span>
+                                <span>Docker</span>
+                                <span>Python</span>
+                                <span>Linux</span>
+                            </div>
+
+                            <!-- Bottom Security Hologram & Barcode Strip -->
+                            <div class="id-badge-footer">
+                                <div class="id-hologram-strip">
+                                    <span>AUTHORIZED ACCESS PASS</span>
+                                </div>
+                                <div class="id-barcode-graphic" aria-hidden="true">
+                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Experience 2: MindMatrixEd (Hanging ID Badge) -->
+                    <div class="id-badge-wrapper" style="--hang-tilt: 0.8deg;">
+                        
+                        <!-- Lanyard Strap & Metallic Clasp Rigging -->
+                        <div class="id-lanyard-assembly" aria-hidden="true">
+                            <div class="id-strap-loop strap-purple">
+                                <span class="id-strap-text">MINDMATRIX</span>
+                            </div>
+                            <div class="id-metal-clasp">
+                                <div class="id-clasp-swivel"></div>
+                                <div class="id-clasp-clip"></div>
+                            </div>
+                        </div>
+
+                        <!-- ID Badge Card Body -->
+                        <div class="id-card-body">
+                            
+                            <!-- Oval Punch Slot at top center -->
+                            <div class="id-punch-slot-wrapper">
+                                <div class="id-punch-slot"></div>
+                            </div>
+
+                            <!-- Header: Gold Chip + Serial Code + Status Badge -->
+                            <div class="id-header-row">
+                                <div class="id-chip-group">
+                                    <div class="id-gold-chip" title="RFID Smart Chip">
+                                        <div class="chip-grid-lines"></div>
+                                    </div>
+                                    <span class="id-serial-num">ID: #MMX-23-02</span>
+                                </div>
+                                <div class="id-status-pill status-ai"><i class="fa-solid fa-code"></i> AI CLIENT</div>
+                            </div>
+
+                            <!-- Role Info -->
+                            <div class="id-profile-section">
+                                <span class="id-period-tag">07/2023 — 10/2023</span>
+                                <h3 class="id-role-title">Android &amp; Generative AI Developer Intern</h3>
+                                <div class="id-company-row">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>MindMatrixEd &bull; Bengaluru, India</span>
+                                </div>
+                            </div>
+
+                            <p class="id-summary-text">
+                                Developed native Kotlin Android applications integrated with Google Gemini LLMs for automated educational summarization and interactive study assistants.
+                            </p>
+
+                            <ul class="id-bullets-list">
+                                <li>Architected responsive UI using <strong>Jetpack Compose</strong> and modern MVVM architecture.</li>
+                                <li>Integrated Gemini API with streaming responses, intelligent caching, and Room DB.</li>
+                                <li>Reduced application latency by 40% using asynchronous coroutines and Flow pipelines.</li>
+                            </ul>
+
+                            <div class="id-tech-pills">
+                                <span>Kotlin</span>
+                                <span>Jetpack Compose</span>
+                                <span>Gemini LLM</span>
+                                <span>MVVM</span>
+                                <span>Room DB</span>
+                            </div>
+
+                            <!-- Bottom Security Hologram & Barcode Strip -->
+                            <div class="id-badge-footer">
+                                <div class="id-hologram-strip">
+                                    <span>AUTHORIZED ACCESS PASS</span>
+                                </div>
+                                <div class="id-barcode-graphic" aria-hidden="true">
+                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Experience 3: ShadowFox (Hanging ID Badge) -->
+                    <div class="id-badge-wrapper" style="--hang-tilt: 1.6deg;">
+                        
+                        <!-- Lanyard Strap & Metallic Clasp Rigging -->
+                        <div class="id-lanyard-assembly" aria-hidden="true">
+                            <div class="id-strap-loop strap-dark">
+                                <span class="id-strap-text">SHADOWFOX</span>
+                            </div>
+                            <div class="id-metal-clasp">
+                                <div class="id-clasp-swivel"></div>
+                                <div class="id-clasp-clip"></div>
+                            </div>
+                        </div>
+
+                        <!-- ID Badge Card Body -->
+                        <div class="id-card-body">
+                            
+                            <!-- Oval Punch Slot at top center -->
+                            <div class="id-punch-slot-wrapper">
+                                <div class="id-punch-slot"></div>
+                            </div>
+
+                            <!-- Header: Gold Chip + Serial Code + Status Badge -->
+                            <div class="id-header-row">
+                                <div class="id-chip-group">
+                                    <div class="id-gold-chip" title="RFID Smart Chip">
+                                        <div class="chip-grid-lines"></div>
+                                    </div>
+                                    <span class="id-serial-num">ID: #SFX-24-03</span>
+                                </div>
+                                <div class="id-status-pill status-ml"><i class="fa-solid fa-brain"></i> ML INTERN</div>
+                            </div>
+
+                            <!-- Role Info -->
+                            <div class="id-profile-section">
+                                <span class="id-period-tag">11/2023 — 01/2024</span>
+                                <h3 class="id-role-title">Machine Learning &amp; Computer Vision Intern</h3>
+                                <div class="id-company-row">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>ShadowFox &bull; Remote</span>
+                                </div>
+                            </div>
+
+                            <p class="id-summary-text">
+                                Built convolutional neural networks (CNNs) for facial age and gender classification, automated web scraping data engines, and algorithmic solvers.
+                            </p>
+
+                            <ul class="id-bullets-list">
+                                <li>Trained PyTorch and TensorFlow deep learning vision models achieving <strong>94.2% validation accuracy</strong>.</li>
+                                <li>Engineered automated Selenium web extraction engines parsing 10,000+ data points daily.</li>
+                                <li>Built automated Sudoku solver with backtracking algorithms and OpenCV board detection.</li>
+                            </ul>
+
+                            <div class="id-tech-pills">
+                                <span>PyTorch</span>
+                                <span>TensorFlow</span>
+                                <span>OpenCV</span>
+                                <span>Selenium</span>
+                                <span>FastAPI</span>
+                            </div>
+
+                            <!-- Bottom Security Hologram & Barcode Strip -->
+                            <div class="id-badge-footer">
+                                <div class="id-hologram-strip">
+                                    <span>AUTHORIZED ACCESS PASS</span>
+                                </div>
+                                <div class="id-barcode-graphic" aria-hidden="true">
+                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- SECTION 06: EDUCATION & BACKGROUND                                  -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="education" class="page-section education-section">
+            <div class="section-container">
+                
+                <div class="education-section-header">
+                    <span class="section-blue-tag">EDUCATION</span>
+                    <h2 class="section-heading-dark">Education &amp; Background</h2>
+                </div>
+
+                <!-- Collegiate Academic Credentials Showcase (2-Column Architecture) -->
+                <div class="college-degrees-grid">
+                    
+                    <!-- College 1: Bachelor of Engineering (Sir MVIT) -->
+                    <div class="college-degree-panel">
+                        
+                        <!-- Top Collegiate Header Bar -->
+                        <div class="college-panel-top">
+                            <div class="college-crest-wrap">
+                                <div class="college-crest-icon crest-blue">
+                                    <span class="material-symbols-outlined">account_balance</span>
+                                </div>
+                                <div class="college-crest-text">
+                                    <h4 class="college-name-bold">Sir M. Visvesvaraya Institute of Technology</h4>
+                                    <span class="college-dept-text">Department of Computer Science &amp; Engineering</span>
+                                </div>
+                            </div>
+
+                            <div class="college-badges-stack">
+                                <div class="academic-year-pill">
+                                    <span class="material-symbols-outlined year-cap-icon">school</span>
+                                    <span>2023 &mdash; 2026</span>
+                                </div>
+                                <span class="institution-status-tag tag-vtu">VTU AFFILIATED</span>
+                            </div>
+                        </div>
+
+                        <div class="degree-main-content">
+                            <h3 class="degree-headline">BACHELOR OF ENGINEERING IN COMPUTER SCIENCE</h3>
+                            <div class="college-campus-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>SIR MVIT Campus &bull; Bengaluru, Karnataka</span>
+                            </div>
+
+                            <p class="degree-curriculum-summary">
+                                Comprehensive computer science engineering curriculum covering Data Structures &amp; Algorithms, Machine Learning Systems, Operating Systems, Database Management Systems, Cloud Computing, and Software Architecture.
+                            </p>
+                        </div>
+
+                        <!-- Coursework Badges -->
+                        <div class="degree-coursework-section">
+                            <span class="coursework-label">KEY COURSEWORK &amp; DISCIPLINES</span>
+                            <div class="degree-coursework-pills">
+                                <div class="course-tag">
+                                    <span class="course-dot"></span>
+                                    <span>Data Structures</span>
+                                </div>
+                                <div class="course-tag">
+                                    <span class="course-dot"></span>
+                                    <span>Algorithms</span>
+                                </div>
+                                <div class="course-tag">
+                                    <span class="course-dot"></span>
+                                    <span>Machine Learning</span>
+                                </div>
+                                <div class="course-tag">
+                                    <span class="course-dot"></span>
+                                    <span>DBMS</span>
+                                </div>
+                                <div class="course-tag">
+                                    <span class="course-dot"></span>
+                                    <span>Cloud Systems</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Collegiate Academic Footer -->
+                        <div class="college-panel-footer">
+                            <div class="college-honor-foil">
+                                <i class="fa-solid fa-award"></i>
+                                <span>ACADEMIC DEGREE PROGRAM &bull; AICTE APPROVED</span>
+                            </div>
+                            <span class="college-seal-text">SIR MVIT BENGALURU</span>
+                        </div>
+
+                    </div>
+
+                    <!-- College 2: Diploma in Computer Science (BESIT) -->
+                    <div class="college-degree-panel">
+                        
+                        <!-- Top Collegiate Header Bar -->
+                        <div class="college-panel-top">
+                            <div class="college-crest-wrap">
+                                <div class="college-crest-icon crest-purple">
+                                    <span class="material-symbols-outlined">school</span>
+                                </div>
+                                <div class="college-crest-text">
+                                    <h4 class="college-name-bold">BES Institute of Technology</h4>
+                                    <span class="college-dept-text">Department of Computer Science &amp; Technology</span>
+                                </div>
+                            </div>
+
+                            <div class="college-badges-stack">
+                                <div class="academic-year-pill">
+                                    <span class="material-symbols-outlined year-cap-icon">school</span>
+                                    <span>2021 &mdash; 2023</span>
+                                </div>
+                                <span class="institution-status-tag tag-dte">DTE KARNATAKA</span>
+                            </div>
+                        </div>
+
+                        <div class="degree-main-content">
+                            <h3 class="degree-headline">DIPLOMA IN COMPUTER SCIENCE</h3>
+                            <div class="college-campus-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>BESIT Campus &bull; Bengaluru, Karnataka</span>
+                            </div>
+
+                            <p class="degree-curriculum-summary">
+                                Core diploma studies in Object-Oriented Programming (Java &amp; C++), Web Development Fundamentals (HTML, CSS, JavaScript), Computer Systems Hardware &amp; Assembly Architecture.
+                            </p>
+                        </div>
+
+                        <!-- Coursework Badges -->
+                        <div class="degree-coursework-section">
+                            <span class="coursework-label">KEY COURSEWORK &amp; DISCIPLINES</span>
+                            <div class="degree-coursework-pills">
+                                <div class="course-tag">
+                                    <span class="course-dot active-dot"></span>
+                                    <span>OOP (Java/C++)</span>
+                                </div>
+                                <div class="course-tag">
+                                    <span class="course-dot"></span>
+                                    <span>Web Fundamentals</span>
+                                </div>
+                                <div class="course-tag">
+                                    <span class="course-dot"></span>
+                                    <span>Hardware Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Collegiate Academic Footer -->
+                        <div class="college-panel-footer">
+                            <div class="college-honor-foil">
+                                <i class="fa-solid fa-certificate"></i>
+                                <span>DIPLOMA CREDENTIAL &bull; STATE ACCREDITED</span>
+                            </div>
+                            <span class="college-seal-text">BESIT BENGALURU</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- SECTION 07: CONTACT ("LET'S CONNECT")                               -->
+        <!-- ------------------------------------------------------------------- -->
+        <section id="contact" class="page-section contact-section">
+            <div class="section-container">
+                
+                <!-- Large Periwinkle Gradient Glass Card Banner -->
+                <div class="contact-glass-banner">
+                    
+                    <!-- Left: Text & CTA -->
+                    <div class="contact-banner-left">
+                        <span class="banner-blue-tag">LET'S CONNECT</span>
+                        <h2 class="banner-title">
+                            Have a <span class="text-purple-gradient">project</span><br>in mind?
+                        </h2>
+                        <p class="banner-subtitle">
+                            I'm always interested in new opportunities, software engineering roles, and exciting projects.
+                        </p>
+                        
+                        <a href="mailto:vishnuhas14@gmail.com" class="btn-dark-pill btn-banner-action">
+                            <span>Get In Touch</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Middle: Contact Info Details -->
+                    <div class="contact-banner-middle">
+                        
+                        <!-- Email -->
+                        <div class="info-row">
+                            <div class="info-circle-icon icon-blue">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div class="info-texts">
+                                <span class="info-label">Email</span>
+                                <a href="mailto:vishnuhas14@gmail.com" class="info-value">vishnuhas14@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="info-row">
+                            <div class="info-circle-icon icon-cyan">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="info-texts">
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Bangalore, India</span>
+                            </div>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="info-row">
+                            <div class="info-circle-icon icon-purple">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div class="info-texts">
+                                <span class="info-label">GitHub</span>
+                                <a href="https://github.com/vishnuHas" target="_blank" rel="noopener" class="info-value">github.com/vishnuHas</a>
+                            </div>
+                        </div>
+
+                        <!-- Availability -->
+                        <div class="info-row">
+                            <div class="info-circle-icon icon-green">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <div class="info-texts">
+                                <span class="info-label">Availability</span>
+                                <span class="info-value">Open for opportunities</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Decorative Silk Mesh Wave & Floating Button -->
+                    <div class="contact-banner-right">
+                        <div class="silk-wave-graphic" aria-hidden="true"></div>
+                        <a href="mailto:vishnuhas14@gmail.com" class="floating-contact-circle-btn" aria-label="Send Email">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- FOOTER                                                              -->
+        <!-- ------------------------------------------------------------------- -->
+        <footer class="site-footer">
+            <div class="section-container footer-content-row">
+                <div class="footer-left">
+                    <svg viewBox="0 0 32 32" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 8L11 24L16 13L21 24L28 8" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="footer-center">
+                    <span>&copy; 2024 Vishnu N. All rights reserved.</span>
+                </div>
+                <div class="footer-right">
+                    <span>Built with passion <i class="fa-solid fa-heart heart-purple"></i></span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Interactive Secret Diagnostics Terminal Modal (Fake Error Easter Egg) -->
+    <div class="easter-egg-modal-overlay" id="easter-egg-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="terminal-modal-title">
+        <div class="easter-egg-modal-card">
+            <div class="terminal-header">
+                <div class="terminal-traffic-lights">
+                    <span class="light red" id="close-terminal-dot" title="Close"></span>
+                    <span class="light yellow"></span>
+                    <span class="light green"></span>
+                </div>
+                <span class="terminal-title" id="terminal-modal-title">vishnu@dev-terminal:~ /system-audit.sh</span>
+                <button class="terminal-close-x" id="terminal-x-btn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line"><span class="prompt-user">vishnu@cloud:~$</span> <span class="cmd-text">run-diagnostics --scan=production</span></div>
+                <div class="terminal-line text-dim">&gt; Initializing neural code auditor v2.4.0...</div>
+                <div class="terminal-line text-dim">&gt; Scanning repositories: github.com/vishnuHas</div>
+                <div class="terminal-line text-dim">&gt; Checking AWS cloud pipelines, Next.js components, Docker containers...</div>
+                
+                <div class="terminal-divider"></div>
+                
+                <div class="terminal-line text-amber">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>DIAGNOSTIC STATUS:</strong> [ERR_404_BUG_NOT_FOUND]
+                </div>
+                <div class="terminal-line text-green">
+                    <i class="fa-solid fa-circle-check"></i> Zero Critical Bugs Detected in Production.
+                </div>
+                <div class="terminal-line text-green">
+                    <i class="fa-solid fa-circle-check"></i> Clean Code Standards: 100% Passed.
+                </div>
+                <div class="terminal-line text-purple">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <strong>Developer Note:</strong> You found the secret easter egg! All errors have been refactored into high-performance features.
+                </div>
+                
+                <div class="terminal-divider"></div>
+                
+                <div class="terminal-action-row">
+                    <a href="#contact" class="btn-terminal-action" id="terminal-connect-link">
+                        <span>Let's Build Together</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-left">
-                <span class="footer-logo">VISHNU N &bull; 2026</span>
-            </div>
-            <div class="footer-right">
-                <a href="#hero" class="back-to-top hover-magnetic">BACK TO TOP <i class="fa-solid fa-arrow-up"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Main Application JavaScript -->
+    <!-- Application Script -->
     <script src="js/app.js"></script>
 </body>
 </html>
