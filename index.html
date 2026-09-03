@@ -83,58 +83,60 @@
         </div>
     </header>
 
+
+
     <!-- ----------------------------------------------------------------------- -->
-    <!-- 2. LEFT VERTICAL NUMBERED TIMELINE RAIL (INTERACTIVE DRAGGABLE PUZZLE)  -->
+    <!-- 2. LEFT VERTICAL NUMBERED TIMELINE RAIL (CLEAN NAVIGATIONAL DESIGN)    -->
     <!-- ----------------------------------------------------------------------- -->
     <aside class="left-timeline-rail" id="timeline-rail" aria-label="Section Navigation">
         
-        <div class="rail-indicator" draggable="true" data-target="skills" data-order="4" title="Drag to reorder / Click to scroll">
-            <span class="rail-num">04</span>
-            <span class="rail-label">SKILLS</span>
-            <span class="rail-dot"></span>
-        </div>
-        <div class="rail-line-segment"></div>
-        
-        <div class="rail-indicator" draggable="true" data-target="home" data-order="1" title="Drag to reorder / Click to scroll">
+        <a href="#home" class="rail-indicator active" data-target="home" title="01 — Home">
             <span class="rail-num">01</span>
             <span class="rail-label">HOME</span>
             <span class="rail-dot"></span>
-        </div>
+        </a>
         <div class="rail-line-segment"></div>
         
-        <div class="rail-indicator" draggable="true" data-target="education" data-order="6" title="Drag to reorder / Click to scroll">
-            <span class="rail-num">06</span>
-            <span class="rail-label">EDUCATION</span>
-            <span class="rail-dot"></span>
-        </div>
-        <div class="rail-line-segment"></div>
-
-        <div class="rail-indicator" draggable="true" data-target="about" data-order="2" title="Drag to reorder / Click to scroll">
+        <a href="#about" class="rail-indicator" data-target="about" title="02 — About">
             <span class="rail-num">02</span>
             <span class="rail-label">ABOUT</span>
             <span class="rail-dot"></span>
-        </div>
+        </a>
         <div class="rail-line-segment"></div>
 
-        <div class="rail-indicator" draggable="true" data-target="experience" data-order="5" title="Drag to reorder / Click to scroll">
-            <span class="rail-num">05</span>
-            <span class="rail-label">EXPERIENCE</span>
-            <span class="rail-dot"></span>
-        </div>
-        <div class="rail-line-segment"></div>
-
-        <div class="rail-indicator" draggable="true" data-target="projects" data-order="3" title="Drag to reorder / Click to scroll">
+        <a href="#projects" class="rail-indicator" data-target="projects" title="03 — Projects">
             <span class="rail-num">03</span>
             <span class="rail-label">PROJECTS</span>
             <span class="rail-dot"></span>
-        </div>
+        </a>
+        <div class="rail-line-segment"></div>
+        
+        <a href="#skills" class="rail-indicator" data-target="skills" title="04 — Skills">
+            <span class="rail-num">04</span>
+            <span class="rail-label">SKILLS</span>
+            <span class="rail-dot"></span>
+        </a>
         <div class="rail-line-segment"></div>
 
-        <div class="rail-indicator" draggable="true" data-target="contact" data-order="7" title="Drag to reorder / Click to scroll">
+        <a href="#experience" class="rail-indicator" data-target="experience" title="05 — Experience">
+            <span class="rail-num">05</span>
+            <span class="rail-label">EXPERIENCE</span>
+            <span class="rail-dot"></span>
+        </a>
+        <div class="rail-line-segment"></div>
+
+        <a href="#education" class="rail-indicator" data-target="education" title="06 — Education">
+            <span class="rail-num">06</span>
+            <span class="rail-label">EDUCATION</span>
+            <span class="rail-dot"></span>
+        </a>
+        <div class="rail-line-segment"></div>
+
+        <a href="#contact" class="rail-indicator" data-target="contact" title="07 — Contact">
             <span class="rail-num">07</span>
             <span class="rail-label">CONTACT</span>
             <span class="rail-dot"></span>
-        </div>
+        </a>
     </aside>
 
     <!-- ----------------------------------------------------------------------- -->
@@ -147,56 +149,42 @@
         <!-- ------------------------------------------------------------------- -->
         <section id="home" class="page-section hero-section">
             <div class="section-container">
-                <div class="hero-grid">
+                <div class="hero-center-content">
                     
-                    <!-- Hero Left: Typography & Actions -->
-                    <div class="hero-left-column">
-                        <span class="eyebrow-text">HELLO, I'M</span>
-                        <h1 class="hero-main-title">
-                            Vishnu <span class="gradient-letter">N</span>
-                        </h1>
-                        <p class="hero-role-title">Full Stack &amp; AI Developer</p>
-                        
-                        <p class="hero-bio-paragraph">
-                            I build exceptional digital experiences, <strong class="text-dark-accent">AWS Cloud Pipelines</strong>, and <strong class="text-dark-accent">Generative AI Systems</strong> with clean code and creative engineering.
-                        </p>
+                    <!-- Hero Typography & Actions (Centered) -->
+                    <span class="eyebrow-text">HELLO, I'M</span>
+                    <h1 class="hero-main-title">
+                        Vishnu <span class="gradient-letter">N</span>
+                    </h1>
+                    <p class="hero-role-title">Full Stack &amp; AI Developer</p>
+                    
+                    <p class="hero-bio-paragraph">
+                        I build exceptional digital experiences, <strong class="text-dark-accent">AWS Cloud Pipelines</strong>, and <strong class="text-dark-accent">Generative AI Systems</strong> with clean code and creative engineering.
+                    </p>
 
-                        <div class="hero-buttons-row">
-                            <a href="#projects" class="btn-dark-pill btn-primary-hero">
-                                <span>Explore Work</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                            <a href="#contact" class="btn-outline-pill">
-                                <span>Get In Touch</span>
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </a>
-                        </div>
-
-                        <!-- Interactive Developer Easter Egg Pill (Fake Error Concept) -->
-                        <div class="interactive-error-pill" id="interactive-error-trigger" role="button" tabindex="0" title="Click to inspect system diagnostics">
-                            <span class="error-badge-dot"></span>
-                            <span class="error-badge-code">ERR_404:</span>
-                            <span class="error-badge-label">Bug Not Found</span>
-                            <span class="error-inspect-tag">Inspect <i class="fa-solid fa-chevron-right"></i></span>
-                        </div>
+                    <div class="hero-buttons-row">
+                        <a href="#projects" class="btn-dark-pill btn-primary-hero">
+                            <span>Explore Work</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn-outline-pill">
+                            <span>Get In Touch</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </a>
                     </div>
 
-                    <!-- Hero Right: Portal Illustration & Floating Stat Card -->
-                    <div class="hero-right-column">
-                        <div class="hero-visual-stage">
-                            
-                            <!-- Main Portal Artwork Image -->
-                            <div class="hero-artwork-frame">
-                                <img src="images/hero-portal-artwork.jpg" alt="AI &amp; Cloud Innovation Portal" class="hero-portal-artwork-img" loading="eager">
-                            </div>
+                    <!-- 4+ Production AI & Web Platforms Badge in Center -->
+                    <div class="floating-experience-card hero-center-stat-badge">
+                        <div class="stat-big-num">4+</div>
+                        <div class="stat-subtext">Production AI<br>&amp; Web Platforms</div>
+                    </div>
 
-                            <!-- Floating Stat Card Positioned on Visual Stage -->
-                            <div class="floating-experience-card">
-                                <div class="stat-big-num">4+</div>
-                                <div class="stat-subtext">Production AI<br>&amp; Web Platforms</div>
-                            </div>
-
-                        </div>
+                    <!-- Interactive Developer Easter Egg Pill (Fake Error Concept) -->
+                    <div class="interactive-error-pill" id="interactive-error-trigger" role="button" tabindex="0" title="Click to inspect system diagnostics">
+                        <span class="error-badge-dot"></span>
+                        <span class="error-badge-code">ERR_404:</span>
+                        <span class="error-badge-label">Bug Not Found</span>
+                        <span class="error-inspect-tag">Inspect <i class="fa-solid fa-chevron-right"></i></span>
                     </div>
 
                 </div>
@@ -211,6 +199,20 @@
                     </a>
                 </div>
 
+            </div>
+
+            <!-- Organic Cloud Dissolving Effect at Bottom of Hero -->
+            <div class="hero-cloud-dissolve-container" aria-hidden="true">
+                <div class="cloud-gradient-fade"></div>
+                <svg class="cloud-svg-layer cloud-layer-back" viewBox="0 0 1440 220" fill="none" preserveAspectRatio="none">
+                    <path d="M0,110 C180,50 360,150 540,90 C720,30 900,130 1080,70 C1260,10 1380,90 1440,70 L1440,220 L0,220 Z" fill="rgba(255,255,255,0.7)"/>
+                </svg>
+                <svg class="cloud-svg-layer cloud-layer-mid" viewBox="0 0 1440 220" fill="none" preserveAspectRatio="none">
+                    <path d="M0,130 C120,80 280,160 460,100 C640,40 820,120 1000,80 C1180,40 1340,120 1440,100 L1440,220 L0,220 Z" fill="rgba(255,255,255,0.88)"/>
+                </svg>
+                <svg class="cloud-svg-layer cloud-layer-front" viewBox="0 0 1440 220" fill="none" preserveAspectRatio="none">
+                    <path d="M0,150 C90,110 210,170 340,130 C480,85 620,150 760,120 C900,80 1050,140 1200,110 C1320,85 1400,130 1440,125 L1440,220 L0,220 Z" fill="#ffffff"/>
+                </svg>
             </div>
         </section>
 
@@ -1099,7 +1101,7 @@
                             I'm always interested in new opportunities, software engineering roles, and exciting projects.
                         </p>
                         
-                        <a href="mailto:vishnuhas14@gmail.com" class="btn-dark-pill btn-banner-action">
+                        <a href="mailto:vishnu.n9880@gmail.com" class="btn-dark-pill btn-banner-action">
                             <span>Get In Touch</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -1115,7 +1117,7 @@
                             </div>
                             <div class="info-texts">
                                 <span class="info-label">Email</span>
-                                <a href="mailto:vishnuhas14@gmail.com" class="info-value">vishnuhas14@gmail.com</a>
+                                <a href="mailto:vishnu.n9880@gmail.com" class="info-value">vishnu.n9880@gmail.com</a>
                             </div>
                         </div>
 
@@ -1157,7 +1159,7 @@
                     <!-- Right: Decorative Silk Mesh Wave & Floating Button -->
                     <div class="contact-banner-right">
                         <div class="silk-wave-graphic" aria-hidden="true"></div>
-                        <a href="mailto:vishnuhas14@gmail.com" class="floating-contact-circle-btn" aria-label="Send Email">
+                        <a href="mailto:vishnu.n9880@gmail.com" class="floating-contact-circle-btn" aria-label="Send Email">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
