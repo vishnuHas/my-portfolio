@@ -1,0 +1,42 @@
+# Python & OS
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Logs & temporary files
+*.log
+server_stderr.log
+server_stdout.log
+
+# System & daemon scripts
+*.bat
+*.vbs
+*.pyw
+setup_unlock.py
+manage_autostart.py
+unlock_server.py
+unlock_qr.png
+config.json
+
+# Agents & AI lockfiles
+.agents/
+skills-lock.json
+
+# Separate sub-projects / workspaces
+bluecream-chat/
+dropload-app/
+dynamic-island-ai/
+greenshare-app/
+hashtag-knot/
+matcha-type/
+medflow-app/
+medflow-next/
+portfolio-next/
+pronunciation-app/
+repverse/
+shadowfox-ai-suite/
+studybuild/
+ultron-by-sagar-builds/
+vishnuHas-profile/
+white-website/
