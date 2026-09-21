@@ -201,6 +201,13 @@ body.menu .mmenu{clip-path:circle(150% at calc(100% - 44px) 42px)}
 .reveal.in{opacity:1;transform:none}
 [data-speed]{transform:translate3d(0,var(--py,0px),0);will-change:transform}
 
+.hero-title, .hero-chip, .hero-badge, .svc-track, .planet-stage, .card-3d{
+  transform:translateZ(0);will-change:transform;
+}
+.chip-live-box{
+  isolation:isolate;contain:paint;
+}
+
 /* ═══════════ 6. HERO (EDITORIAL FRAUNCES STYLE) ═══════════ */
 .hero{position:relative;background:var(--cream);overflow:clip}
 .hero-inner{
@@ -274,41 +281,57 @@ body.menu .mmenu{clip-path:circle(150% at calc(100% - 44px) 42px)}
   .hero-badge{right:3vw;top:38vh;width:clamp(94px,11vw,132px)}
 }
 
-/* Mobile Devices (<= 768px) */
+/* Mobile Devices (<= 768px) - Full-Screen Editorial Hero */
 @media(max-width:768px){
+  .hero{overflow:hidden}
   .hero-inner{
-    min-height:auto;padding-top:calc(var(--nav-h) + 12px);padding-bottom:clamp(30px,6vh,50px);
-    justify-content:flex-start;gap:1.4rem;
+    min-height:100svh;height:100svh;
+    padding-top:calc(var(--nav-h) + 14px);
+    padding-bottom:clamp(20px,4vh,36px);
+    justify-content:space-between;
+    box-sizing:border-box;
   }
-  .hero-top{font-size:9.5px;letter-spacing:.11em;gap:10px}
+  .hero-top{font-size:clamp(9px,2.4vw,10.5px);letter-spacing:.12em;gap:8px}
   .hero-title{
-    font-size:clamp(2.2rem,10.2vw,4.2rem);line-height:1.02;
-    margin-block:clamp(1.2rem,3vh,2rem) clamp(1rem,2vh,1.6rem);
+    margin-block:auto;
+    font-size:clamp(2.95rem,13vw,4.8rem);line-height:.93;
+    letter-spacing:-.028em;
+    width:100%;
   }
-  .line-2 .line-inner{margin-left:clamp(.3rem,3.5vw,1.4rem);gap:4px}
-  .hero-chip{width:clamp(34px,8.5vw,46px);height:clamp(34px,8.5vw,46px);aspect-ratio:1/1;border-radius:50%!important;margin-right:.12em}
-  .h-star{width:.35em;height:.35em;margin-left:.05em}
+  .hero-title .line{padding-bottom:.06em;margin-bottom:-.04em}
+  .line-2 .line-inner{margin-left:clamp(.2rem,2.8vw,1.1rem);gap:4px}
+  .hero-chip{
+    width:clamp(36px,.74em,52px);height:clamp(36px,.74em,52px);
+    aspect-ratio:1/1;border-radius:50%!important;
+    margin-right:.1em;flex-shrink:0;
+  }
+  .h-star{width:.32em;height:.32em;margin-left:.04em}
   .hero-badge{
-    position:relative;right:auto;top:auto;
-    margin:clamp(.8rem,2vh,1.4rem) 0;width:94px;height:94px;
+    position:absolute;right:clamp(12px,4vw,28px);top:34%;
+    transform:translateY(-50%);z-index:5;
+    width:clamp(74px,18vw,88px);height:clamp(74px,18vw,88px);
+    pointer-events:none;
   }
   .hero-bottom{
-    flex-direction:column;align-items:flex-start;gap:1.4rem;
-    margin-top:.8rem;
+    flex-direction:column;align-items:flex-start;gap:1.1rem;
+    margin-top:0;width:100%;
   }
-  .hero-bio{max-width:100%;font-size:clamp(.92rem,3.6vw,1.05rem);line-height:1.58}
-  .hero-cta-links{width:100%;flex-direction:column;gap:.7rem}
-  .hero-cta-links .btn{width:100%;justify-content:center;text-align:center;padding:.9rem 1.4rem}
+  .hero-bottom-left{gap:.9rem;width:100%}
+  .hero-bio{max-width:100%;font-size:clamp(.92rem,3.4vw,1.02rem);line-height:1.52}
+  .hero-cta-links{width:100%;flex-direction:row;gap:.65rem}
+  .hero-cta-links .btn{flex:1;min-width:0;justify-content:center;text-align:center;padding:.8rem .9rem;font-size:.82rem}
   .hero-scroll{display:none}
 }
 
 /* Small Handhelds (<= 380px) */
 @media(max-width:380px){
-  .hero-top{flex-direction:column;align-items:flex-start;gap:4px}
-  .hero-title{font-size:clamp(1.9rem,9vw,2.25rem);line-height:1.05}
-  .line-2 .line-inner{margin-left:.15rem}
-  .hero-chip{width:.72em;height:.72em;aspect-ratio:1/1;border-radius:50%!important}
-  .hero-badge{width:80px;height:80px;margin:.6rem 0}
+  .hero-top{font-size:8.5px;gap:4px}
+  .hero-title{font-size:clamp(2.45rem,11.2vw,2.9rem);line-height:.95}
+  .line-2 .line-inner{margin-left:0}
+  .hero-chip{width:32px;height:32px;aspect-ratio:1/1;border-radius:50%!important}
+  .hero-badge{width:68px;height:68px;right:10px;top:32%}
+  .hero-cta-links{flex-direction:column}
+  .hero-cta-links .btn{width:100%}
 }
 
 /* ═══════════ 7. MARQUEE ═══════════ */
@@ -1636,13 +1659,17 @@ footer{margin-top:8vh;border-top:1.5px solid rgba(22,16,9,.14);padding:1.6rem 0}
         }, {passive:true});
 
         if (window.DeviceOrientationEvent) {
+          let gyroTick = false;
           window.addEventListener('deviceorientation', e => {
-            if (e.gamma !== null && e.beta !== null) {
+            if (gyroTick || e.gamma === null || e.beta === null) return;
+            gyroTick = true;
+            requestAnimationFrame(() => {
               const gx = clamp(e.gamma / 26, -1, 1);
               const gy = clamp((e.beta - 42) / 26, -1, 1);
-              cx(gx * 16); cy(gy * 10); bx(gx * -22); by(gy * -14);
-            }
-          });
+              cx(gx * 14); cy(gy * 9); bx(gx * -18); by(gy * -12);
+              gyroTick = false;
+            });
+          }, {passive: true});
         }
       }
     }
@@ -1763,14 +1790,30 @@ footer{margin-top:8vh;border-top:1.5px solid rgba(22,16,9,.14);padding:1.6rem 0}
       });
     };
 
-    if(!reduced){
-      (function spin(){
-        if(!drag) yawV=lerp(yawV,.0035,.02);   /* inertia eases back to auto-spin */
-        yaw+=yawV; pitch=lerp(pitch,pitchT,.06);
-        place();
-        requestAnimationFrame(spin);
-      })();
-    } else place();
+    let spinning = false, spinRaf = null;
+    function spin(){
+      if(!drag) yawV=lerp(yawV,.0035,.02);   /* inertia eases back to auto-spin */
+      yaw+=yawV; pitch=lerp(pitch,pitchT,.06);
+      place();
+      if(spinning) spinRaf = requestAnimationFrame(spin);
+    }
+    if(!reduced && 'IntersectionObserver' in window && pStage){
+      const pObs = new IntersectionObserver(([entry]) => {
+        if(entry.isIntersecting){
+          if(!spinning){
+            spinning = true;
+            spinRaf = requestAnimationFrame(spin);
+          }
+        } else {
+          spinning = false;
+          if(spinRaf) cancelAnimationFrame(spinRaf);
+        }
+      }, {rootMargin: '160px'});
+      pObs.observe(pStage);
+      place();
+    } else {
+      if(!reduced){ spinning = true; spin(); } else place();
+    }
 
     /* category constellation filter (HOVER ON DESKTOP, TAP TOGGLE ON MOBILE) */
     let activeCat = null;
@@ -1906,37 +1949,39 @@ footer{margin-top:8vh;border-top:1.5px solid rgba(22,16,9,.14);padding:1.6rem 0}
   const measure=()=>{docTop=stack.getBoundingClientRect().top+scrollY;};
   addEventListener('resize',measure); addEventListener('load',measure); measure();
 
-  function frame(){
-    /* cursor ring lerp */
-    rx=lerp(rx,mx,.16); ry=lerp(ry,my,.16);
-    cring.style.left=rx+'px'; cring.style.top=ry+'px';
+  /* ── HIGH-PERFORMANCE DECOUPLED SCROLL & POINTER LOOPS ── */
+  const pbar = $('#pbar'), nav = $('#nav');
 
-    /* scroll progress */
-    const max=document.documentElement.scrollHeight-innerHeight;
-    $('#pbar').style.width=(scrollY/max*100)+'%';
-    $('#nav').classList.toggle('solid',scrollY>60);
+  /* 1. SCROLL-DRIVEN PARALLAX & STACKING (RUNS ONLY ON SCROLL VIA rAF) */
+  let scrollTicking = false;
+  function updateScrollEffects(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const sY = window.scrollY;
+    const vh = innerHeight;
+
+    if(pbar && max > 0) pbar.style.width = (sY / max * 100) + '%';
+    if(nav) nav.classList.toggle('solid', sY > 60);
 
     if(!reduced){
-      const vh=innerHeight;
       /* parallax layers */
       layers.forEach(({el,sp})=>{
         const p=el.parentElement.getBoundingClientRect();
         const off=(p.top+p.height/2-vh/2)/vh;
         el.style.setProperty('--py',(off*sp).toFixed(1)+'px');
       });
-      /* drifting rows (ALL DEVICES) */
+      /* drifting rows */
       xlayers.forEach(({el,spx})=>{
         const p=el.parentElement.getBoundingClientRect();
         const off=(p.top+p.height/2-vh/2)/vh;
         el.style.setProperty('--px',(off*spx).toFixed(1)+'px');
       });
-      /* stacked 3D cards (ACTIVE ON ALL DEVICES) */
+      /* stacked 3D cards */
       cards.forEach((card,i)=>{
         const next=cards[i+1];
         let s=0;
         if(next){
           const h=card.offsetHeight;
-          const nextTop=docTop+next.offsetTop-scrollY;
+          const nextTop=docTop+next.offsetTop-sY;
           const stickTop=card.getBoundingClientRect().top;
           s=clamp((stickTop+h-nextTop)/h,0,1);
         }
@@ -1948,14 +1993,6 @@ footer{margin-top:8vh;border-top:1.5px solid rgba(22,16,9,.14);padding:1.6rem 0}
         const p=clamp((vh*0.78 - r.top)/r.height,0,1);
         timeline.style.setProperty('--tlp',p.toFixed(3));
       }
-      /* peek follow + tilt by velocity (ALL DEVICES) */
-      if(peek && peek.classList.contains('on')){
-        px=lerp(px,ptx,.14); py=lerp(py,pty,.14);
-        const vel=clamp((px-lx)*.6,-14,14); lx=px;
-        peek.style.left=px+'px'; peek.style.top=py+'px';
-        peek.style.setProperty('--pr',vel+'deg');
-      }
-
       /* ambient contact 3D shadow shift on scroll for mobile */
       if(ci && innerWidth <= 900){
         const cr = ci.getBoundingClientRect();
@@ -1966,9 +2003,36 @@ footer{margin-top:8vh;border-top:1.5px solid rgba(22,16,9,.14);padding:1.6rem 0}
         }
       }
     }
+    scrollTicking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if(!scrollTicking){
+      requestAnimationFrame(updateScrollEffects);
+      scrollTicking = true;
+    }
+  }, {passive: true});
+  updateScrollEffects();
+
+  /* 2. POINTER / PEEK SMOOTH LOOP (RUNS ONLY WHEN ACTIVE) */
+  function frame(){
+    /* cursor ring lerp (desktop mouse only) */
+    if(fine && cring){
+      rx=lerp(rx,mx,.16); ry=lerp(ry,my,.16);
+      cring.style.left=rx+'px'; cring.style.top=ry+'px';
+    }
+
+    /* peek follow + tilt by velocity */
+    if(peek && peek.classList.contains('on')){
+      px=lerp(px,ptx,.14); py=lerp(py,pty,.14);
+      const vel=clamp((px-lx)*.6,-14,14); lx=px;
+      peek.style.left=px+'px'; peek.style.top=py+'px';
+      peek.style.setProperty('--pr',vel+'deg');
+    }
+
     requestAnimationFrame(frame);
   }
-  requestAnimationFrame(frame);
+  if(fine || peek) requestAnimationFrame(frame);
 
   /* ── CLOCK ── */
   const clock=$('#clock');
